@@ -5,6 +5,7 @@ class LoginController <  Devise::OmniauthCallbacksController
   end
 
   def twitch
+    # https://github.com/CrosseyeJack/omniauth-twitch/commit/36f40cf83407d2c6703f3b9a6f95e653a58c8444
     login_with_oauth(:twitch)
   end
 
