@@ -1,0 +1,13 @@
+%h1 startpage
+
+
+-if current_user
+
+  %p=current_user.name
+  %p=current_user.provider
+  =link_to logout_path do
+    Logout
+-else
+  We are not logged in!
+  - User.omniauth_providers.each do |provider|
+    = link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(:user, provider)
