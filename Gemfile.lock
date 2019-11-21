@@ -65,6 +65,9 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    annotate (3.0.3)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     builder (3.2.3)
@@ -252,6 +255,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   capybara (>= 2.15)
   devise
   dotenv-rails
