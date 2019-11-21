@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_033426) do
   end
 
   create_table "crypto_payments", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "coin_id"
     t.integer "donation_id"
     t.string "state", default: "pending"
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_033426) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_crypto_payments_on_coin_id"
     t.index ["donation_id"], name: "index_crypto_payments_on_donation_id"
-    t.index ["user_id"], name: "index_crypto_payments_on_user_id"
   end
 
   create_table "crypto_withdrawals", force: :cascade do |t|
@@ -45,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_11_21_033426) do
   create_table "donations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "coin_id"
+    t.string "uuid", limit: 36, null: false
+    t.string "state", default: "unpaid"
     t.string "payment_address"
     t.string "name", limit: 22
     t.string "message"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_033426) do
     t.string "provider", null: false
     t.string "uid", null: false
     t.datetime "remember_created_at"
+    t.string "donation_url"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"

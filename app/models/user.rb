@@ -4,6 +4,11 @@ class User < ApplicationRecord
   has_many :donations
 
 
+  before_create {
+    self.donation_url = name.downcase
+  }
+
+
   def self.by_oauth(hash)
     find_by(provider: hash["provider"], uid: hash["uid"])
   end

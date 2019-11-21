@@ -1,0 +1,11 @@
+%h2 Create a new Donation for #{@donation.streamer.name}
+
+=@donation.errors.inspect
+
+=form_with(model: @donation, url: @donation.streamer.donation_url, method: :post, local: true) do |f|
+
+  =f.text_field :coin_id
+  =f.text_field :name
+  =f.text_field :message
+
+  =f.submit
