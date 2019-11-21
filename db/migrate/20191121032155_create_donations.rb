@@ -7,6 +7,8 @@ class CreateDonations < ActiveRecord::Migration[6.0]
       t.string :uuid, null: false, limit: 36
       t.string :state, default: "unpaid"
 
+      t.string :counter, default: 1
+
       # where to send the money
       t.string :payment_address
 
