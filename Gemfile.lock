@@ -1,7 +1,8 @@
-PATH
-  remote: ../omniauth-streamelements
+GIT
+  remote: https://github.com/krtschmr/omniauth-streamelements.git
+  revision: 9789e1b38de183865ce143304df73c3e882a7d21
   specs:
-    omniauth-streamelements (1.0.2)
+    omniauth-streamelements (0.1)
       omniauth-oauth2 (~> 1.1)
 
 GEM
