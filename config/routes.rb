@@ -36,9 +36,9 @@ Rails.application.routes.draw do
 
   #public pages
   # whatever we  need here?
-  get "/how-it-works"
-  get "/terms"
-  get "/support"
+  # get "/how-it-works"
+  # get "/terms"
+  # get "/support"
   root to: "pages#startpage"
 
 

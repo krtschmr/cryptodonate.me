@@ -1,3 +1,6 @@
+class CryptoWithdrawal < ApplicationRecord
+end
+
 # == Schema Information
 #
 # Table name: crypto_withdrawals
@@ -6,6 +9,3 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-class CryptoWithdrawal < ApplicationRecord
-end

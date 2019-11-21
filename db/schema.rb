@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_033426) do
     t.integer "coin_id"
     t.string "uuid", limit: 36, null: false
     t.string "state", default: "unpaid"
+    t.string "counter", default: "1"
     t.string "payment_address"
     t.string "name", limit: 22
     t.string "message"

@@ -1,20 +1,3 @@
-# == Schema Information
-#
-# Table name: crypto_payments
-#
-#  id           :integer          not null, primary key
-#  coin_id      :integer
-#  donation_id  :integer
-#  state        :string           default("pending")
-#  tx_id        :string           not null
-#  amount       :decimal(18, 8)
-#  block        :integer
-#  detected_at  :datetime
-#  confirmed_at :datetime
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#
-
 class CryptoPayment < ApplicationRecord
 
     belongs_to :donation, required: true
@@ -25,3 +8,25 @@ class CryptoPayment < ApplicationRecord
 
 
 end
+
+# == Schema Information
+#
+# Table name: crypto_payments
+#
+#  id           :integer          not null, primary key
+#  amount       :decimal(18, 8)
+#  block        :integer
+#  confirmed_at :datetime
+#  detected_at  :datetime
+#  state        :string           default("pending")
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  coin_id      :integer
+#  donation_id  :integer
+#  tx_id        :string           not null
+#
+# Indexes
+#
+#  index_crypto_payments_on_coin_id      (coin_id)
+#  index_crypto_payments_on_donation_id  (donation_id)
+#

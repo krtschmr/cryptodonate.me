@@ -1,27 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                  :integer          not null, primary key
-#  provider            :string           not null
-#  uid                 :string           not null
-#  remember_created_at :datetime
-#  donation_url        :string
-#  sign_in_count       :integer          default(0), not null
-#  current_sign_in_at  :datetime
-#  last_sign_in_at     :datetime
-#  current_sign_in_ip  :string
-#  last_sign_in_ip     :string
-#  name                :string           not null
-#  email               :string           not null
-#  description         :string
-#  url                 :string
-#  token               :string
-#  refresh_token       :string
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#
-
 class User < ApplicationRecord
   devise :rememberable, :trackable, :omniauthable, omniauth_providers: %i[twitch mixer streamelements streamlabs]
 
@@ -40,3 +16,33 @@ class User < ApplicationRecord
 
 
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer          not null, primary key
+#  current_sign_in_at  :datetime
+#  current_sign_in_ip  :string
+#  description         :string
+#  donation_url        :string
+#  email               :string           not null
+#  last_sign_in_at     :datetime
+#  last_sign_in_ip     :string
+#  name                :string           not null
+#  provider            :string           not null
+#  refresh_token       :string
+#  remember_created_at :datetime
+#  sign_in_count       :integer          default(0), not null
+#  token               :string
+#  uid                 :string           not null
+#  url                 :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_provider          (provider)
+#  index_users_on_provider_and_uid  (provider,uid) UNIQUE
+#  index_users_on_uid               (uid)
+#

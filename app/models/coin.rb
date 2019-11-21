@@ -1,14 +1,14 @@
+class Coin < ApplicationRecord
+end
+
 # == Schema Information
 #
 # Table name: coins
 #
 #  id          :integer          not null, primary key
+#  description :text
 #  name        :string
 #  symbol      :string
-#  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-
-class Coin < ApplicationRecord
-end

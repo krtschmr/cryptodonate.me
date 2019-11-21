@@ -1,24 +1,3 @@
-# == Schema Information
-#
-# Table name: donations
-#
-#  id                :integer          not null, primary key
-#  user_id           :integer
-#  coin_id           :integer
-#  uuid              :string(36)       not null
-#  state             :string           default("unpaid")
-#  payment_address   :string
-#  name              :string(22)
-#  message           :string
-#  currency          :string
-#  amount            :decimal(9, 2)
-#  total_paid_fiat   :decimal(9, 2)
-#  total_paid_crypto :decimal(18, 2)
-#  alert_created     :boolean          default(FALSE)
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#
-
 class Donation < ApplicationRecord
 
   belongs_to :user, required: true
@@ -29,6 +8,7 @@ class Donation < ApplicationRecord
 
   before_create {
     self.uuid ||= SecureRandom.uuid
+
   }
 
   def to_param
@@ -36,3 +16,30 @@ class Donation < ApplicationRecord
   end
 
 end
+
+# == Schema Information
+#
+# Table name: donations
+#
+#  id                :integer          not null, primary key
+#  alert_created     :boolean          default(FALSE)
+#  amount            :decimal(9, 2)
+#  counter           :string           default("1")
+#  currency          :string
+#  message           :string
+#  name              :string(22)
+#  payment_address   :string
+#  state             :string           default("unpaid")
+#  total_paid_crypto :decimal(18, 2)
+#  total_paid_fiat   :decimal(9, 2)
+#  uuid              :string(36)       not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  coin_id           :integer
+#  user_id           :integer
+#
+# Indexes
+#
+#  index_donations_on_coin_id  (coin_id)
+#  index_donations_on_user_id  (user_id)
+#
