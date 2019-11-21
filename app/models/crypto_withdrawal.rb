@@ -1,0 +1,2 @@
+class CryptoWithdrawal < ApplicationRecord
+end

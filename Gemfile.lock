@@ -1,3 +1,9 @@
+PATH
+  remote: ../omniauth-streamelements
+  specs:
+    omniauth-streamelements (1.0.2)
+      omniauth-oauth2 (~> 1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -134,6 +140,8 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    omniauth-streamlabs (1.0.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-twitch (1.0.0)
       omniauth-oauth2 (~> 1.1)
     orm_adapter (0.5.0)
@@ -250,6 +258,8 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   omniauth-mixer
+  omniauth-streamelements!
+  omniauth-streamlabs
   omniauth-twitch
   pry-rails
   puma (~> 4.1)

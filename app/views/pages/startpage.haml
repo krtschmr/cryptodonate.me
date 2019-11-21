@@ -1,13 +1,27 @@
 %h1 startpage
 
-
 -if current_user
 
   %p=current_user.name
   %p=current_user.provider
   =link_to logout_path do
     Logout
+
+  -# %h2 Connect your accounts
+  -# %p
+  -#   = link_to :streamlabs, omniauth_authorize_path(:user, :streamlabs)
+  -#   -# = link_to :streamelements, omniauth_authorize_path(:user, :streamelements)
+  -# %p
+  -#   =link_to "#" do
+  -#     StreamLabs
+
+
 -else
   We are not logged in!
-  - User.omniauth_providers.each do |provider|
-    = link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(:user, provider)
+
+  = link_to :twitch, omniauth_authorize_path(:user, :twitch)
+  = link_to :mixer, omniauth_authorize_path(:user, :mixer)
+
+
+
+  -# = link_to :streamelements, omniauth_authorize_path(:user, :streamelements)

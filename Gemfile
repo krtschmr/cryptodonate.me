@@ -57,3 +57,5 @@ gem "dotenv-rails"
 gem "devise"
 gem 'omniauth-twitch'
 gem 'omniauth-mixer'
+gem 'omniauth-streamelements', path: "../omniauth-streamelements"
+gem 'omniauth-streamlabs'

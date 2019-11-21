@@ -9,6 +9,11 @@ class LoginController <  Devise::OmniauthCallbacksController
     login_with_oauth(:twitch)
   end
 
+
+  def streamelements
+    binding.pry
+  end
+
   private
 
   def login_with_oauth(provider)

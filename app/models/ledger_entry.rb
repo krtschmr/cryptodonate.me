@@ -1,0 +1,2 @@
+class LedgerEntry < ApplicationRecord
+end
