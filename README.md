@@ -72,3 +72,11 @@ models
      width
      height
      -> modules
+
+
+
+# Layout
+
+To buy, for just 18$. can't we steal? :< they don't accept bitcoin!
+
+https://themeforest.net/item/metrica-responsive-admin-multi-dashboard-template/23997762
