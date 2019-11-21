@@ -1,4 +1,9 @@
 class Coin < ApplicationRecord
+
+  def to_s
+    symbol
+  end
+
 end
 
 # == Schema Information
