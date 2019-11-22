@@ -12,7 +12,10 @@ class DonationPayment < ApplicationRecord
 
     def try_to_confirm!
       raise "already confirmed" if confirmed?
-      self.update(state: "confirmed", block: incoming_transaction.block, confirmed_at: Time.now) if confirmed_transaction?
+      if confirmed_transaction?
+        self.update(state: "confirmed", block: incoming_transaction.block, confirmed_at: Time.now)
+        create_ledger_entry!
+      end
     end
 
     private
