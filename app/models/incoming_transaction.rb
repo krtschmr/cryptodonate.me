@@ -11,20 +11,25 @@ class IncomingTransaction < ApplicationRecord
   validates :received_at, presence: true
 
   before_create {
-    binding.pry
     # we set the donation, based on coin/address.
     # then we create a new donation payment which will be autosaved on creation
     self.donation = Donation.find_by!(coin: self.coin, payment_address: self.address)
     self.donation_payment = donation.donation_payments.new(incoming_transaction: self, tx_id: self.tx_id, amount: self.amount, detected_at: Time.now)
   }
+  before_save :try_to_confirm!
+  after_commit { donation_payment.try_to_confirm! if confirmed? }
 
-
-  def confirmed?
-    confirmations >= 1
+  def try_to_confirm!
+    raise "already confirmed" if confirmed?
+    self.state = "confirmed" if enough_confirmations?
   end
 
-  def self.process!(coin, tx_id)
-    TransactionService.new(coin).process!(tx_id)
+  def confirmed?
+    state == "confirmed"
+  end
+
+  def enough_confirmations?
+    confirmations >= 1
   end
 
 end

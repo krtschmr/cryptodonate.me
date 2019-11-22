@@ -3,9 +3,6 @@ class CreateIncomingTransactions < ActiveRecord::Migration[6.0]
     create_table :incoming_transactions do |t|
       t.belongs_to :coin
       t.belongs_to :donation, null: true
-
-
-
       t.string :address, null: false
       t.string :tx_id, null: false
       t.integer :block

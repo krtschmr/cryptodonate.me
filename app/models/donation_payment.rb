@@ -4,14 +4,22 @@ class DonationPayment < ApplicationRecord
     belongs_to :donation, required: true
     belongs_to :incoming_transaction, required: true
 
-    after_initialize {
-      self.coin ||= donation.coin
-    }
+    after_initialize { self.coin ||= donation.coin }
 
-    before_validation {
-      self.coin ||= donation.coin
-    }
+    def confirmed?
+      state == "confirmed"
+    end
 
+    def try_to_confirm!
+      raise "already confirmed" if confirmed?
+      self.update(state: "confirmed", block: incoming_transaction.block, confirmed_at: Time.now) if confirmed_transaction?
+    end
+
+    private
+
+    def confirmed_transaction?
+      incoming_transaction.confirmed?
+    end
 
 end
 
