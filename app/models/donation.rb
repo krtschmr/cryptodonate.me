@@ -77,9 +77,11 @@ end
 #  message           :string
 #  name              :string(22)
 #  payment_address   :string
+#  payment_amount    :decimal(18, 8)
 #  state             :string           default("unpaid")
-#  total_paid_crypto :decimal(18, 2)
+#  total_paid_crypto :decimal(18, 8)
 #  total_paid_fiat   :decimal(9, 2)
+#  usd_value         :decimal(, )
 #  uuid              :string(36)       not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

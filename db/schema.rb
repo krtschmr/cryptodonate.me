@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_033426) do
+ActiveRecord::Schema.define(version: 2019_11_22_024055) do
 
   create_table "coins", force: :cascade do |t|
     t.string "name"
@@ -46,18 +46,38 @@ ActiveRecord::Schema.define(version: 2019_11_21_033426) do
     t.string "uuid", limit: 36, null: false
     t.string "state", default: "unpaid"
     t.string "counter", default: "1"
-    t.string "payment_address"
     t.string "name", limit: 22
     t.string "message"
-    t.string "currency"
     t.decimal "amount", precision: 9, scale: 2
+    t.string "currency"
+    t.decimal "usd_value"
+    t.string "payment_address"
+    t.decimal "payment_amount", precision: 18, scale: 8
     t.decimal "total_paid_fiat", precision: 9, scale: 2
-    t.decimal "total_paid_crypto", precision: 18, scale: 2
+    t.decimal "total_paid_crypto", precision: 18, scale: 8
     t.boolean "alert_created", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_donations_on_coin_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "incoming_transactions", force: :cascade do |t|
+    t.integer "coin_id"
+    t.integer "donation_id"
+    t.string "address", null: false
+    t.string "tx_id", null: false
+    t.integer "block"
+    t.decimal "amount", precision: 18, scale: 8
+    t.integer "confirmations", default: 0
+    t.string "state", default: "pending"
+    t.boolean "bip125_replaceable", default: true
+    t.boolean "trusted", default: false
+    t.integer "received_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coin_id"], name: "index_incoming_transactions_on_coin_id"
+    t.index ["donation_id"], name: "index_incoming_transactions_on_donation_id"
   end
 
   create_table "ledger_entries", force: :cascade do |t|

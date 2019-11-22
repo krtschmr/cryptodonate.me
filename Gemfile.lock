@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/krtschmr/bitcore_rpc.git
+  revision: 42c2814d651095e419806f5912dcfe2728b104e0
+  specs:
+    bitcore_rpc (0.1.1)
+
+GIT
   remote: https://github.com/krtschmr/omniauth-streamelements.git
   revision: 9789e1b38de183865ce143304df73c3e882a7d21
   specs:
@@ -252,6 +258,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bitcore_rpc!
   capybara (>= 2.15)
   devise
   dotenv-rails

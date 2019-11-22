@@ -1,8 +1,8 @@
 class CryptoPayment < ApplicationRecord
 
+    belongs_to :user, required: true
     belongs_to :donation, required: true
     belongs_to :coin, required: true
-
 
 
 

@@ -1,13 +1,23 @@
 module Bitcoin::Wallet
 
+  # class Transaction < OpenStruct;end;
+  # class Transaction::Details < Transaction;end;
+
+  def blockheight
+    $bitcoin_rpc.getblockcount
+  end
+
   def generate_address
     $bitcoin_rpc.getnewaddress("myaddress", "bech32")
   end
 
-  # def get_transaction(tx_id)
-  #   $bitcoin_rpc.gettransaction(tx_id)
-  # end
-  #
+  def get_transaction(tx_id)
+    tx = $bitcoin_rpc.gettransaction(tx_id)
+    # tx["details"] = Transaction::Details.new(tx["details"].first)
+    # Transaction.new(tx)
+    tx
+  end
+
   # def confirmed?(tx_id)
   #   confirmations(tx_id) > 0
   # end

@@ -1,3 +1,6 @@
+
+
+
 # Developed by TimVanMonero during his live streams
 
 # RFC
@@ -80,3 +83,10 @@ models
 To buy, for just 18$. can't we steal? :< they don't accept bitcoin!
 
 https://themeforest.net/item/metrica-responsive-admin-multi-dashboard-template/23997762
+
+
+# Conversion
+
+Internally we deal only with USD (US Dollar).
+
+User can choose donation currency out of

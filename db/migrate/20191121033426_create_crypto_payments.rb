@@ -1,6 +1,7 @@
 class CreateCryptoPayments < ActiveRecord::Migration[6.0]
   def change
     create_table :crypto_payments do |t|
+      
       t.belongs_to :coin
       t.belongs_to :donation
 
@@ -10,7 +11,6 @@ class CreateCryptoPayments < ActiveRecord::Migration[6.0]
       t.integer :block
       t.datetime :detected_at
       t.datetime :confirmed_at
-      
       t.timestamps
     end
   end
