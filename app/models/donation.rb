@@ -2,38 +2,41 @@ class Donation < ApplicationRecord
 
   SUPPORTED_CURRENCIES = %W(USD EUR THB)
 
-  belongs_to :user, required: true
+  belongs_to :streamer, required: true
   belongs_to :coin, required: true
-  has_many :crypto_payments
+  has_many :donation_payments #, class_name: "DonationPayment"
 
-  alias_method :streamer, :user
 
+  validates :uuid, presence: true
   validates :amount, numericality: {greater_than: 0}
   validates :currency, inclusion: {in: SUPPORTED_CURRENCIES}
   validates_length_of :name, minimum: 2, maximum: 22, allow_blank: true
 
-  state_machine :initial => :unpaid do
-    state :paid do
-      validates :total_paid_crypto, numericality: {greater_than: 0}
-      validates :total_paid_fiat, numericality: {greater_than: 0}
-    end
-    event :mark_as_paid do
-      transition :unpaid => :paid
-    end
+  # state_machine(initial: "unpaid") do
+  #   # state :paid do
+  #   #   validates :total_paid_crypto, numericality: {greater_than: 0}
+  #   #   validates :total_paid_fiat, numericality: {greater_than: 0}
+  #   # end
+  #   # event :mark_as_paid do
+  #   #   transition :unpaid => :paid
+  #   # end
+  # end
+
+  before_validation do
+    self.uuid ||= SecureRandom.uuid
   end
 
   before_create {
-    self.uuid ||= SecureRandom.uuid
-    set_counter
     set_payment_address
+    set_counter
   }
 
   def to_param
     uuid
   end
 
-  def donation.above_minimum?
-    # total_paid_fiat >= user.donation_settings.minimum_amount_for_notification
+  def donation_above_minimum?
+    total_paid_fiat >= streamer.donation_settings.minimum_amount_for_notification
   end
 
   def trigger_notification!
@@ -43,9 +46,9 @@ class Donation < ApplicationRecord
   private
 
   def set_counter
-    # internal counter so the user can see how many donations came per coin.
+    # internal counter so the streamer can see how many donations came per coin.
     # we need this to actually derive addresses for his xPUBkey
-    self.counter = user.donations.where(coin: coin).maximum(:counter).next
+    self.counter = streamer.donations.where(coin: coin).maximum(:counter).to_i.next
   end
 
   def set_payment_address
@@ -53,8 +56,8 @@ class Donation < ApplicationRecord
   end
 
   def generate_payment_address
-    if user.provided_own_key?(coin)
-      address = AddressGenerator.generate(coin, user.xpubkey(coin), counter)
+    if streamer.provided_own_key?(coin)
+      address = AddressGenerator.generate(coin, streamer.xpubkey(coin), counter)
       # TODO
       # add this address into our node as an watchonly address
       address
@@ -86,10 +89,10 @@ end
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  coin_id           :integer
-#  user_id           :integer
+#  streamer_id       :integer
 #
 # Indexes
 #
-#  index_donations_on_coin_id  (coin_id)
-#  index_donations_on_user_id  (user_id)
+#  index_donations_on_coin_id      (coin_id)
+#  index_donations_on_streamer_id  (streamer_id)
 #

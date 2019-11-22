@@ -63,3 +63,6 @@ gem 'omniauth-streamelements', github: "krtschmr/omniauth-streamelements"
 gem 'omniauth-streamlabs'
 
 gem "bitcore_rpc", github: "krtschmr/bitcore_rpc"
+
+gem "formtastic"
+gem 'rails-erd', group: :development

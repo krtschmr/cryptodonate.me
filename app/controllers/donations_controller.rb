@@ -15,17 +15,17 @@ class DonationsController <  ApplicationController
   end
 
   def show
-    @donation = streamer.donations.find_by!(uuid: params[:uuid])    
+    @donation = streamer.donations.find_by!(uuid: params[:uuid])
   end
 
   private
 
   def streamer
-    @streamer ||= User.find_by!(donation_url: params[:donation_url ])
+    @streamer ||= Streamer.find_by!(donation_url: params[:donation_url ])
   end
 
   def create_params
-    params.require(:donation).permit(:coin_id, :name, :message)
+    params.require(:donation).permit(:coin_id, :name, :message, :currency, :amount)
   end
 
 end

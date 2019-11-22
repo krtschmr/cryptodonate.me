@@ -1,7 +1,7 @@
 class CreateDonations < ActiveRecord::Migration[6.0]
   def change
     create_table :donations do |t|
-      t.belongs_to :user
+      t.belongs_to :streamer
       t.belongs_to :coin
 
       t.string :uuid, null: false, limit: 36

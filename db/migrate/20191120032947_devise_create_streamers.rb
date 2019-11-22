@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateUsers < ActiveRecord::Migration[6.0]
+class DeviseCreateStreamers < ActiveRecord::Migration[6.0]
   def change
-    create_table :users do |t|
+    create_table :streamers do |t|
       # identify the user
       t.string :provider, null: false, index: true
       t.string :uid, null: false, index: true
@@ -30,6 +30,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       t.timestamps null: false
     end
-    add_index :users, [:provider, :uid], unique: true
+    add_index :streamers, [:provider, :uid], unique: true
   end
 end

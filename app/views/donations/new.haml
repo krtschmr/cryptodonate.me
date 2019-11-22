@@ -2,10 +2,12 @@
 
 =@donation.errors.inspect
 
-=form_with(model: @donation, url: @donation.streamer.donation_url, method: :post, local: true) do |f|
-
-  =f.text_field :coin_id
-  =f.text_field :name
-  =f.text_field :message
+-# =form_with(model: @donation, url: @donation.streamer.donation_url, method: :post, local: true) do |f|
+=semantic_form_for(@donation, action: @donation.streamer.donation_url, method: :post) do |f|
+  =f.input :coin, as: :select
+  =f.input :name
+  =f.input :message
+  =f.input :currency
+  =f.input :amount, min: 10
 
   =f.submit

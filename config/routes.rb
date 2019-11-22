@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Login and Logout
-  devise_for :users, controllers: { omniauth_callbacks: 'login' }
+  devise_for :streamer, controllers: { omniauth_callbacks: 'login' }
   get :logout, to: "sessions#logout", as: :logout
 
   # Everything the user can do when he is logged in

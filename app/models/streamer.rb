@@ -1,8 +1,7 @@
-class User < ApplicationRecord
+class Streamer < ApplicationRecord
   devise :rememberable, :trackable, :omniauthable, omniauth_providers: %i[twitch mixer streamelements streamlabs]
 
   has_many :donations
-  # has_many :xpubkeys
 
 
   before_create {
@@ -27,7 +26,7 @@ end
 
 # == Schema Information
 #
-# Table name: users
+# Table name: streamers
 #
 #  id                  :integer          not null, primary key
 #  current_sign_in_at  :datetime
@@ -50,7 +49,7 @@ end
 #
 # Indexes
 #
-#  index_users_on_provider          (provider)
-#  index_users_on_provider_and_uid  (provider,uid) UNIQUE
-#  index_users_on_uid               (uid)
+#  index_streamers_on_provider          (provider)
+#  index_streamers_on_provider_and_uid  (provider,uid) UNIQUE
+#  index_streamers_on_uid               (uid)
 #

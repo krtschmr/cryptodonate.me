@@ -1,9 +1,9 @@
-class CreateCryptoPayments < ActiveRecord::Migration[6.0]
+class CreateDonationPayments < ActiveRecord::Migration[6.0]
   def change
-    create_table :crypto_payments do |t|
-      
+    create_table :donation_payments do |t|
       t.belongs_to :coin
       t.belongs_to :donation
+      t.belongs_to :incoming_transaction
 
       t.string :state, default: "pending"
       t.string :tx_id, null: false

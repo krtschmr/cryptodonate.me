@@ -20,9 +20,15 @@ ActiveRecord::Schema.define(version: 2019_11_22_024055) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "crypto_payments", force: :cascade do |t|
+  create_table "crypto_withdrawals", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "donation_payments", force: :cascade do |t|
     t.integer "coin_id"
     t.integer "donation_id"
+    t.integer "incoming_transaction_id"
     t.string "state", default: "pending"
     t.string "tx_id", null: false
     t.decimal "amount", precision: 18, scale: 8
@@ -31,17 +37,13 @@ ActiveRecord::Schema.define(version: 2019_11_22_024055) do
     t.datetime "confirmed_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["coin_id"], name: "index_crypto_payments_on_coin_id"
-    t.index ["donation_id"], name: "index_crypto_payments_on_donation_id"
-  end
-
-  create_table "crypto_withdrawals", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coin_id"], name: "index_donation_payments_on_coin_id"
+    t.index ["donation_id"], name: "index_donation_payments_on_donation_id"
+    t.index ["incoming_transaction_id"], name: "index_donation_payments_on_incoming_transaction_id"
   end
 
   create_table "donations", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "streamer_id"
     t.integer "coin_id"
     t.string "uuid", limit: 36, null: false
     t.string "state", default: "unpaid"
@@ -59,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_024055) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_donations_on_coin_id"
-    t.index ["user_id"], name: "index_donations_on_user_id"
+    t.index ["streamer_id"], name: "index_donations_on_streamer_id"
   end
 
   create_table "incoming_transactions", force: :cascade do |t|
@@ -101,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_024055) do
     t.index ["withdrawal_id"], name: "index_ledger_entries_on_withdrawal_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "streamers", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
     t.datetime "remember_created_at"
@@ -119,9 +121,9 @@ ActiveRecord::Schema.define(version: 2019_11_22_024055) do
     t.string "refresh_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
-    t.index ["provider"], name: "index_users_on_provider"
-    t.index ["uid"], name: "index_users_on_uid"
+    t.index ["provider", "uid"], name: "index_streamers_on_provider_and_uid", unique: true
+    t.index ["provider"], name: "index_streamers_on_provider"
+    t.index ["uid"], name: "index_streamers_on_uid"
   end
 
   create_table "withdrawals", force: :cascade do |t|

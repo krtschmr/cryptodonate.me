@@ -2,6 +2,7 @@ class IncomingTransaction < ApplicationRecord
 
   belongs_to :coin, required: true
   belongs_to :donation, optional: true
+  has_one :donation_payment, autosave: true
 
   validates :tx_id, presence: true
   validates :address, presence: true
@@ -9,8 +10,14 @@ class IncomingTransaction < ApplicationRecord
   validates :block, numericality: {greater_than: 0, allow_nil: true}
   validates :received_at, presence: true
 
+  before_create {
+    binding.pry
+    # we set the donation, based on coin/address.
+    # then we create a new donation payment which will be autosaved on creation
+    self.donation = Donation.find_by!(coin: self.coin, payment_address: self.address)
+    self.donation_payment = donation.donation_payments.new(incoming_transaction: self, tx_id: self.tx_id, amount: self.amount, detected_at: Time.now)
+  }
 
-  # alias_method :replaceable?, :bip125_replaceable?
 
   def confirmed?
     confirmations >= 1

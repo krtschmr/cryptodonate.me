@@ -1,16 +1,16 @@
 %h1 startpage
 
--if current_user
+-if current_streamer
 
-  %p=current_user.name
-  %p=current_user.provider
+  %p=current_streamer.name
+  %p=current_streamer.provider
   =link_to logout_path do
     Logout
 
   -# %h2 Connect your accounts
   -# %p
-  -#   = link_to :streamlabs, omniauth_authorize_path(:user, :streamlabs)
-  -#   -# = link_to :streamelements, omniauth_authorize_path(:user, :streamelements)
+  -#   = link_to :streamlabs, omniauth_authorize_path(:streamer, :streamlabs)
+  -#   -# = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
   -# %p
   -#   =link_to "#" do
   -#     StreamLabs
@@ -19,9 +19,9 @@
 -else
   We are not logged in!
 
-  = link_to :twitch, omniauth_authorize_path(:user, :twitch)
-  = link_to :mixer, omniauth_authorize_path(:user, :mixer)
+  = link_to :twitch, omniauth_authorize_path(:streamer, :twitch)
+  = link_to :mixer, omniauth_authorize_path(:streamer, :mixer)
 
 
 
-  -# = link_to :streamelements, omniauth_authorize_path(:user, :streamelements)
+  -# = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
