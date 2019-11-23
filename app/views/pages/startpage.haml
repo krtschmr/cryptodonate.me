@@ -1,25 +1,532 @@
-%h1 startpage
+-content_for(:title, "Starpage")
 
--if current_streamer
+.row
+  .col-lg-8
+    .card
+      .card-body
+        .crypto-report-history.d-flex.justify-content-end
+          %ul.nav
+            %li.nav-item
+              %a.nav-link{:href => "#"} Hour
+            %li.nav-item
+              %a.nav-link.active{:href => "#"} Day
+            %li.nav-item
+              %a.nav-link{:href => "#"} Week
+            %li.nav-item
+              %a.nav-link{:href => "#"} Month
+            %li.nav-item
+              %a.nav-link{:href => "#"} Order Book
+        .row
+          .col-md-3
+            .media
+              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
+              .media-body.align-self-center
+                .coin-bal
+                  %h4.m-0 $7289.45
+                  %p.text-muted.mb-0
+                    Bitcoin
+                    %span.text-muted.font-12 (BTC)
+                    %span.text-success
+                      2.5%
+                      %i.mdi.mdi-arrow-up
+              / end media body
+            / end col
+          / end col
+          .col-md-3
+            %p.mb-0.p-2.bg-soft-dark.rounded
+              %b> Last:
+              0.25436584
+          / end col
+          .col-md-3
+            %p.mb-0.p-2.bg-soft-success.rounded
+              %b> 24High:
+              0.25436584
+          / end col
+          .col-md-3
+            %p.mb-0.p-2.bg-soft-danger.rounded
+              %b> 24Low:
+              0.25436584
+          / end col
+        / end row
+        #crypto_dash_main.apex-charts
+      / end card-body
+    / end card
+  / end col
+  .col-lg-4
+    .card
+      .card-body
+        .row
+          .col-12
+            .wallet-bal-usd
+              %h4.wallet-title.m-0 Your Total Balence
+              %span.text-muted.font-12 30 june 2019
+              %h3.text-center $85692.00
+            %p.font-15.text-success.text-center.mb-4
+              + $455.00
+              %span.font-12.text-muted
+                (6.2%
+                = succeed ")" do
+                  %i.mdi.mdi-trending-up.text-success
+            .text-right
+              %button.btn.btn-success.btn-sm.px-3 Receive
+              %button.btn.btn-danger.btn-sm.px-3 Send
+              %button.btn.btn-primary.btn-sm.px-3 + Invest
+      / end card-body
+      .card-body.pt-0
+        %ul.list-group.wallet-bal-crypto
+          %li.list-group-item.align-items-center.d-flex.justify-content-between
+            .media
+              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
+              .media-body.align-self-center
+                .coin-bal
+                  %h3.m-0 6.18424000
+                  %p.text-muted.mb-0 $ 33277.3660
+              / end media body
+            %span.badge.badge-soft-purple Bitcoin
+          %li.list-group-item.align-items-center.d-flex.justify-content-between
+            .media
+              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/mon.png'}"}/
+              .media-body.align-self-center
+                .coin-bal
+                  %h3.m-0 60.1842
+                  %p.text-muted.mb-0 $ 18564.3660
+              / end media body
+            %span.badge.badge-soft-info Monero
+          %li.list-group-item.align-items-center.d-flex.justify-content-between
+            .media
+              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/eth.png'}"}/
+              .media-body.align-self-center
+                .coin-bal
+                  %h3.m-0 32.65849212
+                  %p.text-muted.mb-0 $ 33277.3660
+              / end media body
+            %span.badge.badge-soft-success Ethereum
+      / end card-body
+    / end card
+  / end col
+/ end row
+.row
+  .col-lg-4
+    .card
+      .card-body
+        %a.float-right.text-info{:href => ""} View All
+        %h4.header-title.mt-0.mb-3 Transaction History
+        %ul.list-unsyled.m-0.pl-0.transaction-history
+          %li.align-items-center.d-flex.justify-content-between
+            .media
+              .transaction-icon
+                %i.mdi.mdi-arrow-top-right-thick
+              .media-body.align-self-center
+                .transaction-data
+                  %h3.m-0 Send BTC
+                  %p.text-muted.mb-0 6 June 2019 10:25 AM
+              / end media body
+            %span.text-danger 0.000245684 BTC
+          %li.align-items-center.d-flex.justify-content-between
+            .media
+              .transaction-icon
+                %i.mdi.mdi-arrow-down-thick
+              .media-body.align-self-center
+                .transaction-data
+                  %h3.m-0 Receive BTC
+                  %p.text-muted.mb-0 4 June 2019 7:05 PM
+              / end media body
+            %span.text-success 0.012458632 BTC
+          %li.align-items-center.d-flex.justify-content-between
+            .media
+              .transaction-icon
+                %i.mdi.mdi-arrow-top-right-thick
+              .media-body.align-self-center
+                .transaction-data
+                  %h3.m-0 Send BTC
+                  %p.text-muted.mb-0 1 June 2019 11:30 PM
+              / end media body
+            %span.text-danger 0.000245684 BTC
+          %li.align-items-center.d-flex.justify-content-between
+            .media
+              .transaction-icon
+                %i.mdi.mdi-arrow-top-right-thick
+              .media-body.align-self-center
+                .transaction-data
+                  %h3.m-0 Send BTC
+                  %p.text-muted.mb-0 28 May 2019 08:45 AM
+              / end media body
+            %span.text-danger 0.000245684 BTC
+          %li.align-items-center.d-flex.justify-content-between
+            .media
+              .transaction-icon
+                %i.mdi.mdi-arrow-down-thick
+              .media-body.align-self-center
+                .transaction-data
+                  %h3.m-0 Receive BTC
+                  %p.text-muted.mb-0 25 May 2019 01:25 PM
+              / end media body
+            %span.text-success 0.012458632 BTC
+      / end card-body
+    / end card
+  / end col
+  .col-lg-4
+    .card
+      .card-body
+        %h3.vol-btc.float-md-right.float-sm-none
+          BTC 7324.88
+          %small.text-muted (USD)
+        %h4.header-title.mt-0.mb-3 BTC Volume by Currency
+        #animating-donut.ct-chart.ct-golden-section.mt-5.mb-4.btc-volume-chart
+        %ul.list-unstyled.list-inline.text-center.d-flex.justify-content-around.mb-0
+          %li.list-inline-item.mt-2
+            %h5.mb-1.mt-1.font-16 1.248.88
+            %span.font-14.text-info
+              %i.mdi.mdi-checkbox-blank-circle.mr-2.text-purple>
+              JPY
+            %span.text-danger
+              20.1%
+              %i.mdi.mdi-trending-down
+          %li.list-inline-item.mt-2
+            %h5.mb-1.mt-1.font-16 14,351.25
+            %span.text-info.font-14
+              %i.mdi.mdi-checkbox-blank-circle.mr-2.text-secondary>
+              USD
+            %span.text-success
+              22.9%
+              %i.mdi.mdi-trending-up
+          %li.list-inline-item.mt-2
+            %h5.mb-1.mt-1.font-16 5,547.21
+            %span.text-info.font-14
+              %i.mdi.mdi-checkbox-blank-circle.mr-2.text-success>
+              KRW
+            %span.text-success
+              14.2%
+              %i.mdi.mdi-trending-up
+          %li.list-inline-item.mt-2
+            %h5.mb-1.mt-1.font-16 3,477.23
+            %span.text-info.font-14
+              %i.mdi.mdi-checkbox-blank-circle.mr-2.text-warning>
+              EUR
+            %span.text-success
+              08.1%
+              %i.mdi.mdi-trending-up
+      / end card-body
+    / end card
+  / end col
+  .col-lg-4
+    .card
+      .card-body
+        %h4.header-title.mt-0.mb-3 Market cap
+        .table-responsive.market-cap-table
+          %table.table.mb-0
+            %thead.thead-light
+              %tr
+                %th Name
+                %th.text-right Market cap
+                %th.text-right Volume(24h)
+            %tbody
+              %tr
+                %td
+                  .media
+                    %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
+                    .media-body.align-self-center
+                      .coin-bal
+                        %h5.m-0 $7289.45
+                        %p.text-muted.mb-0
+                          Bitcoin
+                          %span.text-muted.font-12 (BTC)
+                          %span.text-success
+                            2.5%
+                            %i.mdi.mdi-arrow-up
+                    / end media body
+                  / end media
+                %td.text-right $129,820,932
+                %td.text-right $25,111,773
+              / end tr
+              %tr
+                %td
+                  .media
+                    %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/eth.png'}"}/
+                    .media-body.align-self-center
+                      .coin-bal
+                        %h5.m-0 $234.45
+                        %p.text-muted.mb-0
+                          Ethereum
+                          %span.text-muted.font-12 (ETH)
+                          %span.text-success
+                            0.45%
+                            %i.mdi.mdi-arrow-up
+                    / end media body
+                  / end media
+                %td.text-right $24,909,743
+                %td.text-right $12,856,403
+              / end tr
+              %tr
+                %td
+                  .media
+                    %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/lite.png'}"}/
+                    .media-body.align-self-center
+                      .coin-bal
+                        %h5.m-0 $7289.45
+                        %p.text-muted.mb-0
+                          Litecoin
+                          %span.text-muted.font-12 (LTC)
+                          %span.text-success
+                            3.51%
+                            %i.mdi.mdi-arrow-up
+                    / end media body
+                  / end media
+                %td.text-right $5,399,795,666
+                %td.text-right $4,394,304,674
+              / end tr
+              %tr
+                %td
+                  .media
+                    %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/mon.png'}"}/
+                    .media-body.align-self-center
+                      .coin-bal
+                        %h5.m-0 $7289.45
+                        %p.text-muted.mb-0
+                          Monero
+                          %span.text-muted.font-12 (XMR)
+                          %span.text-success
+                            0.95%
+                            %i.mdi.mdi-arrow-up
+                    / end media body
+                  / end media
+                %td.text-right $1,375,808,437
+                %td.text-right $58,791,421
+              / end tr
+              %tr
+                %td
+                  .media
+                    %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/dash.png'}"}/
+                    .media-body.align-self-center
+                      .coin-bal
+                        %h5.m-0 $7289.45
+                        %p.text-muted.mb-0
+                          Dashcoin
+                          %span.text-muted.font-12 (DASH)
+                          %span.text-success
+                            4.3%
+                            %i.mdi.mdi-arrow-up
+                    / end media body
+                  / end media
+                %td.text-right $1,205,400,168
+                %td.text-right $368,553,228
+              / end tr
+          / end /table
+        / end /tableresponsive
+      / end card-body
+    / end card
+  / end col
+/ end row
+.row
+  .col-lg-4
+    .card
+      .card-body
+        / Nav tabs
+        %ul.nav.nav-pills{:role => "tablist"}
+          %li.nav-item.waves-effect.waves-light
+            %a.nav-link.active{"aria-selected" => "true", "data-toggle" => "tab", :href => "#buy_coins", :role => "tab"} Buy
+          %li.nav-item.waves-effect.waves-light
+            %a.nav-link{"aria-selected" => "false", "data-toggle" => "tab", :href => "#sell_coins", :role => "tab"} Sell
+        / Tab panes
+        .tab-content
+          #buy_coins.tab-pane.active{:role => "tabpanel"}
+            %form.form-horizontal
+              .form-group.mb-0
+                .input-group.mt-3
+                  .input-group-prepend
+                    %span#basic-addon1.input-group-text.bg-light Amount
+                  %input.form-control{"aria-describedby" => "basic-addon1", "aria-label" => "123", :placeholder => "123", :type => "text"}/
+                  .input-group-append
+                    %span#basic-addon2.input-group-text.bg-light BTC
+                .input-group.mt-3
+                  .input-group-prepend
+                    %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                      Price
+                      %i.mdi.mdi-chevron-down.ml-1
+                    .dropdown-menu
+                      %a.dropdown-item{:href => "#"} Last Trade Price
+                      %a.dropdown-item{:href => "#"} Last Buy Price
+                      %a.dropdown-item{:href => "#"} Last Sell Price
+                  %input#example-input2-group3.form-control{:name => "example-input2-group3", :placeholder => "$ 24,00", :type => "email"}/
+                  .input-group-append
+                    %span#basic-addon4.input-group-text.bg-light $ Dollor
+                .input-group.mt-3
+                  .input-group-prepend
+                    %span#basic-addon5.input-group-text.bg-light Total
+                  %input.form-control{"aria-describedby" => "basic-addon1", "aria-label" => "123", :placeholder => "123", :type => "text"}/
+                  .input-group-append
+                    %span#basic-addon6.input-group-text.bg-light $ Dollor
+                .mt-3.ml-auto
+                  %a.btn.btn-success.btn-sm{:href => "#"} Buy Coins
+              / end form-group
+            / end form
+          #sell_coins.tab-pane{:role => "tabpanel"}
+            %form.form-horizontal
+              .form-group.mb-0
+                .input-group.mt-3
+                  .input-group-prepend
+                    %span#basic-addon7.input-group-text.bg-light Amount
+                  %input.form-control{"aria-describedby" => "basic-addon1", "aria-label" => "123", :placeholder => "123", :type => "text"}/
+                  .input-group-append
+                    %span#basic-addon8.input-group-text.bg-light BTC
+                .input-group.mt-3
+                  .input-group-prepend
+                    %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                      Price
+                      %i.mdi.mdi-chevron-down.ml-1
+                    .dropdown-menu
+                      %a.dropdown-item{:href => "#"} Last Trade Price
+                      %a.dropdown-item{:href => "#"} Last Buy Price
+                      %a.dropdown-item{:href => "#"} Last Sell Price
+                  %input#example-input2-group4.form-control{:name => "example-input2-group4", :placeholder => "$ 24,00", :type => "email"}/
+                  .input-group-append
+                    %span#basic-addon9.input-group-text.bg-light $ Dollor
+                .input-group.mt-3
+                  .input-group-prepend
+                    %span#basic-addon10.input-group-text.bg-light Total
+                  %input.form-control{"aria-describedby" => "basic-addon1", "aria-label" => "123", :placeholder => "123", :type => "text"}/
+                  .input-group-append
+                    %span#basic-addon11.input-group-text.bg-light $ Dollor
+                .mt-3.ml-auto
+                  %a.btn.btn-danger.btn-sm{:href => "#"} Sell Coins
+              / end form-group
+            / end form
+      / end card-body
+    / end card
+  / end col
+  .col-lg-4
+    .card
+      .card-body
+        .media
+          %img.mr-3{:alt => "...", :height => "90", :src => "#{asset_path 'small/news-2.jpg'}"}/
+          .media-body.align-self-center
+            .mb-2
+              %span.badge.badge-purple.px-3 Crypto
+              %span.ml-2.text-muted 26 mars 2019
+            %a.font-16.d-block.font-weight-normal{:href => ""}
+              It is a long established fact that a reader will be
+              distracted of a page.
+          / end media body
+        / end media
+      / end card-body
+    / end card
+    .card
+      .card-body
+        .media
+          %img.mr-3{:alt => "...", :height => "90", :src => "#{asset_path 'small/news-3.jpg'}"}/
+          .media-body.align-self-center
+            .mb-2
+              %span.badge.badge-secondary.px-3 Crypto
+              %span.ml-2.text-muted 26 mars 2019
+            %a.font-16.d-block.font-weight-normal{:href => ""}
+              It is a long established fact that a reader will be
+              distracted of a page.
+          / end media body
+        / end media
+      / end card-body
+    / end card
+  / end col
+  .col-lg-4
+    .card
+      .card-body
+        %h4.mt-0.header-title.mb-3 Currency Cacculater
+        .calculator-block
+          .calculator-body
+            %script{:src => "https://www.cryptonator.com/ui/js/widget/calc_widget.js"}
+      / end card-body
+    / end card
+  / end col
+/ end row
+.row
+  .col-lg-4
+    .card
+      .card-body
+        %a.float-right.text-info{:href => ""} View All
+        %h4.header-title.mt-0.mb-3 Timeline
+        .slimscroll.crypto-dash-activity
+          .activity
+            %i.mdi.mdi-checkbox-marked-circle-outline.icon-success
+            .time-item
+              .item-info
+                .d-flex.justify-content-between.align-items-center
+                  %h6.m-0 Highest Account Value
+                  %span.text-muted 05 june 2019
+                %p.text-muted.mt-3
+                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                  %a.text-info{:href => "#"} [more info]
+                %div
+                  %span.badge.badge-soft-secondary Design
+                  %span.badge.badge-soft-secondary HTML
+                  %span.badge.badge-soft-secondary Css
+            %i.mdi.mdi-timer-off.icon-pink
+            .time-item
+              .item-info
+                .d-flex.justify-content-between.align-items-center
+                  %h6.m-0 Monthly Report
+                  %span.text-muted 28 May 2019
+                %p.text-muted.mt-3
+                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                  %a.text-info{:href => "#"} [more info]
+                %div
+                  %span.badge.badge-soft-secondary Python
+                  %span.badge.badge-soft-secondary Django
+            %i.mdi.mdi-alert-decagram.icon-purple
+            .time-item
+              .item-info
+                .d-flex.justify-content-between.align-items-center
+                  %h6.m-0 First Trade
+                  %span.text-muted 15 May 2019
+                %p.text-muted.mt-3
+                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                  %a.text-info{:href => "#"} [more info]
+            %i.mdi.mdi-clipboard-alert.icon-warning
+            .time-item
+              .item-info
+                .d-flex.justify-content-between.align-items-center
+                  %h6.m-0 Sign Up
+                  %span.text-muted 02 Jan 2019
+                %p.text-muted.mt-3
+                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                  %a.text-info{:href => "#"} [more info]
+          / end activity
+        / end crypto-dash-activity
+      / end card-body
+    / end card
+  / end col
+  .col-lg-8
+    .card
+      .card-body
+        %h4.mt-0.mb-3.header-title Historical Bitcoin Price and Volume
+        %script{:src => "https://widgets.cryptocompare.com/serve/v1/coin/histo_week?fsym=BTC&tsym=USD&app=www.cryptocompare.com", :type => "text/javascript"}
+      / end card-body
+    / end card
+  / end col
+/ end row
+/ container
 
-  %p=current_streamer.name
-  %p=current_streamer.provider
-  =link_to logout_path do
-    Logout
 
-  %h2 Connect your accounts
-  %p
-    = link_to :streamlabs, omniauth_authorize_path(:streamer, :streamlabs)
-  %p
-    = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
-
-
--else
-  We are not logged in!
-
-  = link_to :twitch, omniauth_authorize_path(:streamer, :twitch)
-  = link_to :mixer, omniauth_authorize_path(:streamer, :mixer)
-
-
-
-  -# = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
+-# %h1 startpage
+-#
+-# -if current_streamer
+-#
+-#   %p=current_streamer.name
+-#   %p=current_streamer.provider
+-#   =link_to logout_path do
+-#     Logout
+-#
+-#   %h2 Connect your accounts
+-#   %p
+-#     = link_to :streamlabs, omniauth_authorize_path(:streamer, :streamlabs)
+-#   %p
+-#     = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
+-#
+-#
+-# -else
+-#   We are not logged in!
+-#
+-#   = link_to :twitch, omniauth_authorize_path(:streamer, :twitch)
+-#   = link_to :mixer, omniauth_authorize_path(:streamer, :mixer)
+-#
+-#
+-#
+-#   -# = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
