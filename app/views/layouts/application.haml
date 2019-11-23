@@ -19,9 +19,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "A premium admin dashboard template by Mannatthemes", :name => "description"}/
     %meta{:content => "Mannatthemes", :name => "author"}/
-    / App favicon
-    %link{:href => "../assets/css/icons.css", :rel => "stylesheet", :type => "text/css"}/
-    
+
   %body
     / Top Bar Start
     .topbar
@@ -29,9 +27,9 @@
       .topbar-left
         %a.logo{:href => "../crypto/crypto-index.html"}
           %span
-            %img.logo-sm{:alt => "logo-small", :src => "../assets/images/logo-sm.png"}/
+            %img.logo-sm{:alt => "logo-small", :src => "#{asset_path 'logo-sm.png'}"}/
           %span
-            %img.logo-lg{:alt => "logo-large", :src => "../assets/images/logo.png"}/
+            %img.logo-lg{:alt => "logo-large", :src => "#{asset_path 'logo.png'}"}/
       / end logo
       / Navbar
       %nav.navbar-custom
@@ -47,24 +45,24 @@
           %li.hidden-sm
             %a.nav-link.dropdown-toggle.waves-effect.waves-light{"aria-expanded" => "false", "aria-haspopup" => "false", "data-toggle" => "dropdown", :href => "javascript: void(0);", :role => "button"}
               English
-              %img.ml-2{:alt => "", :height => "16", :src => "../assets/images/flags/us_flag.jpg"}/
+              %img.ml-2{:alt => "", :height => "16", :src => "#{asset_path 'flags/us_flag.jpg'}"}/
               %i.mdi.mdi-chevron-down
             .dropdown-menu.dropdown-menu-right
               %a.dropdown-item{:href => "javascript: void(0);"}
                 %span German
-                %img.ml-2.float-right{:alt => "", :height => "14", :src => "../assets/images/flags/germany_flag.jpg"}/
+                %img.ml-2.float-right{:alt => "", :height => "14", :src => "#{asset_path 'flags/germany_flag.jpg'}"}/
               %a.dropdown-item{:href => "javascript: void(0);"}
                 %span Italian
-                %img.ml-2.float-right{:alt => "", :height => "14", :src => "../assets/images/flags/italy_flag.jpg"}/
+                %img.ml-2.float-right{:alt => "", :height => "14", :src => "#{asset_path 'flags/italy_flag.jpg'}"}/
               %a.dropdown-item{:href => "javascript: void(0);"}
                 %span French
-                %img.ml-2.float-right{:alt => "", :height => "14", :src => "../assets/images/flags/french_flag.jpg"}/
+                %img.ml-2.float-right{:alt => "", :height => "14", :src => "#{asset_path 'flags/french_flag.jpg'}"}/
               %a.dropdown-item{:href => "javascript: void(0);"}
                 %span Spanish
-                %img.ml-2.float-right{:alt => "", :height => "14", :src => "../assets/images/flags/spain_flag.jpg"}/
+                %img.ml-2.float-right{:alt => "", :height => "14", :src => "#{asset_path 'flags/spain_flag.jpg'}"}/
               %a.dropdown-item{:href => "javascript: void(0);"}
                 %span Russian
-                %img.ml-2.float-right{:alt => "", :height => "14", :src => "../assets/images/flags/russia_flag.jpg"}/
+                %img.ml-2.float-right{:alt => "", :height => "14", :src => "#{asset_path 'flags/russia_flag.jpg'}"}/
           %li.dropdown.notification-list
             %a.nav-link.dropdown-toggle.arrow-none.waves-light.waves-effect{"aria-expanded" => "false", "aria-haspopup" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               %i.dripicons-bell.noti-icon
@@ -115,7 +113,7 @@
                 %i.fi-arrow-right
           %li.dropdown
             %a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user{"aria-expanded" => "false", "aria-haspopup" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              %img.rounded-circle{:alt => "profile-user", :src => "../assets/images/users/user-4.jpg"}/
+              %img.rounded-circle{:alt => "profile-user", :src => "#{asset_path 'users/user-4.jpg'}"}/
               %span.ml-1.nav-user-name.hidden-sm
                 Amelia
                 %i.mdi.mdi-chevron-down
@@ -664,7 +662,7 @@
                   .row
                     .col-md-3
                       .media
-                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/btc.png"}/
+                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
                         .media-body.align-self-center
                           .coin-bal
                             %h4.m-0 $7289.45
@@ -721,7 +719,7 @@
                   %ul.list-group.wallet-bal-crypto
                     %li.list-group-item.align-items-center.d-flex.justify-content-between
                       .media
-                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/btc.png"}/
+                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
                         .media-body.align-self-center
                           .coin-bal
                             %h3.m-0 6.18424000
@@ -730,7 +728,7 @@
                       %span.badge.badge-soft-purple Bitcoin
                     %li.list-group-item.align-items-center.d-flex.justify-content-between
                       .media
-                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/mon.png"}/
+                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/mon.png'}"}/
                         .media-body.align-self-center
                           .coin-bal
                             %h3.m-0 60.1842
@@ -739,7 +737,7 @@
                       %span.badge.badge-soft-info Monero
                     %li.list-group-item.align-items-center.d-flex.justify-content-between
                       .media
-                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/eth.png"}/
+                        %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/eth.png'}"}/
                         .media-body.align-self-center
                           .coin-bal
                             %h3.m-0 32.65849212
@@ -869,7 +867,7 @@
                         %tr
                           %td
                             .media
-                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/btc.png"}/
+                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
                               .media-body.align-self-center
                                 .coin-bal
                                   %h5.m-0 $7289.45
@@ -887,7 +885,7 @@
                         %tr
                           %td
                             .media
-                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/eth.png"}/
+                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/eth.png'}"}/
                               .media-body.align-self-center
                                 .coin-bal
                                   %h5.m-0 $234.45
@@ -905,7 +903,7 @@
                         %tr
                           %td
                             .media
-                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/lite.png"}/
+                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/lite.png'}"}/
                               .media-body.align-self-center
                                 .coin-bal
                                   %h5.m-0 $7289.45
@@ -923,7 +921,7 @@
                         %tr
                           %td
                             .media
-                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/mon.png"}/
+                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/mon.png'}"}/
                               .media-body.align-self-center
                                 .coin-bal
                                   %h5.m-0 $7289.45
@@ -941,7 +939,7 @@
                         %tr
                           %td
                             .media
-                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "../assets/images/coins/dash.png"}/
+                              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/dash.png'}"}/
                               .media-body.align-self-center
                                 .coin-bal
                                   %h5.m-0 $7289.45
@@ -1043,7 +1041,7 @@
               .card
                 .card-body
                   .media
-                    %img.mr-3{:alt => "...", :height => "90", :src => "../assets/images/small/news-2.jpg"}/
+                    %img.mr-3{:alt => "...", :height => "90", :src => "#{asset_path 'small/news-2.jpg'}"}/
                     .media-body.align-self-center
                       .mb-2
                         %span.badge.badge-purple.px-3 Crypto
@@ -1058,7 +1056,7 @@
               .card
                 .card-body
                   .media
-                    %img.mr-3{:alt => "...", :height => "90", :src => "../assets/images/small/news-3.jpg"}/
+                    %img.mr-3{:alt => "...", :height => "90", :src => "#{asset_path 'small/news-3.jpg'}"}/
                     .media-body.align-self-center
                       .mb-2
                         %span.badge.badge-secondary.px-3 Crypto
@@ -1158,16 +1156,4 @@
       / end page content
     / end page-wrapper
     / jQuery
-    %script{:src => "../assets/js/jquery.min.js"}
-    %script{:src => "../assets/js/bootstrap.bundle.min.js"}
-    %script{:src => "../assets/js/metisMenu.min.js"}
-    %script{:src => "../assets/js/waves.min.js"}
-    %script{:src => "../assets/js/jquery.slimscroll.min.js"}
-    %script{:src => "../assets/plugins/apexcharts/apexcharts.min.js"}
-    %script{:src => "../assets/plugins/apexcharts/irregular-data-series.js"}
-    / Chartist Chart
-    %script{:src => "../assets/plugins/chartist/js/chartist.min.js"}
-    %script{:src => "../assets/plugins/chartist/js/chartist-plugin-tooltip.min.js"}
-    %script{:src => "../assets/pages/jquery.crypto-dashboard.init.js"}
-    / App js
-    %script{:src => "../assets/js/app.js"}
+    =javascript_include_tag :application
