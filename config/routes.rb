@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     # Overlay Settings
 
+    root to: "dashboard#index"
+
 
   end
 
