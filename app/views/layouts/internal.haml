@@ -18,11 +18,15 @@
     .topbar
       / LOGO
       .topbar-left
-        %a.logo{:href => "../crypto/crypto-index.html"}
+        =link_to internal_root_path, class: "logo" do
+
           %span
             %img.logo-sm{:alt => "logo-small", :src => "#{asset_path 'logo-sm.png'}"}/
-          %span
-            %img.logo-lg{:alt => "logo-large", :src => "#{asset_path 'logo.png'}"}/
+          %strong<
+            Crypto
+            %span.text-danger> Donate
+            %i> .me
+            -# %img.logo-lg{:alt => "logo-large", :src => "#{asset_path 'logo.png'}"}/
       / end logo
       / Navbar
       %nav.navbar-custom
