@@ -1,0 +1,102 @@
+
+.badge {
+  box-shadow: $shadow;
+  padding: 4px 6px 3px;
+  font-weight: 500;
+  line-height: 10px;
+}
+
+.badge-custom {
+  background: $primary;
+  color: $white;
+}
+
+.badge-primary {
+  background-color: $primary;
+}
+
+.badge-secondary {
+  background-color: $secondary;
+}
+
+.badge-success {
+  background-color: $success;
+}
+
+.badge-info {
+  background-color: $info;
+}
+
+.badge-warning {
+  background-color: $warning;
+  color: $white;
+}
+
+.badge-danger {
+  background-color: $danger;
+}
+
+.badge-purple {
+  background-color: $purple;
+  color: $white;
+}
+
+.badge-pink {
+  background-color: $pink;
+  color: $white;
+}
+
+.badge-blue {
+  background-color: $blue;
+  color: $white;
+}
+
+
+.badge-dark {
+  background-color: $dark;
+}
+
+/*Badge Soft Color*/
+
+.badge-soft-success{
+  color: $success;
+  background-color: rgba($success,.2);
+}
+
+.badge-soft-primary{
+  color: $primary;
+  background-color: rgba($primary,.2);
+}
+
+.badge-soft-danger{
+  color: $danger;
+  background-color: rgba($danger,.2);
+}
+
+.badge-soft-info{
+  color: $info;
+  background-color: rgba($info,.2);
+}
+.badge-soft-warning{
+  color: $warning;
+  background-color: rgba($warning,.2);
+}
+.badge-soft-pink{
+  color: $pink;
+  background-color: rgba($pink,.2);
+}
+
+.badge-soft-purple{
+  color: $purple;
+  background-color: rgba($purple,.2);
+}
+
+.badge-soft-blue{
+  color: $blue;
+  background-color: rgba($blue,.2);
+}
+
+.badge-soft-dark{
+  color: $dark;
+  background-color: rgba($dark,.2);
+}

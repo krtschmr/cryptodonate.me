@@ -1,0 +1,40 @@
+//
+// Blog
+// 
+
+
+.blog-card {
+  .meta-box {
+    li {
+      color: $gray-600;
+      font-size: 13px;
+      font-weight: 500;
+      margin-left: 0;
+      margin-right: 0;
+      text-transform: uppercase;
+      a {
+        color: $info;
+      }
+    }
+    li::after {
+      content: "|";
+      margin: 0 8px;
+    }
+    li:last-child:after {
+      content: "";
+    }
+  }
+  h4 a{
+    color: $gray-800;
+    font-weight: 500;
+    font-size: 20px;  
+    font-family: $font-secondary; 
+  }
+  p{
+    font-family: $font-primary; 
+  }
+}
+
+
+
+

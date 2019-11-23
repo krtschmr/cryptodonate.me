@@ -7,13 +7,11 @@
   =link_to logout_path do
     Logout
 
-  -# %h2 Connect your accounts
-  -# %p
-  -#   = link_to :streamlabs, omniauth_authorize_path(:streamer, :streamlabs)
-  -#   -# = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
-  -# %p
-  -#   =link_to "#" do
-  -#     StreamLabs
+  %h2 Connect your accounts
+  %p
+    = link_to :streamlabs, omniauth_authorize_path(:streamer, :streamlabs)
+  %p
+    = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
 
 
 -else

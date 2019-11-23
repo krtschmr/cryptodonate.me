@@ -1,0 +1,118 @@
+//
+// Pricing
+// 
+
+
+.pricingTable1{
+ 
+  .pricing-icon {
+    i{
+      width: 64px;
+      height: 64px;
+      text-align: center;
+      line-height: 60px;
+      font-size: 24px;
+      border: 3px solid $white;
+      border-radius: 5px;
+      color: $primary;
+      background-color: rgba($primary, 0.18);
+      box-shadow: 0px 0px 0px 1px rgba($primary, 0.3);
+      transition: all 300ms linear 0ms;
+    }
+  }
+}
+
+.pricingTable1 .amount{
+  display: block;
+  font-size: 36px;
+  font-weight: 600;
+  color: $gray-700;
+}
+
+.pricingTable1 .pricing-content-2{
+  margin: 0 0 30px 0;
+  border-bottom:1px solid $gray-200;
+}
+.pricingTable1 .pricing-content-2 li{
+  color: $gray-700;
+  line-height: 40px;
+  &::before{
+    content: "\f00c" !important;
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    background-color: rgba($secondary, 0.1);
+    color: $secondary !important;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+}
+.pricingTable1 .title1{
+  font-weight: 700;
+  color: $gray-700;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.pricingTable1 .pricingTable-signup{
+  display: block;
+  padding: 14px 26px;
+  background: $primary;
+  border-radius: 52px;
+  font-size: 14px;
+  font-weight: 700;
+  color: $white;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: all 300ms linear 0ms;
+}
+.pricingTable1 .pricingTable-signup:hover{
+  background: darken($primary, 5%);
+  color: $white;
+}
+.pricingTable1:hover .pricing-icon i{
+  color: $primary;
+  background-color: rgba($primary, 0.4);
+  box-shadow: 0px 0px 0px 1px rgba($primary, 0.4);
+  transition: all 300ms linear 0ms;
+  
+}
+
+.pricingTable1 .a-animate-blink {
+  -webkit-animation: a-animate-blink 1s step-start 0s infinite;
+  -moz-animation: a-animate-blink 1s step-start 0s infinite;
+  -ms-animation: a-animate-blink 1s step-start 0s infinite;
+  -o-animation: a-animate-blink 1s step-start 0s infinite;
+  animation: a-animate-blink 1s step-start 0s infinite;
+  animation-fill-mode: initial;
+}
+
+@-webkit-keyframes a-animate-blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@-moz-keyframes a-animate-blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@-o-keyframes a-animate-blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@keyframes a-animate-blink {
+  50% {
+    opacity: 0.0;
+  }
+}

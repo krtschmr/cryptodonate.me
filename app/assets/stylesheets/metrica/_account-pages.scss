@@ -1,0 +1,143 @@
+//
+// Account Pages
+// 
+
+.account-body{
+  background-color: $account-body;
+  .auth-page{
+    max-width: 460px;
+    position: relative;
+    margin: 0 auto;
+  }
+  .auth-card{
+    border-radius: 20px;
+    .auth-logo-box{
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -25px;
+      text-align: center;
+      .auth-logo{
+        border-radius: 50%;
+        background-color: $white;
+        padding: 4px;
+        box-shadow: 0px 0px 0px 2.25px $gray-200;
+      }
+    }
+    .auth-logo-text{
+      font-family: $font-secondary;
+      h4{
+        font-weight: 600;
+        color: $gray-700;
+        font-size: 22px;
+      }
+    }  
+  }
+  .auth-form{
+    .form-control{
+      border-radius: 50px;
+      padding-right: 40px;
+    }
+    .auth-form-icon{
+      width: 32px;
+      height: 32px;
+      background-color: $gray-200;
+      text-align: center;
+      line-height: 32px;
+      border-radius: 50%;
+      position: absolute;
+      right: 3px;
+      z-index: 100;
+      top: 3px; 
+      color: $info;     
+    }    
+  }
+  &.accountbg {
+    background-image: url("../images/acount-page.jpg");
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100vh;
+    .account-title{
+      width: 500px;
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      h1{
+        font-size: 60px;
+        font-weight: 700;
+        margin: 30px 0;
+      }
+    }
+  }
+
+  .account-social {
+    h6{
+      color: $gray-300;
+    }
+    h6:after {
+      display: inline-block;
+      margin: 0 0 4px 14px;
+      height: 2px;
+      content: " ";
+      text-shadow: none;
+      background-color: $gray-200;
+      width: 110px;
+    }
+    h6:before {
+      display: inline-block;
+      margin: 0 14px 4px 0;
+      height: 2px;
+      content: " ";
+      text-shadow: none;
+      background-color: $gray-200;
+      width: 110px;
+    }
+    
+    a{
+      i {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 50%;
+        font-size: 14px;
+        z-index: 5;
+        &.facebook{
+          background-color: $primary;
+          color: $white;
+        }
+        &.twitter{
+          background-color: $secondary;
+          color: $white;
+        }
+        &.google{
+          background-color: $pink;
+        color: $white;
+        }
+      }
+      &:hover .facebook{
+        color: $white;
+        background-color: lighten($primary, 5%);
+      }
+      &:hover .twitter{
+        color: $white;
+        background-color: lighten($secondary, 5%);
+      }
+      &:hover .google{
+        color: $white;
+        background-color: lighten($pink, 5%);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-card{
+    margin-top: 34px;
+  }
+}
+
+
+

@@ -1,0 +1,164 @@
+//
+// Alerts
+// 
+
+
+.b-round{
+  border-radius: 40px;
+}
+.alert {
+  position: relative;
+  border: 0;
+  
+  &.icon-custom-alert{
+    display: flex;
+  }
+  .alert-icon{
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  .alert-text{
+    flex-grow: 1;
+    align-self: center;
+  }
+  .alert-close {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .alert-link {
+    font-weight: 600;
+  }
+  &.alert-primary {
+    color: $white;
+    background-color: $primary;
+  }
+  &.alert-secondary {
+    color: $gray-100;
+    background-color: $secondary;
+  }
+  &.alert-success {
+    color: $white;
+    background-color: $success;
+  }
+  &.alert-warning {
+    color: $gray-800;
+    background-color: $warning;
+  }
+  &.alert-info {
+    color: $white;
+    background-color: $info;
+  }
+  &.alert-danger {
+    color: $white;
+    background-color: $danger;
+  }
+  &.alert-dark {
+    color: $white;
+    background-color: $dark;
+  }
+  &.alert-light {
+    color: $gray-600;
+    background-color: $white;
+    box-shadow: 0px 0px 8px rgba($dark, 0.1);
+  }
+  &.alert-pink {
+    color: $white;
+    background-color: $pink;
+  }
+  &.alert-blue {
+    color: $white;
+    background-color: $blue;
+  }
+  &.alert-purple {
+    color: $white;
+    background-color: $purple;
+  }
+
+  // Alert Outline
+
+  &.alert-outline-success{
+    border:1px solid $success;
+    background-color: transparent;
+    color: $success;
+  }
+  &.alert-outline-danger{
+    border:1px solid $danger;
+    background-color: transparent;
+    color: $danger;
+  }
+  &.alert-outline-primary{
+    border:1px solid $primary;
+    background-color: transparent;
+    color: $primary;
+  }
+  &.alert-outline-warning{
+    border:1px solid $warning;
+    background-color: transparent;
+    color: $warning;
+  }
+  &.alert-outline-info{
+    border:1px solid $info;
+    background-color: transparent;
+    color: $info;
+  }
+  &.alert-outline-pink{
+    border:1px solid $pink;
+    background-color: transparent;
+    color: $pink;
+  }
+  &.alert-outline-purple{
+    border:1px solid $purple;
+    background-color: transparent;
+    color: $purple;
+  }
+  &.alert-outline-blue{
+    border:1px solid $blue;
+    background-color: transparent;
+    color: $blue;
+  }
+  &.alert-outline-secondary{
+    border:1px solid $secondary;
+    background-color: transparent;
+    color: $secondary;
+  }
+  &.alert-outline-dark{
+    border:1px solid $dark;
+    background-color: transparent;
+    color: $dark;
+  }
+
+  //Alert Shadow
+
+  &.alert-primary-shadow{
+    box-shadow: 0 0 24px 0 rgba($primary, 0.06), 0 1px 0 0 rgba($primary, 0.02);
+  }
+  &.alert-success-shadow{
+    box-shadow: 0 0 24px 0 rgba($success, 0.06), 0 1px 0 0 rgba($success, 0.02);
+  }
+  &.alert-info-shadow{
+    box-shadow: 0 0 24px 0 rgba($info, 0.06), 0 1px 0 0 rgba($info, 0.02);
+  }
+  &.alert-warning-shadow{
+    box-shadow: 0 0 24px 0 rgba($warning, 0.06), 0 1px 0 0 rgba($warning, 0.02);
+  }
+  &.alert-danger-shadow{
+    box-shadow: 0 0 24px 0 rgba($danger, 0.06), 0 1px 0 0 rgba($danger, 0.02);
+  }
+  &.alert-dark-shadow{
+    box-shadow: 0 0 24px 0 rgba($dark, 0.06), 0 1px 0 0 rgba($dark, 0.02);
+  }
+  &.alert-pink-shadow{
+    box-shadow: 0 0 24px 0 rgba($pink, 0.06), 0 1px 0 0 rgba($pink, 0.02);
+  }
+  &.alert-purple-shadow{
+    box-shadow: 0 0 24px 0 rgba($purple, 0.06), 0 1px 0 0 rgba($purple, 0.02);
+  }
+  &.alert-blue-shadow{
+    box-shadow: 0 0 24px 0 rgba($blue, 0.06), 0 1px 0 0 rgba($blue, 0.02);
+  }
+}
+
+
+

@@ -1,0 +1,102 @@
+//
+// General
+// 
+
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: $bg-body;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-size: $font-size-base;
+  background-color: $bg-body;
+  font-family: $font-primary;
+  color: $gray-700;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+  margin: 10px 0;
+}
+
+
+h1 {
+  line-height: 43px;
+  font-size: 36px;
+}
+
+h2 {
+  line-height: 35px;
+  font-size: 30px;
+}
+
+h3 {
+  line-height: 30px;
+  font-size: 24px;
+}
+
+h4 {
+  line-height: 22px;
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+p {
+  line-height: 1.6;
+  font-family: $font-secondary;
+  font-size: $font-size-base;
+}
+
+* {
+  outline: none !important;
+}
+
+a {
+  font-family: $font-primary;
+  color: $gray-700;
+  &:hover,&:active,&:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
+
+
+/* Page titles */
+
+.title-text, 
+.header-title {
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0;
+  color: $gray-700;
+  text-shadow: 0 0 1px rgba($gray-200, 0.1);
+}
+.page-title-box {
+  padding: 25px 0;
+  .page-title {
+    font-size: 18px;
+    margin: 0;
+    color: $gray-700;
+  }  
+
+  .breadcrumb {
+    font-size: 13px;
+    margin-bottom: 0;
+    padding: 2px 0;
+    background-color: transparent;
+  }
+}
+

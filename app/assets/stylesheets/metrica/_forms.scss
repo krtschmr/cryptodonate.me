@@ -1,0 +1,113 @@
+//
+// Forms
+// 
+
+label {
+  font-weight: 400;
+  color: $label;
+  font-size: 13px;
+}
+.custom-control-label{
+  padding-top: 2px;
+}
+.form-control {
+  font-size: $font-size-base;
+  border: 1px solid lighten($gray-300, 4%);
+  height: calc(2.3rem + 2px);
+  color: $form-control;
+  &:focus {
+    border-color: rgba($primary, 0.5);
+    box-shadow: none;
+  }
+}
+
+.input-group-text{
+  font-size: $font-size-base;
+  background-color: $gray-100;
+  border: 1px solid lighten($gray-300, 4%);
+}
+.custom-file-input,
+.custom-file-label{
+  height: calc(2.3rem + 1px);
+  line-height: 26px;
+}
+.custom-file-label::after{
+  height: calc(1.5em + 15px);
+  line-height: 24px;
+}
+.form-group{
+  margin-bottom: 20px;
+}
+.custom-select:focus{
+  border-color: rgba($primary, 0.5);
+  box-shadow: none;
+}
+.custom-control-input:checked~.custom-control-indicator {
+  background-color: $primary;
+}
+
+.custom-control-input:focus~.custom-control-indicator {
+  -webkit-box-shadow: 0 0 0 1px $white, 0 0 0 3px $primary;
+  box-shadow: 0 0 0 1px $white, 0 0 0 3px $primary;
+}
+
+.has-success {
+  .form-control {
+    border-color: $success;
+    box-shadow: none;
+  }
+}
+
+.has-warning {
+  .form-control {
+    border-color: $warning;
+    box-shadow: none;
+  }
+}
+
+.has-error {
+  .form-control {
+    border-color: $danger;
+    box-shadow: none;
+  }
+}
+
+.input-group-addon {
+  border-radius: 2px;
+  border: 1px solid $light;
+}
+.col-form-label{
+  text-align: right;
+}
+
+.form-control.is-valid:focus, 
+.custom-select.is-valid:focus, 
+.was-validated .custom-select:valid:focus {
+  border-color: $success;
+  box-shadow: none;
+}
+.custom-select.is-invalid:focus, 
+.was-validated .custom-select:invalid:focus {
+  border-color: $danger;
+  box-shadow:none;
+}
+.custom-select{
+  font-size: 13px;
+  height: 38px;
+}
+.custom-file-input.is-invalid:focus~.custom-file-label, 
+.was-validated .custom-file-input:invalid:focus~.custom-file-label,
+.form-control.is-invalid:focus, 
+.was-validated .form-control:invalid:focus {
+  border-color: $danger;
+  box-shadow: none;
+}
+.custom-file-input:focus~.custom-file-label{
+  border-color: rgba($primary, 0.5);
+  box-shadow: none;
+}
+
+
+dt {
+  font-weight: 600;
+}

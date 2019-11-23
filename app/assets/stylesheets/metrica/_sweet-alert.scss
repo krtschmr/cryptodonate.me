@@ -1,0 +1,83 @@
+//
+// Sweet Alert
+// 
+
+
+.swal2-popup {
+  .swal2-title{
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .swal2-styled{
+    &.swal2-confirm {
+      border: 0;
+      border-radius: .25em;
+      background: initial;
+      background-color: $primary;
+      color: $white;
+      font-size: 1.0625em;
+    }
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px $white, 0 0 0 4px rgba($primary, 0.4);
+    }
+    &.swal2-cancel {
+      border: 0;
+      border-radius: .25em;
+      background: initial;
+      background-color: $danger;
+      color: $gray-200;
+      font-size: 1.0625em;
+      
+      &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px $white, 0 0 0 4px rgba($danger,.5);
+      }
+    }
+  }
+}
+
+.swal2-popup .swal2-styled.swal2-cancel{
+  border: 1px solid transparent;
+}
+.swal2-actions{
+  .btn-success:not(:disabled):not(.disabled):active,
+  .btn-success,  
+  .btn-success:active{
+    background-color: $primary;
+    border: 1px solid $primary;
+  }
+  .btn-success:focus{
+    box-shadow: 0 0 0 2px $white, 0 0 0 4px rgba($primary, 0.4);
+  }
+
+  .btn-danger:not(:disabled):not(.disabled):active{
+    color: $white;
+    background-color: $danger;
+    border-color: $danger;
+  }
+  .btn-danger:not(:disabled):not(.disabled):active:focus{
+    box-shadow: 0 0 0 2px $white, 0 0 0 4px rgba($danger,.5);
+  }
+  .btn-danger {
+    background-color: $danger;
+    border: 1px solid $danger;
+    &:active{
+      background-color: $danger;
+      border: 1px solid $danger;
+    }
+    &:hover{
+      background-color: $danger;
+      border: 1px solid $danger;
+    }
+    &:focus{
+      background-color: $danger;
+      border: 1px solid $danger;
+      box-shadow: 0 0 0 2px $white, 0 0 0 4px rgba($danger,.5);
+    }
+  }
+} 
+.swal2-icon.swal2-question {
+  border-color: $pink;
+  color: $pink;
+}

@@ -1,0 +1,44 @@
+//
+// FAQ
+// 
+
+.faq-qa{
+  li{
+    h6{
+      font-size: 14px;
+      color: $gray-700;
+      font-weight: 500;
+    }
+  }
+}
+
+#accordionExample-faq {
+  .card-header {
+    background-color: $light;
+    padding: 6px 12px;
+    h5 button::before {
+      content: "\f062";
+      font-family: 'Font Awesome 5 Free' !important;
+      font-weight: 600;
+      position: absolute;
+      top: 13px;
+      left: 10px;
+      transition: -webkit-transform .25s;
+      transition: transform .25s;
+      transition: transform .25s, -webkit-transform .25s;
+      transform: rotate(180deg);
+      color: $primary;
+      font-size: 10px;
+      background-color: rgba($primary, 0.15);
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      border-radius: 50%;
+    }
+    h5 button.collapsed::before {
+      content: "\f128";
+      transform: rotate(0deg);
+      font-size: 10px;
+    }
+  }
+}

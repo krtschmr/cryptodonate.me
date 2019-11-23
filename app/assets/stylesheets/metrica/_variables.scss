@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+
+// Color variables
+
+$primary:       #4d79f6;
+$secondary:     #4ac7ec;
+$success:       #1ecab8;
+$info:          #9ba7ca;
+$warning:       #f3c74d;
+$danger:        #f1646c;
+$light:         #f1f5fa;
+$white:         #ffffff;
+$dark:          #2f4686;
+$muted:         #a4abc5;
+$pink:          #ff5da0;
+$purple:        #7551e9;
+$blue:          #2b55cc;
+
+
+$gray-100:      #f3f6f7;
+$gray-200:      #eff2f9;
+$gray-300:      #dbe0ec;
+$gray-400:      #b6c2e4;
+$gray-500:      #8997bd;
+$gray-600:      #7081b9;
+$gray-700:      #50649c;
+$gray-800:      #435177;
+$gray-900:      #1c2d41;
+
+
+
+// Body Background
+$bg-body:                   #eaf0f7;
+$body-text:                 #828db1;
+$account-body:              #ffffff;
+$card:                      #ffffff;
+$table:                     #7286a2;
+// Topbar
+$topbar-height:               70px;
+$topbar-left-width:           230px;
+$bg-navbar:                 #ffffff; 
+$bg-logo:                   #ffffff;
+$svg-fill:                  #86a3f7;
+$svg-fill2:                 #d3deff;
+$bg-list-group:             #ffffff;
+
+$dtp:                       #1c2d41;
+$editor-layout:             #f5f6f7;
+$tooltip-custom:            #eaf0f7;
+// Left-sidebar
+$bg-icon-menu:              #f0f4f9;
+$bg-leftbar:                #ffffff;
+
+$leftbar-width:               300px;
+$leftbar-width-collapsed:     70px;
+$menu-title-color:          #435177;
+$menu-item-color:           #7c92a7;
+$menu-item-hover-color:     #7496f8;
+$menu-sub-item-color:       #676c79;
+$menu-sub-item-hover-color: #7496f8;
+
+$label:                     #656d9a;
+$form-control:              #2f5275;
+
+// Font variables
+$font-primary: 'Poppins', sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+
+// Font Base
+$font-size-base:              13px;
+
+// Shadow
+$shadow:                        0px 0px 3px rgba(31, 30, 47,0.05);
+$shadow-md:                     1px 0px 20px rgba(96,93,175,0.05);
+
+// Border
+
+$border:                        #d4d8e1;
+$border_2:                      #f1eff5;
+$table-border-color:            #eaf0f7;

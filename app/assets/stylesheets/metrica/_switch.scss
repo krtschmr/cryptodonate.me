@@ -1,0 +1,172 @@
+//
+// Switch
+// 
+
+
+.custom-switch {
+  &.switch-primary{
+    // .custom-control-input:checked~.custom-control-label::after {
+    //   background-color: $white;
+    //   transform: translateX(.75rem);
+    // }
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $primary;
+      background-color: $primary;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($primary,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+  // Switch Secondary
+
+  &.switch-secondary{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $secondary;
+      background-color: $secondary;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($secondary,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+
+  // Switch Success
+
+  &.switch-success{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $success;
+      background-color: $success;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($success,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+
+  
+  // Switch Warning
+
+  &.switch-warning{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $warning;
+      background-color: $warning;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($warning,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+  // Switch Info
+
+  &.switch-info{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $info;
+      background-color: $info;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($info,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+  // Switch Danger
+
+  &.switch-danger{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $danger;
+      background-color: $danger;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($danger,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+  // Switch Dark
+
+  &.switch-dark{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $dark;
+      background-color: $dark;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($dark,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+  // Switch Purple
+
+  &.switch-purple{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $purple;
+      background-color: $purple;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($purple,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+  // Switch Pink
+
+  &.switch-pink{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $pink;
+      background-color: $pink;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($pink,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+   // Switch Blue
+
+   &.switch-blue{
+    .custom-control-input:checked~.custom-control-label::before {
+      color: $white;
+      border-color: $blue;
+      background-color: $blue;
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+      box-shadow: 0 0 0 0.110px rgba($blue,.25);
+    }
+    .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+      border-color: rgba($gray-500,.7);
+    }
+  }
+
+}

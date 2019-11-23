@@ -1,0 +1,222 @@
+//
+// Ribbons
+// 
+
+.ribbon-1{
+  /* ribbon */
+  .ribbon-box{
+    position: relative;
+    background: $white;
+    border: 5px double $gray-200;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+    padding: 50px 15px 15px 15px;
+  }
+  .ribbon {
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    clear: left;
+    position: absolute;
+    top: 0px;
+    left: -2px;
+    color: $white;
+    &.ribbon-mark{
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: block;
+        width: 0;
+        height: 0;
+        content: '';
+        border: 15px solid $dark;
+        border-right: 10px solid transparent;
+      }
+    }
+  }
+
+  .ribbon-right {
+    left: auto;
+    right: -2px;
+  }
+  .ribbon-mark.ribbon-right:before {
+    right: 100%;
+    left: auto;
+    border-right: 15px solid $dark;
+    border-left: 10px solid transparent;
+  }
+  .ribbon-icon {
+    clear: none;
+    padding: 0 5px;
+    height: 42px;
+    width: 30px;
+    line-height: 40px;
+    text-align: center;
+    left: 0px;
+    top: -2px;
+  }
+  .ribbon-mark.ribbon-icon:before {
+    top: 100%;
+    left: 0;
+    margin-top: -14px;
+    border-right: 15px solid $dark;
+    border-bottom: 10px solid transparent;
+  }
+  .ribbon-mark.ribbon-right {
+    right: -5px;
+    left: auto;
+  }
+
+  /*==Ribbon-icon==*/
+  .ribbon-mark{
+    border-radius: 0;
+    top: -5px;
+    left: -5px;
+    &.ribbon-icon.bg-primary:before{
+      border-right-color: $primary;
+      border-bottom-color: transparent;
+    }
+    &.ribbon-icon.bg-info:before {
+      border-right-color: $info;
+      border-bottom-color: transparent;
+    }
+    &.ribbon-icon.bg-secondary:before{
+      border-right-color: $secondary;
+      border-bottom-color: transparent;
+    }
+    &.ribbon-icon.bg-danger:before {
+      border-right-color: $danger;
+      border-bottom-color: transparent;
+    }
+
+
+    &.bg-secondary:before {
+      border-color: $secondary;
+      border-right-color: transparent;
+      }
+    &.bg-danger:before {
+      border-color: $danger;
+      border-right-color: transparent;
+      }
+    &.bg-primary:before {
+      border-color: $primary;
+      border-right-color: transparent;
+      }
+    &.bg-info:before {
+      border-color: $info;
+      border-right-color: transparent;
+      }
+    
+
+    //ribbon right
+
+    &.ribbon-right.bg-danger:before {
+      border-right-color: $danger;
+      border-left-color: transparent;
+    }  
+    
+    &.ribbon-right.bg-info:before {
+      border-right-color: $info;
+      border-left-color: transparent;
+    }
+   
+    &.ribbon-right.bg-primary:before {
+      border-right-color: $primary;
+      border-left-color: transparent;
+    }
+   
+    &.ribbon-right.bg-secondary:before {
+      border-right-color: $secondary;
+      border-left-color: transparent;
+    }
+  }
+  p{
+    color:$gray-700;
+  }
+}
+
+/*============ribbon-2=============*/
+.ribbon-2{
+  .ribbon-box {
+    position: relative;
+    .ribbon {
+      position: relative;
+      float: left;
+      clear: both;
+      padding: 5px 12px 5px 12px;
+      margin: -26px 0px 15px -26px;
+      color: $white;
+    }
+    .ribbon-primary {
+      background: $primary;
+      &:before {
+        position: absolute;
+        top: 29px;
+        left: 0;
+        content: "";
+        border: 3px solid transparent;
+        border-top-color:  darken($primary, 10%);
+        border-right-color: darken($primary, 10%);
+      }
+    } 
+    .ribbon-info {
+      background-color: $info;
+      &:before {
+        position: absolute;
+        top: 29px;
+        left: 0;
+        content: "";
+        border: 3px solid transparent;
+        border-top-color:  darken($info, 10%);
+        border-right-color: darken($info, 10%);
+      }
+    }  
+    .ribbon-danger {
+      background-color: $danger;
+      &:before {
+        position: absolute;
+        top: 29px;
+        left: 0;
+        content: "";
+        border: 3px solid transparent;
+        border-top-color:  darken($danger, 10%);
+        border-right-color: darken($danger, 10%);
+      }
+    } 
+    .ribbon-secondary {
+      background-color: $secondary;
+      color: $gray-100;
+      &:before {
+        position: absolute;
+        top: 29px;
+        left: 0;
+        content: "";
+        border: 3px solid transparent;
+        border-top-color:  darken($secondary, 10%);
+        border-right-color: darken($secondary, 10%);
+      }
+    }
+    
+    .ribbon + p {
+      clear: both;
+    }
+  }
+  .card-box {
+    padding: 20px;
+    border: 5px double $gray-200;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: $white;
+  }  
+  p{
+    color:$gray-700;
+  }
+}
+
+.ribbon.bg-secondary {
+  background-color: $secondary;
+  color: $gray-100;
+}
+

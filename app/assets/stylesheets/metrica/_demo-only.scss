@@ -1,0 +1,88 @@
+//
+// Demo-Only
+// 
+
+
+
+.bs-example-modal {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  display: block;
+}
+
+.icon-demo-content {
+  text-align: center;
+  color: $muted;
+  [class^="ti-"], 
+  [class*=" ti-"]{
+    color: $muted;
+  }
+
+  i{
+    display: block;
+    font-size: 24px;
+    margin: 0 auto 5px;
+  }
+
+  &.emoji-icons{
+    i{
+      display: block;
+      font-size: 16px;
+      margin: 0 auto 8px;
+    }
+  }
+
+  svg{
+    width: 34px;
+    height: 34px;
+    display: block;
+    margin: 0 auto 5px;
+
+    path:nth-of-type(1) {
+      fill:$muted;
+    }
+    
+    path:nth-of-type(2) {
+      fill:$primary;
+    }
+    path:nth-of-type(3) {
+      fill:$muted;
+    }
+    circle{
+      fill:$info;
+    }
+    g{
+      path:nth-of-type(1) {
+        fill:$primary;
+      }
+      
+      path:nth-of-type(2) {
+        fill:$muted;
+      }
+      
+    }
+    
+  }
+
+  .col-sm-6 {
+    margin-bottom: 30px;
+
+    &:hover {
+      i {
+        color: $primary;
+      }
+    }
+    &:hover{
+      path:nth-of-type(1) {
+        fill:$primary;
+      }
+      path:nth-of-type(2) {
+        fill:$muted;
+      }
+    }
+  }
+}

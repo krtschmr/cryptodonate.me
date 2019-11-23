@@ -1,0 +1,226 @@
+//
+// Profile
+// 
+
+.met-pro-bg{
+  background-image: url('../images/pattern2.png');
+  background-repeat: repeat;
+}
+.met-profile {  
+  .met-profile-main {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    .met-profile-main-pic {
+      position: relative;
+      max-width: 128px;
+      max-height: 128px;
+      margin-right: 24px;
+      
+      .fro-profile_main-pic-change {
+        cursor: pointer;
+        background-color: $primary;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        box-shadow: 0px 0px 20px 0px rgba($gray-100,0.05);
+        i{
+          transition: all 0.3s;
+          color: $white;
+          font-size: 16px;
+        }
+      }
+    }
+    .met-profile_user-detail{
+      .met-user-name{
+        font-size: 24px;
+        font-weight: 600;
+        color: $white;
+        margin-bottom: 6px;
+      }
+      .met-user-name-post{
+        color: $muted;
+      }
+    }
+  }  
+  .personal-detail{
+    li{
+      color: $white;
+    }
+  }
+}
+
+.education-activity{
+  min-height: 400px;
+}
+
+.met-basic-detail{
+  h3{
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  p{
+    line-height: 22px;
+  }
+}
+
+.own-detail{
+  padding: 20px;
+  width: 145px;
+  height: 145px;
+  text-align: center;
+  border-radius: 52% 48% 23% 77% / 44% 68% 32% 56%;
+  box-shadow: 0px 0px 3px 1.25px $gray-300;
+  h1{
+    font-weight: 600;
+    color: $white;
+    margin-top: 0;
+  }
+  h5{
+    color: darken($white, 5%);
+  }
+  &.own-detail-project{
+    position: absolute;
+    top: 110px;
+    left: -60px;
+  }
+  &.own-detail-happy{
+    position: absolute;
+    top: 110px;
+    left: 60px;
+  }
+}
+
+@media (max-width: 767px){
+  .own-detail{
+    display: none;
+  }
+  #settings_detail .dropify-wrapper{
+    width: 100% !important;
+  }
+}
+
+
+
+
+#settings_detail {
+  .dropify-wrapper{
+    width: 16%;
+    height: 164px;
+    margin-bottom: 30px;
+  }
+}
+
+.profile-nav{
+  .nav{
+    .nav-link{
+      padding: 10px;
+      color: $gray-700;
+      margin-bottom: 10px;
+      font-weight: 500;
+      &.active{
+        background-color: rgba($primary,0.05);
+        color: $primary;
+      }
+    }
+  }
+}
+
+.profile-card {
+  .profile-socials {
+    a {
+      i {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+      }
+    }
+  }
+  .pro-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: $gray-700;
+    margin-bottom: 5px;
+  }
+  .socials-data{
+    h3{
+      color: $gray-700;
+      font-family: $font-primary;
+      font-size: 18px;
+    }
+  }
+  .action-btn{
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+}
+
+
+
+
+/* section skills */
+.skill-detail{
+  color: $muted;
+  font-family: $font-secondary;
+  font-size: 14px;
+}
+.skills {
+  .skill-box {
+    margin-bottom: 30px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    .skill-title {
+      margin-bottom: 10px;
+      color: $gray-700;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .progress-line {
+      background: $gray-100;
+      height: 7px;
+      margin: 0;
+      position: relative;
+      border: 2px solid $white;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0px 0px 1px 0.25px $primary;
+      
+    } 
+    .progress-line > span {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background: $primary;
+    }
+    .progress-line > span > .percent-tooltip {
+      position: absolute;
+      right: -15px;
+      top: -30px;
+      margin-bottom: 10px;
+      color: $gray-700;
+      text-transform: uppercase;
+      font-size: 13px;
+    }   
+  }
+}
+
+
+

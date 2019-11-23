@@ -1,0 +1,203 @@
+/* ==============
+  Form-Advanced
+===================*/
+
+/* Datepicker */
+.datepicker {
+  border: 1px solid $gray-200;
+  padding: 8px;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active:hover, .datepicker table tr td.active.disabled,
+.datepicker table tr td.active.disabled:hover,.datepicker table tr td.today, .datepicker table tr td.today.disabled,
+.datepicker table tr td.today.disabled:hover, .datepicker table tr td.today:hover,.datepicker table tr td.selected,
+.datepicker table tr td.selected.disabled, .datepicker table tr td.selected.disabled:hover,
+.datepicker table tr td.selected:hover  {
+  background-color: $primary !important;
+  background-image: none;
+  box-shadow: none;
+  color: $white;
+}
+
+.daterangepicker {
+  .drp-buttons {
+    .btn {
+      font-weight: normal;
+    }
+  }
+  td.active,
+  td.active:hover {
+    background-color: rgba($primary, 0.1);
+    border-color: transparent;
+    color: $primary;
+  }
+}
+.daterangepicker td.active, .daterangepicker 
+
+.table-condensed>thead>tr>th, .table-condensed>tbody>tr>td {
+  padding: 5px;
+}
+
+
+/* Bootstrap-touchSpin */
+.bootstrap-touchspin .input-group-btn-vertical .btn {
+  padding: 9px 12px;
+}
+.bootstrap-touchspin .input-group-btn-vertical i {
+  top: 4px;
+  left: 8px;
+}
+
+/* Prism */
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+  background: $light;
+}
+
+/* Rating */
+.badge:empty {
+  padding: 0;
+}
+
+
+
+.select2-container--default{
+  .select2-selection--single {
+    border: 1px solid lighten($gray-300, 4%);
+    height: 38px;
+    &:focus{
+      outline: none;
+    }
+    .select2-selection__rendered {
+      color: $form-control;
+      line-height: 38px;
+    }
+    .select2-selection__arrow {
+      height: 38px;
+      right: 8px;
+    }
+  }
+  .select2-selection--multiple {
+    .select2-selection__choice {
+      margin-top: 7px;
+      background-color: $info;
+      border: 1px solid $info;
+      color: $white;
+    }
+    .select2-selection__choice__remove{
+      color: $white;
+    }
+  }
+}
+
+.select2-container--default.select2-container--focus {
+  .select2-selection--multiple{
+    border: 1px solid rgba($primary, 0.5);
+    outline: 0;
+  }
+}
+
+
+
+.select2-container {
+  .select2-selection--multiple {
+    min-height: 38px;
+    border: 1px solid lighten($gray-300, 4%);
+  }  
+  .select2-search--inline {
+    .select2-search__field {
+      margin-top: 8px;
+    }
+  }
+}
+
+
+
+
+/*---datetimepicker---*/
+.dtp-btn-cancel {
+  margin-right: 5px;
+}
+
+.addon-color-picker .btn {
+  padding: 8px;
+  line-height: 0;
+  border-color: #bfbfbf;
+}
+/*--colorpicker--*/
+.asColorPicker-clear {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 45px;
+  text-decoration: none;
+}
+
+.asColorPicker-trigger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 38px;
+  width: 38px;
+  border: 0;
+}
+
+.asColorPicker-dropdown {
+  max-width: 260px;
+}
+
+.asColorPicker-wrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-right: 35px;
+}
+
+
+.input-title{
+  font-weight: 400;
+  font-size: 15px;
+  color: $dark;
+}
+
+//Bootstrap Material Datetimepicker
+
+.dtp > .dtp-content > .dtp-date-view > header.dtp-header {
+  background: $dtp;
+}
+.dtp table.dtp-picker-days tr > td > a.selected {
+  background: rgba($primary, 0.1);
+  color: $primary;
+}
+
+.dtp div.dtp-date, .dtp div.dtp-time {
+  background: lighten($dtp, 3%);
+  color: $primary;
+}
+.dtp div.dtp-actual-year,
+.dtp div.dtp-actual-month{
+  color: $gray-100;
+  font-size: 14px;
+  padding: 8px 0 ;
+}
+
+.dtp > .dtp-content{
+  max-height: 555px;
+}
+.dtp table.dtp-picker-days tr > th{
+  color: lighten($dtp, 15%);
+}
+
+.dtp table.dtp-picker-days tr > td > a, 
+.dtp .dtp-picker-time > a{
+  color: lighten($dtp, 45%);
+  font-size: 12px;
+}
+.dtp div.dtp-actual-num{
+  font-size: 64px;
+}
+
+[class^="ti-"], [class*=" ti-"]{
+  color: $gray-100;
+}
+
+.dtp .p10 > a { color: $dtp; text-decoration: none; }

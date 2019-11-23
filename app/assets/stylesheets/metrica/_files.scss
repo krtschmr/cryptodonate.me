@@ -1,0 +1,82 @@
+//
+// Files
+//
+
+.files-nav{
+  .nav{
+    .nav-link{
+      padding: 10px;
+      color: $gray-700;
+      margin-bottom: 10px;
+      font-weight: 500;
+      display: flex;
+      i{
+        font-size: 20px;
+        vertical-align: middle;
+      }
+      &.active{
+        background-color: rgba($primary,0.05);
+        color: $primary;
+      }
+    }
+  }
+}
+
+.file-box-content{
+  margin-bottom: -16px;
+  .file-box{
+    border: 1px solid $gray-200;
+    border-radius: 5px;
+    padding: 20px;
+    width: 160px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 16px;
+    background-color: $card;
+    .download-icon-link{
+      color: $muted;
+      .file-download-icon{
+        font-size: 13px;
+        position: relative;
+        top: -10px;
+        left: 110px;
+      }
+      &:hover{
+        color: $primary;
+      }
+    }
+    
+    i{
+      font-size: 36px;
+    }
+  }
+}
+
+
+.file-category{
+  width: 100%;
+  .file-category-block{
+    text-align: center;
+    margin-right: 20px;
+    .file-category-folder{
+      border-bottom:2px solid transparent;
+      padding: 10px 20px !important;
+      border-radius: 18px;
+      &.active{
+        border-bottom:2px solid;
+      }
+      i{
+        display: block;
+        font-size: 38px;
+      }
+    }
+  }
+}
+
+
+.category-icon{
+  i{
+    font-size: 200px;
+    color: $gray-100;
+  }
+}

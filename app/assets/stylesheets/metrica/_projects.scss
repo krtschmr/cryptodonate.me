@@ -1,0 +1,376 @@
+//
+// Project
+// 
+
+
+//Dashboard
+
+
+.project-dash-activity{
+  min-height: 535px;
+}
+
+.project-budget-chart {
+  height: 273px;
+}
+
+.text-primary-light{
+  color: lighten($primary, 15%)
+}
+.text-primary-light-alt{
+  color: lighten($primary, 30%)
+}
+.icon-info{
+  i{
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      display: inline-block;
+      border-radius: 50%;
+      font-size: 26px;
+      z-index: 5;        
+  }
+}
+
+.dash-info-carousel{
+  .carousel-item{
+    h2{
+      font-weight: 500;
+      color: $gray-700;
+      font-size: 16px;
+    }
+  }
+  .carousel-control-prev,
+  .carousel-control-next{
+        width: 30px;
+        height: 30px;
+        background-color: $gray-100;
+        border-radius:50%;
+        opacity: 1;
+        &:hover {
+          opacity: .9;
+        }
+  }
+  .carousel-control-prev {
+    left: auto;
+    right: 38px;
+    top:0;
+    .carousel-control-prev-icon {
+      background-image: none;
+    }
+    &:after {        
+        content: '\55';
+        font-family: "dripicons-v2" !important;
+        font-size: .875rem;
+        color: $gray-700;
+        line-height: 1.875rem;
+        margin-right: 0.48rem;
+    }
+  }
+  .carousel-control-next {
+    left: auto;
+    right: 0;
+    top:0;
+    .carousel-control-next-icon {
+      background-image: none;
+    }
+    &:after {        
+        content: '\56';
+        font-family: "dripicons-v2" !important;
+        font-size: .875rem;
+        color: $gray-700;
+        line-height: 1.875rem;
+        margin-right: 0.48rem;
+    }
+  }
+}
+
+
+
+.c-progress-steps {
+	margin: 0;
+	list-style-type: none;
+	font-family: $font-primary;	
+		li {
+			position: relative;
+			font-size: 13px;
+			color: $gray-400;
+			padding: 16px 0 0 36px;
+				
+				a {
+					color: inherit;
+				}				
+				&.done {
+          color: $info;
+          span{
+            background-color: rgba($info, .09);
+          }				
+					&:before {
+						color: $info;
+            content: "\f058";
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            border: 2px solid $info;
+					}
+				}				
+				&.current {
+					color: $primary;
+					font-weight: 500;
+					
+					&:before {
+						color: $primary;
+            content: "\f192";
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            border: 2px solid $primary;
+					}
+				}				
+				&:before {
+					position: absolute;
+					left: 0;
+					font-family: 'Font Awesome 5 Free' !important;
+          font-weight: 600;
+					font-size: 18px;
+					background-color: $white;
+          content: "\f111";
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+          text-align: center;
+          border-radius: 50%;
+          border: 2px solid $gray-300;
+					
+					@media all and (max-width: 600px) {
+						top: calc(50% - 8px);
+						font-size: 16px;
+					}
+				}
+		}
+		
+	@media all and (min-width: 600px)  {
+		display: table;
+		list-style-type: none;
+		margin: 20px auto;
+		padding: 0;
+		table-layout: fixed;
+		width: 100%;
+		
+		li {
+			display: table-cell;
+			text-align: center;
+			padding: 0;
+			padding-bottom: 34px;
+			white-space: nowrap;
+			position: relative;
+			border-left-width: 0;
+			border-bottom-width: 4px;
+			border-bottom-style: solid;
+			border-bottom-color: $gray-300;				
+				&.done {
+					border-bottom-color: $info;
+				}				
+				&.current {
+					color: $primary;
+          border-bottom-color: $primary;
+          span{
+            background-color: rgba($primary, .15);
+            box-shadow: 0px 0px 0px 0.25px $primary;
+          }					
+					&:before {
+						color: $primary;
+						content: "\f192";
+					}
+				}				
+				&:before {
+					bottom: -15px;
+					left: 50%;
+					margin-left: -16px;
+        }
+        span{
+          background-color: rgba($info, .1);
+          border-radius: 3px;
+          padding: 6px;
+          box-shadow: 0px 0px 5px 0.25px lighten($gray-300, 6%);
+        }
+		}
+	}
+}
+
+.workload-chart{
+  height: 210px;
+}
+
+
+/*== todo list ==*/
+
+.todo-list{
+  .todo-box{
+    i{
+      position: absolute;
+      right: 20px;
+      z-index: 10;
+      font-size: 16px;
+      margin-top: 6px;
+      color: $gray-300;
+    }
+    .todo-task{
+      padding: 4px 0;
+      label {
+        display: inline-block;
+        margin-bottom: .5rem;
+      }
+      .ckbox {
+        font-weight: normal;
+        position: relative;
+        display: block;
+        line-height: 25px;
+       
+        span {
+          padding-left: 16px;
+          color: $table;
+          &:before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color:  transparent;
+            border: 2px solid $gray-300;
+            top: 2px;
+            left: 0;
+            border-radius: 5px;
+            position: absolute;
+          }
+          &:after {
+            top: 1px;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            content: "\F12C";
+            font: normal normal normal 24px/1 "Material Design Icons";
+            font-size: 14px;
+            text-align: center;
+            color: $gray-600;
+            background-color: transparent;
+            line-height: 20px;
+            display: none;
+            border-radius: 5px;
+            position: absolute;
+          }
+        }
+        input[type='checkbox'] {
+          opacity: 0;
+          margin: 0 5px 0 0;
+        }
+        input[type='checkbox']:checked + span:after {
+          display: block;
+        }
+      }
+      input:checked + span {
+        text-decoration: line-through;
+      }
+    }
+  }
+  .form-control{
+    color: $dark;
+    background: $gray-300;
+    border: 1px solid transparent;
+    &:focus {
+      border-color: transparent;
+      background: $gray-300;
+      box-shadow: none;
+    }    
+  }
+}
+
+//  Clients
+
+.client-card{
+  .client-name{
+    color: $gray-700;
+  }
+}
+
+// Calendar
+
+.calendar-event{
+  .event-name{
+    h3{
+      font-size: 14px;
+      color: $gray-700;
+    }
+  }  
+}
+
+// Invoie
+
+.project-invoice{
+  .table{
+    tr{
+      td{
+        h5{
+          color: $gray-700;
+        }
+      }
+    }
+  }
+}
+
+// Team
+
+.team-card {
+  .user-img{
+    height: 80px;
+  }
+  .online-circle {
+    position: absolute;
+    right: 0;
+    top: 118px;
+    left: 44px;
+  }
+  .team-leader{
+    font-size: 16px;
+    color: $gray-700;
+  }
+}
+
+.language-skill li {
+  span{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 2px 8px;
+    background-color: $light;
+    color: $gray-500;
+    font-size: 11px;
+  }
+}
+
+// Projects-card
+
+.project-card{
+  font-family: $font-secondary;
+  .project-title{
+    font-size: 20px;
+    color: $gray-700;
+    font-weight: 600;
+  }
+}
+
+// Task Box
+
+.task-box{
+  .task-priority-icon{
+    i{
+      border: 5px solid $bg-body;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+    }
+  }
+}

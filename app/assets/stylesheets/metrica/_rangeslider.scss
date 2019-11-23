@@ -1,0 +1,99 @@
+/* ==============
+  Range slider
+===================*/
+.irs-from, .irs-to, .irs-single {
+  background: $primary;
+}
+.irs-from:after, .irs-to:after, .irs-single:after {
+  border-top-color: $primary;
+}
+.irs--round .irs-bar,
+.irs--flat .irs-handle.state_hover > i:first-child, 
+.irs--flat .irs-handle:hover > i:first-child,
+.irs--flat .irs-handle > i:first-child,
+.irs--flat .irs-from,
+.irs--flat .irs-to,
+.irs--flat .irs-single,
+.irs--flat .irs-bar{
+  background-color: $primary;
+}
+.irs--flat .irs-from:before, 
+.irs--flat .irs-to:before, 
+.irs--flat .irs-single:before{
+  border-top-color:$primary;
+}
+
+.irs--sharp .irs-bar,
+.irs--sharp .irs-handle{
+  background-color: $success;
+}
+.irs--sharp .irs-handle > i:first-child{
+  border-top-color:$success;
+}
+.irs--sharp .irs-line{
+  background-color: $gray-300;
+}
+
+.irs--square .irs-handle{
+  border-color:$blue;
+}
+.irs--square .irs-from, 
+.irs--square .irs-to, 
+.irs--square .irs-single,
+.irs--square .irs-bar{
+  background-color: $blue;
+}
+
+
+.irs--flat .irs-min, .irs--flat .irs-max,
+.irs--round .irs-min, .irs--round .irs-max,
+.irs--square .irs-min, .irs--square .irs-max,
+.irs--modern .irs-min, .irs--modern .irs-max{
+
+    top: 0;
+    font-size: 12px;
+    line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    color: $gray-700;
+    background-color: $gray-200;
+    border-radius: 5px;
+
+}
+
+.irs--modern .irs-from, 
+.irs--modern .irs-to, 
+.irs--modern .irs-single,
+.irs--round .irs-from, 
+.irs--round .irs-to, 
+.irs--round .irs-single {
+  font-size: 11px;
+  line-height: 1.333;
+  text-shadow: none;
+  padding: 2px 5px;
+  background-color: $primary;
+  color:$white;
+  border-radius: 5px;
+}
+
+.irs--modern .irs-from:before, 
+.irs--modern 
+.irs-to:before, 
+.irs--modern .irs-single:before,
+.irs--round .irs-from:before, 
+.irs--round .irs-to:before, 
+.irs--round .irs-single:before{
+    content: "";
+    border: 3px solid transparent;
+    border-top-color: $primary;
+}
+
+.irs--modern .irs-bar {
+  background: $primary;
+  background: linear-gradient(135deg, rgba($primary,0.5) 0%,$primary 36%,darken($primary, 5%) 61%,rgba($primary,0.5) 100%);
+}
+.irs--round .irs-handle{
+    border: 4px solid $primary;
+    background-color: transparent;
+    box-shadow: 0 1px 3px rgba($primary, 0.3);
+}

@@ -1,0 +1,32 @@
+//
+// Print
+// 
+
+@media print {
+  .logo,.page-title,.breadcrumb,.footer {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .left {
+    display: none;
+  }
+  .content,.page-content-wrapper,.page-wrapper {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .content-page {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .topbar, .footer, .left-sidenav,.report-btn{
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .content-page > .content {
+    margin: 0;
+  }
+}

@@ -1,0 +1,105 @@
+/* =============
+   Helper classes
+============= */
+
+
+@media (max-width: 767px) {
+  .hidden-sm {
+    display: none;
+  }
+}
+
+// Slimscroll
+.slimScrollDiv {
+  height: auto !important;
+}
+
+// Margins
+.m-b-30 {
+  margin-bottom: 30px;
+}
+
+// Width
+.w-xs {
+  min-width: 80px;
+}
+.w-sm {
+  min-width: 95px;
+}
+.w-md {
+  min-width: 110px;
+}
+.w-lg {
+  min-width: 140px;
+}
+
+// Font sizes
+.font-10 {
+  font-size: 10px !important;
+}
+
+.font-11 {
+  font-size: 11px !important;
+}
+.font-12 {
+  font-size: 12px !important;
+}
+
+.font-13 {
+  font-size: 13px !important;
+}
+
+.font-14 {
+  font-size: 14px !important;
+}
+
+.font-15 {
+  font-size: 15px !important;
+}
+
+.font-16 {
+  font-size: 16px !important;
+}
+
+.font-18 {
+  font-size: 18px !important;
+}
+
+
+// Thumb sizes+
+.thumb-xxs {
+  height: 24px !important;
+  width: 24px !important;
+  font-size: 10px;
+  font-weight: 700;
+}
+.thumb-xs {
+  height: 32px !important;
+  width: 32px !important;
+  font-size: 10px;
+  font-weight: 700;
+}
+.thumb-sm {
+  height: 36px !important;
+  width: 36px !important;
+  font-size: 12px;
+  font-weight: 700;
+}
+.thumb-md {
+  height: 48px;
+  width: 48px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.thumb-lg {
+  height: 60px;
+  width: 60px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.thumb-xl {
+  height: 78px;
+  width: 78px;
+  font-size: 28px;
+  font-weight: 700;
+}

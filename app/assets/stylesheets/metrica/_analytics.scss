@@ -1,0 +1,62 @@
+//
+// Analytics
+// 
+
+
+.dash-chart {
+  position: relative;
+  height: 350px;
+}
+
+.browser_users{
+  table{
+    td{
+      i{
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.impressions-data{
+  h2{
+    color: $gray-700;
+    font-weight: 600;
+  }
+}
+
+
+// Report
+
+
+.rep-map{
+  height: 280px;
+}
+.report-card{
+  .report-main-icon{
+    font-size: 28px;
+    color: $info;
+  }
+  h3{
+    color: $gray-700;
+    font-weight: 600;
+  }
+}
+.url-list{
+  li{
+    i{
+      font-size: 24px;
+      vertical-align: middle;
+    }
+  }
+}
+.traffic-card{
+  margin: 20px 0;
+  h3{
+    font-size: 33px;
+    font-weight: 600;
+    color: $gray-700;
+    margin: 20px 0;
+  }
+}
+

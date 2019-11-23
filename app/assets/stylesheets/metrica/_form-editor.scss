@@ -1,0 +1,19 @@
+
+// Form editor
+.mce-panel{
+  border: 1px solid $gray-200 !important;
+  background-color: $editor-layout !important;
+}
+.mce-tinymce{
+  box-shadow: none !important;
+}
+.mce-flow-layout{
+  background-color: $editor-layout !important;
+}
+.mce-btn {
+  background: transparent !important;
+}
+
+.mce-top-part::before{
+  box-shadow: none !important;
+}

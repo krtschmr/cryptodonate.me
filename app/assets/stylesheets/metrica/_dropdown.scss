@@ -1,0 +1,26 @@
+.dropup .dropdown-toggle::after,
+.dropright .dropdown-toggle::after,
+.dropleft .dropdown-toggle::before,
+.dropdown-toggle::after {
+  display: none;
+}
+
+
+
+.dropdown-menu {
+  padding: 4px 0;
+  font-size: $font-size-base;
+  box-shadow: 0 3px 12px rgba($gray-400,.05);
+  border-color: $gray-200;
+  margin: 0;
+  .dropdown-item {
+    padding: 6px 24px;
+    &:hover,
+    &.active,
+    &:active{
+      color: $dark;
+      text-decoration: none;
+      background-color: darken($white,3%);
+    }
+  }
+}

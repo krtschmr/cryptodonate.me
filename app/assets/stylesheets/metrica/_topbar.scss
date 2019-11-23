@@ -1,0 +1,288 @@
+//
+// Topbar
+//
+.topbar {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    .topbar-left {
+        background-color: $bg-logo;
+        float: left;
+        text-align: center;
+        height: $topbar-height;
+        position: relative;
+        width: $topbar-left-width;
+        z-index: 1;
+        margin-left: 70px;
+        .logo {
+            line-height: $topbar-height;
+            .logo-sm {
+                height: 24px;
+                ;
+            }
+            .logo-lg {
+                height: 14px;
+                margin-left: 2px;
+            }
+        }
+    }
+}
+
+.navbar-custom {
+    background: $bg-navbar;
+    padding: 0 10px 0 0;
+    margin-left: 240px;
+    min-height: $topbar-height;
+    position: relative;
+    box-shadow: $shadow;
+    .nav-link {
+        padding: 0 0.75rem;
+        color: $body-text;
+        line-height: $topbar-height;
+        max-height: $topbar-height;
+        .nav-icon {
+            font-size: 18px;
+        }
+    }
+    .dropdown-toggle {
+        &:after {
+            content: initial;
+        }
+    }
+    .topbar-nav {
+        li {
+            float: left;
+            &.show {
+                .nav-link {
+                    background-color: lighten($bg-navbar, 3%);
+                    color: $body-text;
+                }
+            }
+        }
+    }
+    .crypto-balance{
+        i{
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        margin: 16px 20px;
+        display: flex;
+        align-items: flex-start;
+        .btc-balance{
+            align-self: center;
+            flex: 1;
+            h5{
+                color: $gray-700;
+                font-weight: 500;
+                span{
+                    color: $muted;
+                    font-size: 12px;
+                    font-weight: 400;
+                }
+            }
+            span{
+                font-size: 12px;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.button-menu-mobile {
+    border: none;
+    color: $white;
+    width: 60px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.nav-user {
+    .nav-user-name {
+        vertical-align: middle;
+    }
+    img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+/* Notification */
+
+.noti-icon-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 9px;
+}
+
+.notification-list {
+    max-height: 220px;
+}
+
+.notification-list {
+    margin-left: 0;
+    .noti-title {
+        border-radius: 0.25rem 0.25rem 0 0;
+        margin: -4px 0px 0px 0px;
+        width: auto;
+        padding: 12px 20px;
+        h5 {
+            margin: 0;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+    }
+    .noti-icon {
+        font-size: 22px;
+        vertical-align: middle;
+        color: $muted;
+    }
+    .noti-icon-badge {
+        display: inline-block;
+        position: absolute;
+        top: 14px;
+        right: 8px;
+        border: 2px solid rgba($white, 0.6);
+        border-radius: 50%;
+        padding: 2px 4px 2px;
+    }
+    .notify-item {
+        padding: 10px 20px;
+        .notify-icon {
+            float: left;
+            height: 36px;
+            width: 36px;
+            line-height: 36px;
+            text-align: center;
+            margin-right: 10px;
+            border-radius: 50%;
+            color: $white;
+            img {
+                margin-top: 4px;
+            }
+        }
+        .notify-details {
+            margin-bottom: 0;
+            overflow: hidden;
+            margin-left: 45px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            b {
+                font-weight: 500;
+            }
+            small {
+                display: block;
+                white-space: normal;
+            }
+            span {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+// Search
+
+.app-search .form-control, 
+.app-search .form-control:focus {
+    border: 1px solid lighten($bg-navbar, 7%);
+    font-size: 13px;
+    height: 34px;
+    color: $gray-700;
+    padding-left: 20px;
+    padding-right: 40px;
+    background: lighten($bg-body, 2%);
+    box-shadow: none;
+    border-radius: 40px;
+    width: 300px;
+  }
+  
+  .app-search {
+    position: relative;
+    padding-top: 18px;
+    margin-left: 20px;
+  }
+  
+  .app-search input.form-control::-webkit-input-placeholder {
+    color: darken($gray-500, 5%);
+  }
+  
+  .app-search input.form-control:-moz-placeholder {
+    color: darken($gray-500, 5%);
+  }
+  
+  .app-search input.form-control::-moz-placeholder {
+    color: darken($gray-500, 5%);
+  }
+  
+  .app-search input.form-control:-ms-input-placeholder {
+    color: darken($gray-500, 5%);
+  }
+  
+  .app-search a {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    width: 34px;
+    text-align: center;
+    background: lighten($bg-body, 2%);
+    border: 1px solid $bg-navbar;
+    border-radius: 50%;
+    color: $gray-500;
+  }
+
+
+@media (max-width: 1024px) {
+    .topbar {
+        .topbar-left {
+            width: $leftbar-width-collapsed;
+            margin-left: 0;
+            background-color: $primary;
+            .logo-lg {
+                display: none;
+            }
+        }
+        .navbar-custom {
+            margin-left: $leftbar-width-collapsed;
+        }
+        .app-search {
+            .form-control,
+            .form-control:focus{
+                width: 230px;
+            }  
+        }
+    }
+    
+}
+
+@media (max-width: 768px) and (max-width: 1023.98px){
+    .app-search{
+        display: none;
+    }
+}
+
+@media (max-width: 767px){
+    .app-search,
+    .hidden-sm {
+        display: none;
+    }
+}
+
+@media (max-width: 375px){
+    
+    .page-title-box {
+        .breadcrumb{
+            display: none;
+        }
+    }
+}
+

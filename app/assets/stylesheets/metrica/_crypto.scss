@@ -1,0 +1,395 @@
+// Dashboard
+.crypto-dash-activity{
+  min-height: 400px;
+}
+.btc-volume-chart{
+  height: 250px !important;
+}
+.eco-revene-history,
+.crypto-report-history{
+  .nav{
+    margin-bottom: 20px;
+    .nav-item{
+      .nav-link{
+        background-color: $gray-200;
+        margin-right: 5px;
+        padding: 2px 8px;
+        font-size: 12px;
+        border-radius: 5px;
+        color: $gray-700;
+        &.active{
+          color: $primary;
+          background-color: rgba($primary,0.1);
+        }
+      }
+    }
+  }
+}
+
+.market-cap-table{
+  td{
+    h5{
+      color: $gray-700;
+    }
+  }
+}
+
+.vol-btc{
+  font-size: 18px;
+  color: $gray-700;
+  font-weight: 600;
+  margin: 0px auto 30px;
+}
+
+
+.ccc-widget {
+  .histoTitle{
+    display: none;
+  }  
+  div:first-child{
+    border:none !important;
+  }
+  div.histoRow:nth-of-type(2) {
+    font-weight: 500 !important;
+    color: $gray-700 !important;
+    font-size: 13px !important; 
+    background-color: $light;
+    .histoChange{
+      font-weight: 500;
+    }  
+  
+  }
+  div.histoRow{
+    border-bottom-color: $table-border-color !important;
+    font-size: 13px !important;
+    color: $table !important;
+  }
+}
+
+
+
+// exchange
+
+.calculator-block {
+  background-color:$gray-100;
+  .calculator-body {
+    padding: 25px;
+    position: relative;
+  }
+  .cryptonatorwidget {
+    border: none !important;
+    input,
+    select {
+      height: 40px !important;
+      line-height: 40px !important;
+      margin-bottom: 10px;
+      border: none;
+      color: $gray-700;
+      border-bottom: 1px solid $border;
+      outline: none;
+      padding-left: 10px;
+      background-color: transparent;
+      font-family: $font-primary !important;
+    }
+    div:last-child{
+      display: none;
+    }
+  }
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $gray-700;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: $gray-700;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: $gray-700;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: $gray-700;
+  }
+}
+
+.transaction-history{
+  li{
+    border-bottom: 1px solid $gray-200;
+    padding: 12px 0;
+  }
+  li:last-of-type{
+    border: none;
+    padding-bottom: 0;
+  }
+  .transaction-icon{
+    align-self: center;
+    margin-right: 12px;
+    i{
+      font-size: 20px;
+      width: 36px;
+      height: 36px;
+      display: inline-block;
+      line-height: 36px;
+      text-align: center;
+      background-color: rgba($primary,0.15);
+      color: $primary;
+      border-radius: 50%; 
+    }
+  }
+  
+  .transaction-data{
+    h3{
+      font-size: 14px;
+      color: $gray-700;
+    }
+  }
+}
+
+
+// Wallet
+
+.wallet-bal-usd{
+  .wallet-title{
+    font-size: 16px;
+    color: $gray-700;
+  }
+  h3{
+    font-size: 28px;
+    color: $gray-700;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+}
+
+
+.wallet-bal-crypto{
+  .wallet-title{
+    font-size: 16px;
+    color: $gray-700;
+  }
+  .coin-bal{
+    h3{
+      font-size: 16px;
+      color: $gray-700;
+    }
+  }
+}
+
+.btc-price{
+  h3{
+    font-size: 18px;
+    color: $gray-700;
+    font-weight: 600;
+  }
+}
+
+.crypto-wallet-activity{
+  min-height: 600px;
+}
+
+// Crypto News
+.wrap{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 0;
+  background: $bg-navbar;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  background-color: $light;
+}
+.jctkr-label{
+  height: 60px;
+  padding: 0 17px;
+  line-height: 60px;
+  background: rgba($blue,0.9);
+  font-weight: 600;
+  font-size: 16px;
+  color: $white;
+  cursor: default;
+}
+.jctkr-label:hover{
+  background: $blue;
+  color: $white;
+}
+[class*="js-conveyor-"] ul{
+  display: inline-block;
+  opacity: 0.5;
+}
+[class*="js-conveyor-"] ul li{
+  padding: 0 15px;
+  line-height: 35px;
+  font-size: 16px;
+  .usd-rate{
+    color: $gray-600;
+  }
+}
+
+
+/*ICO List countdown*/
+
+.countdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  position: relative;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1.5rem;
+}
+.countdown .part {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 2rem;
+  padding-bottom: .5rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.countdown .part::before {
+  content: ":";
+  left: -0.25em;
+  position: absolute;
+  color: $primary;
+}
+.countdown .part:nth-child(1)::before,
+.countdown .part.no-divider::before {
+  display: none;
+}
+.countdown .part.days::after,
+.countdown .part.hours::after,
+.countdown .part.minutes::after,
+.countdown .part.seconds::after {
+  position: absolute;
+  content: attr(data-label);
+  text-align: center;
+  bottom: .25rem;
+  left: 0;
+  width: 100%;
+  font-size: .3em;
+  color: inherit;
+}
+.countdown .part + .part {
+  margin-left: .625rem;
+}
+.countdown .days {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.countdown .hours {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+.countdown .minutes {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+.countdown .seconds {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
+}
+.countdown.blink .part::before {
+  display: none;
+}
+
+
+// ICO Card
+
+.ico-card {
+  .ico-socials {
+    a {
+      i {
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid $gray-300;
+        color: $gray-600;
+        transition: all .3s ease-out;
+      }
+      &:hover i{
+        &.fa-facebook-f{
+          color: $blue;
+          border: 1px solid;
+        }
+        &.fa-twitter{
+          color: $info;
+          border: 1px solid;
+        }
+        &.fa-medium-m{
+          color: $danger;
+          border: 1px solid;
+        }
+        &.fa-telegram{
+          color: $success;
+          border: 1px solid;
+        }
+        &.fa-btc{
+          color: $warning;
+          border: 1px solid;
+        }
+      }
+    }
+  }
+}
+
+
+
+// Setting
+
+.setting-card{
+  .setting-detail{
+    h3{
+      font-size: 16px;
+      color: $gray-700;
+      font-weight: 600;
+    }
+  }
+  .sett-card-icon{
+    width: 54px;
+    height: 54px;
+    text-align: center;
+    line-height: 54px;
+    align-self: center;
+    border-radius: 50%;
+    margin-right: 18px;
+    i{
+      font-size: 24px;
+    }
+    &.set-icon-purple{      
+    background-color: rgba($purple,0.1);
+    color: $purple;
+    }
+    &.set-icon-success{      
+    background-color: rgba($success,0.1);
+    color: $success;
+    }
+    &.set-icon-danger{      
+    background-color: rgba($danger,0.1);
+    color: $danger;
+    }
+  }
+}
+

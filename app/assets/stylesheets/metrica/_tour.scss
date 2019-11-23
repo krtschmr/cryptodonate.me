@@ -1,0 +1,26 @@
+//
+// Tour
+// 
+
+.cd-single-step {
+  .cd-more-info{
+    background-color: $bg-navbar;
+    border: 5px double $gray-300;
+    border-radius: 5px;
+    h2{
+      font-size: 16px;
+      margin-top: 0;
+      color:$gray-700;
+      font-family: $font-primary;
+    }
+    span,
+    p{
+      font-family: $font-primary;
+      color: $muted;
+    }
+  }
+}
+
+.cd-tour-wrapper.active {
+  list-style-type: none;
+}
