@@ -129,6 +129,9 @@
                 Logout
         / end topbar-nav
         %ul.list-unstyled.topbar-nav.mb-0
+          %li
+            %button.button-menu-mobile.nav-link.waves-effect.waves-light
+              %i.dripicons-menu.nav-icon
           %li.hidden-sm
             .crypto-balance
               %i.dripicons-wallet.text-muted.align-self-center
@@ -137,9 +140,6 @@
                   9.521.32
                   %span BTC
                 %span.text-muted Total Balance
-          -# %li
-          -#   %button.button-menu-mobile.nav-link.waves-effect.waves-light
-          -#     %i.dripicons-menu.nav-icon
           -# %li.hide-phone.app-search
           -#   %form{:role => "search"}
           -#     %input.form-control{:placeholder => "Search...", :type => "text"}/
