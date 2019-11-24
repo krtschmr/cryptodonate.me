@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_024055) do
     t.string "url"
     t.string "token"
     t.string "refresh_token"
+    t.string "profile_photo_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["provider", "uid"], name: "index_streamers_on_provider_and_uid", unique: true

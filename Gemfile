@@ -66,3 +66,5 @@ gem "bitcore_rpc", github: "krtschmr/bitcore_rpc"
 
 gem "formtastic"
 gem 'rails-erd', group: :development
+
+gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api'

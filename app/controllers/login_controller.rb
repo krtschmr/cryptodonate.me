@@ -18,6 +18,7 @@ class LoginController <  Devise::OmniauthCallbacksController
 
   def login_with_oauth(provider)
     streamer_by_oauth(provider)
+    @streamer.refresh_profile_photo!
     sign_in(@streamer)
     redirect_to internal_root_path
   end

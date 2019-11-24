@@ -110,9 +110,12 @@
                 %i.fi-arrow-right
           %li.dropdown
             %a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user{"aria-expanded" => "false", "aria-haspopup" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              %img.rounded-circle{:alt => "profile-user", :src => "#{asset_path 'users/user-4.jpg'}"}/
+              =image_tag(current_streamer.profile_photo_url, class: "rounded-circle")
+              
               %span.ml-1.nav-user-name.hidden-sm
-                Amelia
+                =current_streamer.name
+                \/
+                =current_streamer.provider.capitalize
                 %i.mdi.mdi-chevron-down
             .dropdown-menu.dropdown-menu-right
               %a.dropdown-item{:href => "#"}

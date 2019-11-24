@@ -28,6 +28,8 @@ class DeviseCreateStreamers < ActiveRecord::Migration[6.0]
       t.string :token
       t.string :refresh_token
 
+      t.string :profile_photo_url
+
       t.timestamps null: false
     end
     add_index :streamers, [:provider, :uid], unique: true

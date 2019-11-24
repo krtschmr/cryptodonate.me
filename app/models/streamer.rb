@@ -22,6 +22,18 @@ class Streamer < ApplicationRecord
     # return the xpubkey for that coin
   end
 
+  def provider_class
+    "#{provider.classify}Api".constantize
+  end
+
+  def refresh_profile_photo!
+    # todo
+    # either call it async or call it async inside the login controller
+    update(profile_photo_url: provider_class.profile_photo(name))
+  end
+
+
+
 end
 
 # == Schema Information
@@ -37,6 +49,7 @@ end
 #  last_sign_in_at     :datetime
 #  last_sign_in_ip     :string
 #  name                :string           not null
+#  profile_photo_url   :string
 #  provider            :string           not null
 #  refresh_token       :string
 #  remember_created_at :datetime
