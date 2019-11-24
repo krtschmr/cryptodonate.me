@@ -22,6 +22,10 @@ class NotificationTrigger
 
     # donation.user.connected_overlays.each(&:push_notification!, donation)
     # donation.user.overlays.active.each(&:push_notification!, donation)
+
+    # test with streamlabs
+    provider = :streamlabs
+    "#{provider}_api".classify.constantize.push_donation(donation)
   end
 
   private

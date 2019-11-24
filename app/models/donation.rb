@@ -35,8 +35,9 @@ class Donation < ApplicationRecord
     uuid
   end
 
-  def donation_above_minimum?
-    total_paid_fiat >= streamer.donation_settings.minimum_amount_for_notification
+  def above_minimum?
+    # total_paid_fiat >= streamer.donation_settings.minimum_amount_for_notification
+    true
   end
 
   def trigger_notification!
