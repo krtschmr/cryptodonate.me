@@ -3,6 +3,8 @@ class Streamer < ApplicationRecord
 
   has_many :donations
 
+  has_many :connected_platforms
+
 
   before_create {
     self.donation_url = name.downcase
@@ -20,6 +22,10 @@ class Streamer < ApplicationRecord
   def xpubkey(coin)
     # TODO
     # return the xpubkey for that coin
+  end
+
+  def connected_with?(provider)
+    connected_platforms.find_by(provider: provider.to_s.downcase)
   end
 
   def provider_class

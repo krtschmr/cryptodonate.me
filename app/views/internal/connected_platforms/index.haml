@@ -1,0 +1,9 @@
+-content_for :title, "Connected Platforms"
+
+
+-[:streamlabs, :streamelement].each do |platform|
+
+  -if current_streamer.connected_with?(platform)
+    .btn.btn-success=platform
+  -else
+    .btn.btn-outline-warning=platform

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_024055) do
+ActiveRecord::Schema.define(version: 2019_11_24_105417) do
 
   create_table "coins", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,18 @@ ActiveRecord::Schema.define(version: 2019_11_22_024055) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "connected_platforms", force: :cascade do |t|
+    t.integer "streamer_id"
+    t.string "provider", null: false
+    t.string "token", null: false
+    t.string "refresh_token", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider"], name: "index_connected_platforms_on_provider"
+    t.index ["streamer_id", "provider"], name: "index_connected_platforms_on_streamer_id_and_provider", unique: true
+    t.index ["streamer_id"], name: "index_connected_platforms_on_streamer_id"
   end
 
   create_table "crypto_withdrawals", force: :cascade do |t|

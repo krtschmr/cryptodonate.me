@@ -11,6 +11,13 @@ Rails.application.routes.draw do
     # match "/connect/streamelements", via: [:get, :post], to: "connections#passthru"
 
 
+    resources :connected_platforms, path: "platforms", only: [:index, :destroy] do
+      collection do
+        post :disconnect
+        get :connect
+      end
+    end
+
     # View Donations
 
     # View Stats

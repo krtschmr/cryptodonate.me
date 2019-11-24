@@ -120,9 +120,9 @@
               %a.dropdown-item{:href => "#"}
                 %i.dripicons-gear.text-muted.mr-2
                 Settings
-              %a.dropdown-item{:href => "#"}
+              =link_to internal_connected_platforms_path, class: "dropdown-item" do 
                 %i.dripicons-lock.text-muted.mr-2
-                Lock screen
+                Connected Platforms
               .dropdown-divider
               =link_to logout_path, class: "dropdown-item" do
                 %i.dripicons-exit.text-muted.mr-2
