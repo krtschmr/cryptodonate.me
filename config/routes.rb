@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   # Login and Logout
   devise_for :streamer, controllers: { omniauth_callbacks: 'login' }
+
+  devise_scope(:streamer) do
+    get 'internal/platforms/connect', to: 'internal/platforms#connect'
+  end
+
   get :logout, to: "sessions#logout", as: :logout
 
   # Everything the user can do when he is logged in
@@ -12,9 +17,8 @@ Rails.application.routes.draw do
 
 
     resources :connected_platforms, path: "platforms", only: [:index, :destroy] do
-      collection do
-        post :disconnect
-        get :connect
+      member do
+        get :disconnect
       end
     end
 

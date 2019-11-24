@@ -1,9 +1,14 @@
 -content_for :title, "Connected Platforms"
 
 
--[:streamlabs, :streamelement].each do |platform|
-
+-[:streamlabs, :streamelements].each do |platform|
   -if current_streamer.connected_with?(platform)
-    .btn.btn-success=platform
+    %h4=platform
+    %p
+      =link_to disconnect_internal_connected_platform_path(platform), class: "btn btn-sm btn-outline-danger" do
+        Disconnect
   -else
-    .btn.btn-outline-warning=platform
+    .btn.btn-outline-success
+      =link_to omniauth_authorize_path(:streamer, platform) do
+        Connect with #{platform}
+  %hr

@@ -1,5 +1,6 @@
 class LoginController <  Devise::OmniauthCallbacksController
 
+
   def mixer
     login_with_oauth(:mixer)
   end
@@ -11,10 +12,24 @@ class LoginController <  Devise::OmniauthCallbacksController
 
 
   def streamelements
-    binding.pry
+    connect_with_platform
+  end
+
+  def streamlabs
+    connect_with_platform
   end
 
   private
+
+  def connect_with_platform
+    raise "login required" unless current_streamer
+    hash = request.env["omniauth.auth"]
+    platform = current_streamer.connected_platforms.find_or_initialize_by(provider: hash["provider"])
+    platform.token = hash["credentials"]["token"]
+    platform.refresh_token = hash["credentials"]["refresh_token"]
+    platform.save
+    redirect_to [:internal, :connected_platforms]
+  end
 
   def login_with_oauth(provider)
     streamer_by_oauth(provider)

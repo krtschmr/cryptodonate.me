@@ -4,12 +4,12 @@ class Internal::ConnectedPlatformsController < Internal::BaseController
     # list all
   end
 
-  def connect
-    # connect, callback via oauth
-  end
 
   def disconnect
     # POST, disconnect
+    connection = current_streamer.connected_platforms.find_by!(provider: params[:id])
+    connection.destroy
+    redirect_to [:internal, :connected_platforms]
   end
 
 end
