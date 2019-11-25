@@ -21,6 +21,7 @@ end
 #  id          :integer          not null, primary key
 #  description :text
 #  name        :string
+#  price       :decimal(15, 7)
 #  symbol      :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_105417) do
+ActiveRecord::Schema.define(version: 2019_11_25_044159) do
 
   create_table "coins", force: :cascade do |t|
     t.string "name"
     t.string "symbol"
     t.text "description"
+    t.decimal "price", precision: 15, scale: 7
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -76,6 +77,14 @@ ActiveRecord::Schema.define(version: 2019_11_24_105417) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_donations_on_coin_id"
     t.index ["streamer_id"], name: "index_donations_on_streamer_id"
+  end
+
+  create_table "exchange_rates", force: :cascade do |t|
+    t.string "from", null: false
+    t.string "to", null: false
+    t.decimal "rate", precision: 15, scale: 6, null: false
+    t.index ["from"], name: "index_exchange_rates_on_from"
+    t.index ["to"], name: "index_exchange_rates_on_to"
   end
 
   create_table "incoming_transactions", force: :cascade do |t|

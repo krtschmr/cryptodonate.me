@@ -1,13 +1,12 @@
 class Donation < ApplicationRecord
 
-  SUPPORTED_CURRENCIES = %W(USD EUR THB)
+  SUPPORTED_CURRENCIES = %W(USD EUR THB CAD)
 
   belongs_to :streamer, required: true
   belongs_to :coin, required: true
   has_many :donation_payments #, class_name: "DonationPayment"
 
   scope :paid, -> { where "total_paid_crypto > 0" }
-
 
   validates :uuid, presence: true
   validates :amount, numericality: {greater_than: 0}
@@ -31,6 +30,7 @@ class Donation < ApplicationRecord
   before_create {
     set_payment_address
     set_counter
+    set_payment_amount
   }
 
   def to_param
@@ -47,6 +47,19 @@ class Donation < ApplicationRecord
   end
 
   private
+
+  def set_payment_amount
+    self.payment_amount = calculated_usd_value.to_d / coin.price
+  end
+
+  # 8b7182b86c6749cdb3c69175d201565d
+  def calculated_usd_value
+    if currency == "USD"
+      amount
+    else
+      Money.new(amount * 100, currency).exchange_to("USD").to_d
+    end
+  end
 
   def set_counter
     # internal counter so the streamer can see how many donations came per coin.
