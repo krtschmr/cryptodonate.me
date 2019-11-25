@@ -1,4 +1,4 @@
--content_for(:title, "Starpage")
+-content_for(:title, "Your overview")
 
 .row
   .col-lg-8
@@ -14,164 +14,113 @@
               %a.nav-link{:href => "#"} Week
             %li.nav-item
               %a.nav-link{:href => "#"} Month
-            %li.nav-item
-              %a.nav-link{:href => "#"} Order Book
         .row
           .col-md-3
             .media
-              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
               .media-body.align-self-center
                 .coin-bal
-                  %h4.m-0 $7289.45
-                  %p.text-muted.mb-0
-                    Bitcoin
-                    %span.text-muted.font-12 (BTC)
-                    %span.text-success
-                      2.5%
-                      %i.mdi.mdi-arrow-up
-              / end media body
-            / end col
-          / end col
-          .col-md-3
-            %p.mb-0.p-2.bg-soft-dark.rounded
-              %b> Last:
-              0.25436584
-          / end col
-          .col-md-3
-            %p.mb-0.p-2.bg-soft-success.rounded
-              %b> 24High:
-              0.25436584
-          / end col
-          .col-md-3
-            %p.mb-0.p-2.bg-soft-danger.rounded
-              %b> 24Low:
-              0.25436584
-          / end col
-        / end row
+                  %h4.m-0 Your total balance
+
+
         #crypto_dash_main.apex-charts
       / end card-body
     / end card
   / end col
   .col-lg-4
+
     .card
+
       .card-body
-        .row
-          .col-12
-            .wallet-bal-usd
-              %h4.wallet-title.m-0 Your Total Balence
-              %span.text-muted.font-12 30 june 2019
-              %h3.text-center $85692.00
-            %p.font-15.text-success.text-center.mb-4
-              + $455.00
-              %span.font-12.text-muted
-                (6.2%
-                = succeed ")" do
-                  %i.mdi.mdi-trending-up.text-success
-            .text-right
-              %button.btn.btn-success.btn-sm.px-3 Receive
-              %button.btn.btn-danger.btn-sm.px-3 Send
-              %button.btn.btn-primary.btn-sm.px-3 + Invest
-      / end card-body
-      .card-body.pt-0
+        %h4.header-title.mt-0.mb-3 Total Balance
         %ul.list-group.wallet-bal-crypto
-          %li.list-group-item.align-items-center.d-flex.justify-content-between
-            .media
-              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/btc.png'}"}/
-              .media-body.align-self-center
-                .coin-bal
-                  %h3.m-0 6.18424000
-                  %p.text-muted.mb-0 $ 33277.3660
-              / end media body
-            %span.badge.badge-soft-purple Bitcoin
-          %li.list-group-item.align-items-center.d-flex.justify-content-between
-            .media
-              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/mon.png'}"}/
-              .media-body.align-self-center
-                .coin-bal
-                  %h3.m-0 60.1842
-                  %p.text-muted.mb-0 $ 18564.3660
-              / end media body
-            %span.badge.badge-soft-info Monero
-          %li.list-group-item.align-items-center.d-flex.justify-content-between
-            .media
-              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path 'coins/eth.png'}"}/
-              .media-body.align-self-center
-                .coin-bal
-                  %h3.m-0 32.65849212
-                  %p.text-muted.mb-0 $ 33277.3660
-              / end media body
-            %span.badge.badge-soft-success Ethereum
-      / end card-body
-    / end card
-  / end col
-/ end row
+          -Coin.order(id: :asc).each do |coin|
+            %li.list-group-item.align-items-center.d-flex.justify-content-between
+              .media
+                %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path "cryptoicons/color/#{coin.symbol.downcase}.png"}"}
+                .media-body.align-self-center
+                  .coin-bal
+                    %h3.m-0=coin.name
+                    %p.text-muted.mb-0 USD
+                / end media body
+              .coin-bal
+                %h3.m-0 0.123123 #{coin.symbol.upcase}
+                %p.text-muted.mb-0 $412 USD
+          -# %h3.text-center
+            Total: $1333.37
+
+
+
+
+
 .row
   .col-lg-4
     .card
       .card-body
         %a.float-right.text-info{:href => ""} View All
-        %h4.header-title.mt-0.mb-3 Transaction History
+        %h4.header-title.mt-0.mb-3 Donation History
         %ul.list-unsyled.m-0.pl-0.transaction-history
-          %li.align-items-center.d-flex.justify-content-between
-            .media
-              .transaction-icon
-                %i.mdi.mdi-arrow-top-right-thick
-              .media-body.align-self-center
-                .transaction-data
-                  %h3.m-0 Send BTC
-                  %p.text-muted.mb-0 6 June 2019 10:25 AM
-              / end media body
-            %span.text-danger 0.000245684 BTC
-          %li.align-items-center.d-flex.justify-content-between
-            .media
-              .transaction-icon
-                %i.mdi.mdi-arrow-down-thick
-              .media-body.align-self-center
-                .transaction-data
-                  %h3.m-0 Receive BTC
-                  %p.text-muted.mb-0 4 June 2019 7:05 PM
-              / end media body
-            %span.text-success 0.012458632 BTC
-          %li.align-items-center.d-flex.justify-content-between
-            .media
-              .transaction-icon
-                %i.mdi.mdi-arrow-top-right-thick
-              .media-body.align-self-center
-                .transaction-data
-                  %h3.m-0 Send BTC
-                  %p.text-muted.mb-0 1 June 2019 11:30 PM
-              / end media body
-            %span.text-danger 0.000245684 BTC
-          %li.align-items-center.d-flex.justify-content-between
-            .media
-              .transaction-icon
-                %i.mdi.mdi-arrow-top-right-thick
-              .media-body.align-self-center
-                .transaction-data
-                  %h3.m-0 Send BTC
-                  %p.text-muted.mb-0 28 May 2019 08:45 AM
-              / end media body
-            %span.text-danger 0.000245684 BTC
-          %li.align-items-center.d-flex.justify-content-between
-            .media
-              .transaction-icon
-                %i.mdi.mdi-arrow-down-thick
-              .media-body.align-self-center
-                .transaction-data
-                  %h3.m-0 Receive BTC
-                  %p.text-muted.mb-0 25 May 2019 01:25 PM
-              / end media body
-            %span.text-success 0.012458632 BTC
-      / end card-body
-    / end card
-  / end col
-  .col-lg-4
+          -current_streamer.donations.paid.order(id: :desc).limit(5).each do |donation|
+            %li.align-items-center.d-flex.justify-content-between
+              .media
+                .transaction-icon
+                  %i.mdi.mdi-arrow-top-right-thick
+                .media-body.align-self-center
+                  .transaction-data
+                    %h3.m-0 Receive BTC
+                    %p.text-muted.mb-0=donation.created_at
+                / end media body
+              %span.text-success
+                =donation.total_paid_crypto
+                =donation.coin.symbol.upcase
+          -# %li.align-items-center.d-flex.justify-content-between
+          -#   .media
+          -#     .transaction-icon
+          -#       %i.mdi.mdi-arrow-down-thick
+          -#     .media-body.align-self-center
+          -#       .transaction-data
+          -#         %h3.m-0 Receive BTC
+          -#         %p.text-muted.mb-0 4 June 2019 7:05 PM
+          -#     / end media body
+          -#   %span.text-success 0.012458632 BTC
+          -# %li.align-items-center.d-flex.justify-content-between
+          -#   .media
+          -#     .transaction-icon
+          -#       %i.mdi.mdi-arrow-top-right-thick
+          -#     .media-body.align-self-center
+          -#       .transaction-data
+          -#         %h3.m-0 Send BTC
+          -#         %p.text-muted.mb-0 1 June 2019 11:30 PM
+          -#     / end media body
+          -#   %span.text-danger 0.000245684 BTC
+          -# %li.align-items-center.d-flex.justify-content-between
+          -#   .media
+          -#     .transaction-icon
+          -#       %i.mdi.mdi-arrow-top-right-thick
+          -#     .media-body.align-self-center
+          -#       .transaction-data
+          -#         %h3.m-0 Send BTC
+          -#         %p.text-muted.mb-0 28 May 2019 08:45 AM
+          -#     / end media body
+          -#   %span.text-danger 0.000245684 BTC
+          -# %li.align-items-center.d-flex.justify-content-between
+          -#   .media
+          -#     .transaction-icon
+          -#       %i.mdi.mdi-arrow-down-thick
+          -#     .media-body.align-self-center
+          -#       .transaction-data
+          -#         %h3.m-0 Receive BTC
+          -#         %p.text-muted.mb-0 25 May 2019 01:25 PM
+          -#     / end media body
+          -#   %span.text-success 0.012458632 BTC
+
+
+  -# .col-lg-4
     .card
       .card-body
         %h3.vol-btc.float-md-right.float-sm-none
           BTC 7324.88
           %small.text-muted (USD)
-        %h4.header-title.mt-0.mb-3 BTC Volume by Currency
+        %h4.header-title.mt-0.mb-3 Wallet Distribution
         #animating-donut.ct-chart.ct-golden-section.mt-5.mb-4.btc-volume-chart
         %ul.list-unstyled.list-inline.text-center.d-flex.justify-content-around.mb-0
           %li.list-inline-item.mt-2
@@ -209,7 +158,7 @@
       / end card-body
     / end card
   / end col
-  .col-lg-4
+  -# .col-lg-4
     .card
       .card-body
         %h4.header-title.mt-0.mb-3 Market cap
@@ -317,7 +266,7 @@
     / end card
   / end col
 / end row
-.row
+-# .row
   .col-lg-4
     .card
       .card-body
@@ -438,7 +387,7 @@
   / end col
 / end row
 .row
-  .col-lg-4
+  -# .col-lg-4
     .card
       .card-body
         %a.float-right.text-info{:href => ""} View All
@@ -493,7 +442,7 @@
       / end card-body
     / end card
   / end col
-  .col-lg-8
+  .col-lg-12
     .card
       .card-body
         %h4.mt-0.mb-3.header-title Historical Bitcoin Price and Volume

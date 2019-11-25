@@ -8,8 +8,10 @@ class CreateCoins < ActiveRecord::Migration[6.0]
     end
 
     Coin.create name: "Bitcoin", symbol: "BTC"
+    Coin.create name: "Bitcoin Cash", symbol: "BCH"
+    Coin.create name: "DogeCoin", symbol: "DOGE"
+    Coin.create name: "DASH", symbol: "DASH"
     Coin.create name: "Litecoin", symbol: "LTC"
-    Coin.create name: "Doge Coin", symbol: "DOGE"
-    Coin.create name: "BTrash", symbol: "BCH"
+        
   end
 end

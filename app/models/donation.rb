@@ -6,6 +6,8 @@ class Donation < ApplicationRecord
   belongs_to :coin, required: true
   has_many :donation_payments #, class_name: "DonationPayment"
 
+  scope :paid, -> { where "total_paid_crypto > 0" }
+
 
   validates :uuid, presence: true
   validates :amount, numericality: {greater_than: 0}
