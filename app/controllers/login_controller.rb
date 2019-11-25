@@ -26,6 +26,8 @@ class LoginController <  Devise::OmniauthCallbacksController
     platform = current_streamer.connected_platforms.find_or_initialize_by(provider: hash["provider"])
     platform.token = hash["credentials"]["token"]
     platform.refresh_token = hash["credentials"]["refresh_token"]
+    platform.name = hash["info"]["name"]
+    platform.uid = hash["uid"]
     platform.save
     redirect_to [:internal, :connected_platforms]
   end

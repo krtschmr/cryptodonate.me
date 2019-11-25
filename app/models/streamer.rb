@@ -25,6 +25,10 @@ class Streamer < ApplicationRecord
   end
 
   def connected_with?(provider)
+    !!connection(provider)
+  end
+
+  def connection(provider)
     connected_platforms.find_by(provider: provider.to_s.downcase)
   end
 

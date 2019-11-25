@@ -3,7 +3,10 @@
 
 -[:streamlabs, :streamelements].each do |platform|
   -if current_streamer.connected_with?(platform)
+    -connection = current_streamer.connection(platform)
     %h4=platform
+    %p
+      Connected with #{connection.uid} / #{connection.name} on #{connection.created_at}
     %p
       =link_to disconnect_internal_connected_platform_path(platform), class: "btn btn-sm btn-outline-danger" do
         Disconnect
