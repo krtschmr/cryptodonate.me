@@ -1,6 +1,6 @@
 class TwitchApi
 
-  def self.profile_photo(name)
+  def self.profile_photo(name, _uid)
     data(name).profile_image_url
   end
 

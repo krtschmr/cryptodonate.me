@@ -20,17 +20,15 @@
                   =link_to omniauth_authorize_path(:streamer, :twitch), class: "btn btn-twitch btn-round btn-block waves-effect waves-light" do
                     Login with Twitch
 
-
-                  %button.btn.btn-primary.btn-round.btn-block.waves-effect.waves-light{:type => "submit"}
+                  =link_to omniauth_authorize_path(:streamer, :mixer), class: "btn btn-primary btn-round btn-block waves-effect waves-light" do
                     Login with Mixer
-                    -# %i.fas.fa-sign-in-alt.ml-1
 
 
       .account-social.text-center.mt-4
         %h6.my-4 cryptodonate.me
 
 
--# 
+-#
 -# %h1 startpage
 -#
 -# -if current_streamer

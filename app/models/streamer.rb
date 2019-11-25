@@ -35,7 +35,8 @@ class Streamer < ApplicationRecord
   def refresh_profile_photo!
     # todo
     # either call it async or call it async inside the login controller
-    update(profile_photo_url: provider_class.profile_photo(name))
+    url = provider_class.profile_photo(name, uid)
+    update(profile_photo_url: url)
   end
 
 
