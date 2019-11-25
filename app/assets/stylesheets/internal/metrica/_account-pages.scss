@@ -1,6 +1,6 @@
 //
 // Account Pages
-// 
+//
 
 .account-body{
   background-color: $account-body;
@@ -31,7 +31,7 @@
         color: $gray-700;
         font-size: 22px;
       }
-    }  
+    }
   }
   .auth-form{
     .form-control{
@@ -48,12 +48,12 @@
       position: absolute;
       right: 3px;
       z-index: 100;
-      top: 3px; 
-      color: $info;     
-    }    
+      top: 3px;
+      color: $info;
+    }
   }
   &.accountbg {
-    background-image: url("../images/acount-page.jpg");
+    background-image: asset-url("acount-page.jpg");
     background-size: cover;
     background-position: center center;
     width: 100%;
@@ -93,7 +93,7 @@
       background-color: $gray-200;
       width: 110px;
     }
-    
+
     a{
       i {
         width: 36px;
@@ -138,6 +138,3 @@
     margin-top: 34px;
   }
 }
-
-
-

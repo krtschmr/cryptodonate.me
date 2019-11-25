@@ -4,7 +4,7 @@ class StreamlabsApi
     token = donation.streamer.connected_platforms.find_by(provider: :streamlabs).token
 
     uri = URI("https://streamlabs.com/api/v1.0/donations")
-    binding.pry4
+    #binding.pry
     params = {
       "name": donation.name,
       "message": donation.message,
@@ -19,6 +19,7 @@ class StreamlabsApi
     }
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
+
     response = http.post(uri.path, params.to_json, headers)
 
   end

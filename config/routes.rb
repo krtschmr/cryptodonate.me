@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get 'internal/platforms/connect', to: 'internal/platforms#connect'
   end
 
+  get :login, to: "sessions#new", as: :login
   get :logout, to: "sessions#logout", as: :logout
+
 
   # Everything the user can do when he is logged in
   namespace :internal do
