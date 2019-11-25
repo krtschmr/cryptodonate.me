@@ -69,3 +69,5 @@ gem 'rails-erd', group: :development
 
 gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api'
 gem "money"
+gem 'money-open-exchange-rates'
+
