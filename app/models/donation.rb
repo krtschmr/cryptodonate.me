@@ -46,7 +46,30 @@ class Donation < ApplicationRecord
     NotificationTrigger.call(self)
   end
 
+  def refresh_payment_data!
+    amount_received = donation_payments.confirmed.sum(:amount)
+    self.total_paid_crypto = amount_received
+
+    # the amount we received is the exact amount we asked for. the user didn't pay more or less
+    # and the user paid within 10 minutes (TODO implemenmt time check!). so we can say, that the user paid the typed in fiat amount
+    if amount_received != payment_amount
+      # set the payment amount
+      # calculate the USD Value of the donation
+      # recalculate the fiat_value in the selected currency
+      self.payment_amount = amount_received
+      self.usd_value = payment_amount * coin.price
+      self.amount = if currency == "USD"
+        usd_value
+      else
+        Money.new(usd_value * 100, "USD").exchange_to(currency)
+      end
+    end
+    self.state = "paid"
+    self.save
+  end
+
   private
+
 
   def set_payment_amount
     self.payment_amount = calculated_usd_value.to_d / coin.price

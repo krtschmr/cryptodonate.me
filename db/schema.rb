@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_044159) do
+ActiveRecord::Schema.define(version: 2019_11_26_023437) do
+
+  create_table "balances", force: :cascade do |t|
+    t.integer "streamer_id", null: false
+    t.string "coin", limit: 20, null: false
+    t.decimal "balance", precision: 18, scale: 8, default: "0.0"
+    t.decimal "reserved", precision: 18, scale: 8, default: "0.0"
+    t.decimal "available", precision: 18, scale: 8, default: "0.0"
+    t.index ["coin"], name: "index_balances_on_coin"
+    t.index ["streamer_id", "coin"], name: "index_balances_on_streamer_id_and_coin", unique: true
+    t.index ["streamer_id"], name: "index_balances_on_streamer_id"
+  end
 
   create_table "coins", force: :cascade do |t|
     t.string "name"
@@ -79,14 +90,6 @@ ActiveRecord::Schema.define(version: 2019_11_25_044159) do
     t.index ["streamer_id"], name: "index_donations_on_streamer_id"
   end
 
-  create_table "exchange_rates", force: :cascade do |t|
-    t.string "from", null: false
-    t.string "to", null: false
-    t.decimal "rate", precision: 15, scale: 6, null: false
-    t.index ["from"], name: "index_exchange_rates_on_from"
-    t.index ["to"], name: "index_exchange_rates_on_to"
-  end
-
   create_table "incoming_transactions", force: :cascade do |t|
     t.integer "coin_id"
     t.integer "donation_id"
@@ -106,23 +109,22 @@ ActiveRecord::Schema.define(version: 2019_11_25_044159) do
   end
 
   create_table "ledger_entries", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "streamer_id"
     t.integer "coin_id"
-    t.string "type", null: false
     t.integer "donation_id"
-    t.integer "crypto_payment_id"
+    t.integer "donation_payment_id"
     t.integer "withdrawal_id"
     t.decimal "amount", precision: 18, scale: 8
+    t.decimal "balance", precision: 18, scale: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_ledger_entries_on_coin_id"
-    t.index ["crypto_payment_id"], name: "index_ledger_entries_on_crypto_payment_id"
     t.index ["donation_id"], name: "index_ledger_entries_on_donation_id"
-    t.index ["type"], name: "index_ledger_entries_on_type"
-    t.index ["user_id", "coin_id", "type"], name: "index_ledger_entries_on_user_id_and_coin_id_and_type"
-    t.index ["user_id", "coin_id"], name: "index_ledger_entries_on_user_id_and_coin_id"
-    t.index ["user_id", "type"], name: "index_ledger_entries_on_user_id_and_type"
-    t.index ["user_id"], name: "index_ledger_entries_on_user_id"
+    t.index ["donation_payment_id"], name: "index_ledger_entries_on_donation_payment_id"
+    t.index ["streamer_id", "coin_id"], name: "index_ledger_entries_on_streamer_id_and_coin_id"
+    t.index ["streamer_id", "donation_id"], name: "index_ledger_entries_on_streamer_id_and_donation_id"
+    t.index ["streamer_id", "donation_payment_id"], name: "index_ledger_entries_on_streamer_id_and_donation_payment_id"
+    t.index ["streamer_id"], name: "index_ledger_entries_on_streamer_id"
     t.index ["withdrawal_id"], name: "index_ledger_entries_on_withdrawal_id"
   end
 

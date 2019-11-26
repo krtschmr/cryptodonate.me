@@ -43,8 +43,8 @@
                     %p.text-muted.mb-0 USD
                 / end media body
               .coin-bal
-                %h3.m-0 0.123123 #{coin.symbol.upcase}
-                %p.text-muted.mb-0 $412 USD
+                %h3.m-0 #{current_streamer.balance(coin).balance} #{coin.symbol.upcase}
+                %p.text-muted.mb-0.text-right $412 USD
           -# %h3.text-center
             Total: $1333.37
 
@@ -77,9 +77,19 @@
     .card
       .card-body
         %h4.mt-0.mb-3.header-title Transaction History
-        %script{:src => "https://widgets.cryptocompare.com/serve/v1/coin/histo_week?fsym=BTC&tsym=USD&app=www.cryptocompare.com", :type => "text/javascript"}
-      / end card-body
-    / end card
-  / end col
-/ end row
-/ container
+
+        .table-responsive
+          %table.table.table-bordered.mb-0
+            %thead.thead-light
+              %tr
+                %th Date
+                %th Coin
+                %th Amount
+                %th *info
+            %tbody
+              -current_streamer.ledger_entries.order(id: :desc).limit(10).each do |entry|
+                %tr
+                  %td=entry.created_at
+                  %td=entry.coin
+                  %td.text-success=entry.amount
+                  %td Donation from TimVanmonero 10 USD

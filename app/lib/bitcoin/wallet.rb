@@ -8,8 +8,8 @@ module Bitcoin::Wallet
   end
 
   def generate_address
-    # "1BTC...."
-    $bitcoin_rpc.getnewaddress("myaddress", "bech32")
+    #    $bitcoin_rpc.getnewaddress("myaddress", "bech32")
+    "1BTC...."
   end
 
   def get_transaction(tx_id)

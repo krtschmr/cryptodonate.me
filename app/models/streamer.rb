@@ -1,10 +1,10 @@
 class Streamer < ApplicationRecord
   devise :rememberable, :trackable, :omniauthable, omniauth_providers: %i[twitch mixer streamelements streamlabs]
 
+  has_many :balances
   has_many :donations
-
   has_many :connected_platforms
-
+  has_many :ledger_entries
 
   before_create {
     self.donation_url = name.downcase
@@ -43,6 +43,22 @@ class Streamer < ApplicationRecord
     update(profile_photo_url: url)
   end
 
+  # def balances(scope = nil)
+  #   if scope
+  #     balance(scope)
+  #   else
+  #     bal = active_assets_balances.pluck(:asset, :balance, :reserved, :available).map{|k,b,r,a|
+  #       {k => {available: a, reserved: r, balance: b}}
+  #     }.reduce(Hash.new, :merge)
+  #     bal["BTC"] = {available: 0.0.to_d, reserved: 0.0.to_d, balance: 0.0.to_d}  unless bal["BTC"] # always include EUR or BTC
+  #     bal["EUR"] = {available: 0.0.to_d, reserved: 0.0.to_d, balance: 0.0.to_d}  unless bal["EUR"] # always include EUR or BTC
+  #     bal
+  #   end
+  # end
+
+  def balance(coin)
+    balances.find_by(coin: coin.to_s.upcase) || balances.create(coin: coin.to_s.upcase)
+  end
 
 
 end

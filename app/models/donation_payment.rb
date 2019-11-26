@@ -4,7 +4,11 @@ class DonationPayment < ApplicationRecord
     belongs_to :donation, required: true
     belongs_to :incoming_transaction, required: true
 
+    scope :confirmed, ->{ where state: :confirmed}
+
     after_initialize { self.coin ||= donation.coin }
+
+    after_commit :update_donation!, if: :confirmed?
 
     def confirmed?
       state == "confirmed"
@@ -19,6 +23,14 @@ class DonationPayment < ApplicationRecord
     end
 
     private
+
+    def update_donation!
+      donation.refresh_payment_data! if confirmed?
+    end
+
+    def create_ledger_entry!
+      donation.streamer.ledger_entries.create!(coin: self.coin, donation: self.donation, donation_payment: self, amount: self.amount)
+    end
 
     def confirmed_transaction?
       incoming_transaction.confirmed?
