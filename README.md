@@ -101,3 +101,8 @@ This is a community project, created by Tim Van Monero (live streamed on twitch.
 
 
 Noticeable mentions: When asking if somebody haven't been mentioned in the TVM License, someone felt _exhiled_ and had to *cough cough*
+
+
+------
+
+for serious webdesign, have a look here: https://www.twitch.tv/videos/470208236
