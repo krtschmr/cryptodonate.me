@@ -4,7 +4,7 @@
   .col-lg-8
     .card
       .card-body
-        .crypto-report-history.d-flex.justify-content-end
+        -# .crypto-report-history.d-flex.justify-content-end
           %ul.nav
             %li.nav-item
               %a.nav-link{:href => "#"} Hour
@@ -19,7 +19,7 @@
             .media
               .media-body.align-self-center
                 .coin-bal
-                  %h4.m-0 Your total balance
+                  %h4.header-title.m-0 Your total balance
 
 
         #crypto_dash_main.apex-charts
@@ -57,7 +57,7 @@
     .card
       .card-body
         =link_to  [:internal, :donations], class: "float-right text-info" do
-          View All        
+          View All
         %h4.header-title.mt-0.mb-3 Donation History
         %ul.list-unsyled.m-0.pl-0.transaction-history
           -current_streamer.donations.paid.order(id: :desc).limit(5).each do |donation|

@@ -111,13 +111,13 @@
                 =current_streamer.provider.capitalize
                 %i.mdi.mdi-chevron-down
             .dropdown-menu.dropdown-menu-right
-              %a.dropdown-item{:href => "#"}
+              -# %a.dropdown-item{:href => "#"}
                 %i.dripicons-user.text-muted.mr-2
                 Profile
-              %a.dropdown-item{:href => "#"}
+              =link_to [:internal, :wallets], class: "dropdown-item" do
                 %i.dripicons-wallet.text-muted.mr-2
-                My Wallet
-              %a.dropdown-item{:href => "#"}
+                My Wallets
+              -# %a.dropdown-item{:href => "#"}
                 %i.dripicons-gear.text-muted.mr-2
                 Settings
               =link_to internal_connected_platforms_path, class: "dropdown-item" do
@@ -152,19 +152,19 @@
       .left-sidenav
         .main-icon-menu
           %nav.nav
-            %a.nav-link{"data-original-title" => "Analytics", "data-placement" => "top", "data-toggle" => "tooltip-custom", :href => "#MetricaAnalytic", :title => ""}
+            -# %a.nav-link{"data-original-title" => "Analytics", "data-placement" => "top", "data-toggle" => "tooltip-custom", :href => "#MetricaAnalytic", :title => ""}
               %svg#Layer_1.nav-svg{:style => "enable-background:new 0 0 512 512;", :version => "1.1", :viewbox => "0 0 512 512", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
                 %g
                   %path{:d => "M184,448h48c4.4,0,8-3.6,8-8V72c0-4.4-3.6-8-8-8h-48c-4.4,0-8,3.6-8,8v368C176,444.4,179.6,448,184,448z"}
                   %path.svg-primary{:d => "M88,448H136c4.4,0,8-3.6,8-8V296c0-4.4-3.6-8-8-8H88c-4.4,0-8,3.6-8,8V440C80,444.4,83.6,448,88,448z"}
                   %path.svg-primary{:d => "M280.1,448h47.8c4.5,0,8.1-3.6,8.1-8.1V232.1c0-4.5-3.6-8.1-8.1-8.1h-47.8c-4.5,0-8.1,3.6-8.1,8.1v207.8\n                                        C272,444.4,275.6,448,280.1,448z"}
                   %path{:d => "M368,136.1v303.8c0,4.5,3.6,8.1,8.1,8.1h47.8c4.5,0,8.1-3.6,8.1-8.1V136.1c0-4.5-3.6-8.1-8.1-8.1h-47.8\n                                        C371.6,128,368,131.6,368,136.1z"}
-            / end MetricaAnalytic
+
             %a.nav-link{"data-original-title" => "Crypto", "data-placement" => "top", "data-toggle" => "tooltip-custom", :href => "#MetricaCrypto", :title => ""}
               %svg.nav-svg{:viewbox => "0 0 512 512", :xmlns => "http://www.w3.org/2000/svg"}
                 %path.svg-primary{:d => "M410.5 279.2c-5-11.5-12.7-21.6-28.1-30.1-8.2-4.5-16.1-7.8-25.4-10 5.4-2.5 10-5.4 16.3-11 7.5-6.6 13.1-15.7 15.6-23.3 2.6-7.5 4.1-18 3.5-28.2-1.1-16.8-4.4-33.1-13.2-44.8-8.8-11.7-21.2-20.7-37.6-27-12.6-4.8-25.5-7.8-45.5-8.9V32h-40v64h-32V32h-41v64H96v48h27.9c8.7 0 14.6.8 17.6 2.3 3.1 1.5 5.3 3.5 6.5 6 1.3 2.5 1.9 8.4 1.9 17.5V343c0 9-.6 14.8-1.9 17.4-1.3 2.6-2 4.9-5.1 6.3-3.1 1.4-3.2 1.3-11.8 1.3h-26.4L96 416h87v64h41v-64h32v64h40v-64.4c26-1.3 44.5-4.7 59.4-10.3 19.3-7.2 34.1-17.7 44.7-31.5 10.6-13.8 14.9-34.9 15.8-51.2.7-14.5-.9-33.2-5.4-43.4zM224 150h32v74h-32v-74zm0 212v-90h32v90h-32zm72-208.1c6 2.5 9.9 7.5 13.8 12.7 4.3 5.7 6.5 13.3 6.5 21.4 0 7.8-2.9 14.5-7.5 20.5-3.8 4.9-6.8 8.3-12.8 11.1v-65.7zm28.8 186.7c-7.8 6.9-12.3 10.1-22.1 13.8-2 .8-4.7 1.4-6.7 1.9v-82.8c5 .8 7.6 1.8 11.3 3.4 7.8 3.3 15.2 6.9 19.8 13.2 4.6 6.3 8 15.6 8 24.7 0 10.9-2.8 19.2-10.3 25.8z"}
             / end MetricaCrypto
-            %a.nav-link{"data-original-title" => 'Projects', "data-placement" => "top", "data-toggle" => "tooltip-custom", :href => "#MetricaProject", :title => ""}
+            %a.nav-link{"data-original-title" => 'Overlays', "data-placement" => "top", "data-toggle" => "tooltip-custom", :href => "#MetricaProject", :title => ""}
               %svg.nav-svg{:viewbox => "0 0 512 512", :xmlns => "http://www.w3.org/2000/svg"}
                 %path.svg-primary{:d => "M256 32C132.288 32 32 132.288 32 256s100.288 224 224 224 224-100.288 224-224S379.712 32 256 32zm135.765 359.765C355.5 428.028 307.285 448 256 448s-99.5-19.972-135.765-56.235C83.972 355.5 64 307.285 64 256s19.972-99.5 56.235-135.765C156.5 83.972 204.715 64 256 64s99.5 19.972 135.765 56.235C428.028 156.5 448 204.715 448 256s-19.972 99.5-56.235 135.765z"}
                 %path{:d => "M200.043 106.067c-40.631 15.171-73.434 46.382-90.717 85.933H256l-55.957-85.933zM412.797 288A160.723 160.723 0 0 0 416 256c0-36.624-12.314-70.367-33.016-97.334L311 288h101.797zM359.973 134.395C332.007 110.461 295.694 96 256 96c-7.966 0-15.794.591-23.448 1.715L310.852 224l49.121-89.605zM99.204 224A160.65 160.65 0 0 0 96 256c0 36.639 12.324 70.394 33.041 97.366L201 224H99.204zM311.959 405.932c40.631-15.171 73.433-46.382 90.715-85.932H256l55.959 85.932zM152.046 377.621C180.009 401.545 216.314 416 256 416c7.969 0 15.799-.592 23.456-1.716L201.164 288l-49.118 89.621z"}
@@ -196,26 +196,26 @@
                     %i.dripicons-device-desktop>
                     Dashboard
                 %li.nav-item
-                  =link_to internal_donations_path, class: "nav-link" do 
+                  =link_to internal_donations_path, class: "nav-link" do
                     %i.dripicons-swap>
                     Donations
-                %li.nav-item
+                -# %li.nav-item
                   %a.nav-link{:href => "#"}
                     %i.dripicons-swap>
                     Campaigns
                 %li.nav-item
-                  %a.nav-link{:href => "#"}
+                  =link_to [:internal, :wallets], class: "nav-link" do
                     %i.dripicons-wallet>
-                    My Wallet
+                    My Wallets
                 %li.nav-item
                   %a.nav-link{:href => "#"}
                     %i.dripicons-calendar>
                     Donation Page
-                %li.nav-item
+                -# %li.nav-item
                   %a.nav-link{:href => "#"}
                     %i.dripicons-blog>
                     Profile
-                %li.nav-item
+                -# %li.nav-item
                   %a.nav-link{:href => "#"}
                     %i.dripicons-stack>
                     Settings
@@ -224,11 +224,11 @@
               .title-box
                 %h6.menu-title Overlays
               %ul.nav
-                %li.nav-item
+                -# %li.nav-item
                   %a.nav-link{:href => "#"}
                     %i.dripicons-view-thumb>
                     My Overlays
-                %li.nav-item
+                -# %li.nav-item
                   %a.nav-link{:href => "#"}
                     %i.dripicons-user-id>
                     Create new Overlay
