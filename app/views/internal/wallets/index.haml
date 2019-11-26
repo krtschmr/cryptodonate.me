@@ -25,9 +25,14 @@
               %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path "cryptoicons/color/#{balance.referenced_coin.symbol.downcase}.png"}"}
               .media-body.align-self-center
                 .coin-bal
-                  %h3.m-0=balance.balance
+                  %h3.m-0
+                    =formatted(balance.balance, balance.coin, {})
+                    %span.badge.badge-soft-purple=balance.referenced_coin.name
+
                   %p.text-muted.mb-0 $ 312.12
               / end media body
+
             -if balance.available > 0
               %button.btn.btn-danger.btn-sm.px-3 Withdraw
-            -# %span.badge.badge-soft-purple=balance.referenced_coin.name
+              
+            %button.btn.btn-primary.btn-sm.px-3 Details
