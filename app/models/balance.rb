@@ -21,7 +21,7 @@ class Balance < ApplicationRecord
   end
 
   def referenced_coin
-    Coin.find(coin)
+    Coin.find_by(symbol: coin)
   end
 
   def add!(amount)

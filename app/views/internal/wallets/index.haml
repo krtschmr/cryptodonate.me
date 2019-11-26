@@ -1,1 +1,33 @@
 -content_for :title, "My Wallets"
+
+
+.col-lg-12
+  .card
+    .card-body
+      .row
+        .col-12
+          .wallet-bal-usd
+            %h4.wallet-title.m-0 Your Total Balence
+            %span.text-muted.font-12 30 june 2019
+            %h3.text-center $85692.00
+          -# %p.font-15.text-success.text-center.mb-4
+            + $455.00
+            %span.font-12.text-muted
+              (6.2%
+              = succeed ")" do
+                %i.mdi.mdi-trending-up.text-success
+    / end card-body
+    .card-body.pt-0
+      %ul.list-group.wallet-bal-crypto
+        -current_streamer.balances.each do |balance|
+          %li.list-group-item.align-items-center.d-flex.justify-content-between
+            .media
+              %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path "cryptoicons/color/#{balance.referenced_coin.symbol.downcase}.png"}"}
+              .media-body.align-self-center
+                .coin-bal
+                  %h3.m-0=balance.balance
+                  %p.text-muted.mb-0 $ 312.12
+              / end media body
+            -if balance.available > 0
+              %button.btn.btn-danger.btn-sm.px-3 Withdraw
+            -# %span.badge.badge-soft-purple=balance.referenced_coin.name
