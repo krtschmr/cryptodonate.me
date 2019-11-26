@@ -56,7 +56,8 @@
   .col-lg-4
     .card
       .card-body
-        %a.float-right.text-info{:href => ""} View All
+        =link_to  [:internal, :donations], class: "float-right text-info" do
+          View All        
         %h4.header-title.mt-0.mb-3 Donation History
         %ul.list-unsyled.m-0.pl-0.transaction-history
           -current_streamer.donations.paid.order(id: :desc).limit(5).each do |donation|

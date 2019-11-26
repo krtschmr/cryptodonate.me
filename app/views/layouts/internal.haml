@@ -192,11 +192,11 @@
                 -# %h6.menu-title Crypto
               %ul.nav
                 %li.nav-item
-                  =link_to [:internal, :root], class: "nav-link" do 
+                  =link_to [:internal, :root], class: "nav-link" do
                     %i.dripicons-device-desktop>
                     Dashboard
                 %li.nav-item
-                  %a.nav-link{:href => "#"}
+                  =link_to internal_donations_path, class: "nav-link" do 
                     %i.dripicons-swap>
                     Donations
                 %li.nav-item

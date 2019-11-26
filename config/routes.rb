@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     # match "/users/auth/sreamlabs", via: [:get, :post], to: "connections#streamlabs"
     # match "/connect/streamelements", via: [:get, :post], to: "connections#passthru"
 
+    resources :donations, only: [:index] 
 
     resources :connected_platforms, path: "platforms", only: [:index, :destroy] do
       member do

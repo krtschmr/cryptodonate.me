@@ -1,0 +1,39 @@
+-content_for(:title, "Your Donations")
+
+.row
+  .col-lg-12
+    .card
+      .card-body
+        %ul.list-unsyled.m-0.pl-0.transaction-history
+          -current_streamer.donations.order(id: :desc).limit(50).each do |donation|
+            %li.align-items-center.d-flex.justify-content-between
+              .media
+                -# .transaction-icon
+                  %i.mdi.mdi-arrow-top-right-thick
+                .media-body.align-self-center
+                  .transaction-data
+                    %h3.m-0
+                      -if donation.name.present?
+                        =donation.name
+                      -else
+                        Anonymous
+
+                      donated
+                      =Money.new(donation.amount * 100, donation.currency).format(symbol: donation.currency.to_s + ' ')
+                      -unless donation.currency == "USD"
+                        (#{Money.new(donation.amount * 100, donation.currency).exchange_to(:usd).format})
+
+                    %p.text-muted.mb-0
+                      -if donation.message.present?
+                        =donation.message
+                      -else
+                        \- no message -
+
+                / end media body
+              -if donation.total_paid_crypto.to_d > 0
+                %span.text-success
+                  =donation.total_paid_crypto
+                  =donation.coin.symbol.upcase
+              -else
+                %span
+                  unpaid
