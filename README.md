@@ -98,3 +98,6 @@ User can choose donation currency out of
 You are permitted to use this project in your personal development environment for testing and learning purposes. You are allowed to make improvements and submit pull requests. You are not allowed to use any of the code, in a commercial or production environment. You are not allowed to add bugs, said ratatapowpow. MrZax2000 also said, that this is a serious thing.
 
 This is a community project, created by Tim Van Monero (live streamed on twitch.tv). Its sole purpose is to help Streamers to receive crypto donations.
+
+
+Noticeable mentions: When asking if somebody haven't been mentioned in the TVM License, someone felt _exhiled_ and had to *cough cough*
