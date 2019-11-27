@@ -68,6 +68,10 @@ class Donation < ApplicationRecord
     self.save
   end
 
+  def paid?
+    total_paid_crypto.to_d > 0
+  end
+
   private
 
 
@@ -86,7 +90,7 @@ class Donation < ApplicationRecord
 
   def set_counter
     # internal counter so the streamer can see how many donations came per coin.
-    # we need this to actually derive addresses for his xPUBkey
+    # we need this to actually derive addrespaid?ses for his xPUBkey
     self.counter = streamer.donations.where(coin: coin).maximum(:counter).to_i.next
   end
 

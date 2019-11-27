@@ -171,12 +171,12 @@
 
         .main-menu-inner
           .menu-body.slimscroll
-            #MetricaAnalytic.main-icon-menu-pane
+            -# #MetricaAnalytic.main-icon-menu-pane
               .title-box
                 %h6.menu-title Analytics
               %ul.nav
                 %li.nav-item
-                  %a.nav-link{:href => "#"}
+                  =link_to internal_root_path, class: "nav-link" do
                     %i.dripicons-meter>
                     Dashboard
                 %li.nav-item
@@ -208,7 +208,7 @@
                     %i.dripicons-wallet>
                     My Wallets
                 %li.nav-item
-                  %a.nav-link{:href => "#"}
+                  %a.nav-link{:href => "/donation-page"}
                     %i.dripicons-calendar>
                     Donation Page
                 -# %li.nav-item

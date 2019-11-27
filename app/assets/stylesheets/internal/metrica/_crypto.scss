@@ -45,19 +45,19 @@
 .ccc-widget {
   .histoTitle{
     display: none;
-  }  
+  }
   div:first-child{
     border:none !important;
   }
   div.histoRow:nth-of-type(2) {
     font-weight: 500 !important;
     color: $gray-700 !important;
-    font-size: 13px !important; 
+    font-size: 13px !important;
     background-color: $light;
     .histoChange{
       font-weight: 500;
-    }  
-  
+    }
+
   }
   div.histoRow{
     border-bottom-color: $table-border-color !important;
@@ -130,10 +130,10 @@
       text-align: center;
       background-color: rgba($primary,0.15);
       color: $primary;
-      border-radius: 50%; 
+      border-radius: 50%;
     }
   }
-  
+
   .transaction-data{
     h3{
       font-size: 14px;
@@ -378,18 +378,17 @@
     i{
       font-size: 24px;
     }
-    &.set-icon-purple{      
+    &.set-icon-purple{
     background-color: rgba($purple,0.1);
     color: $purple;
     }
-    &.set-icon-success{      
+    &.set-icon-success{
     background-color: rgba($success,0.1);
     color: $success;
     }
-    &.set-icon-danger{      
+    &.set-icon-danger{
     background-color: rgba($danger,0.1);
     color: $danger;
     }
   }
 }
-

@@ -10,30 +10,45 @@
               .media
                 -# .transaction-icon
                   %i.mdi.mdi-arrow-top-right-thick
-                .media-body.align-self-center
-                  .transaction-data
-                    %h3.m-0
-                      -if donation.name.present?
-                        =donation.name
-                      -else
-                        Anonymous
+                .transaction-icon
+                  -if donation.paid?
+                    %i.mdi.mdi-plus.text-success
+                  -else
+                    -# %i.mdi.mdi-minus.text-danger
+                    %i.mdi.unpaid
 
-                      donated
-                      =Money.new(donation.amount * 100, donation.currency).format(symbol: donation.currency.to_s + ' ')
+
+                .media-body.align-self-center
+
+                  .transaction-data
+
+                    .m-0
+                      %strong
+                        -if donation.name.present?
+                          =donation.name
+                        -else
+                          Anonymous
+
+                      -if donation.paid?
+                        donated
+                      -else
+                        wanted to donate
+                      %strong=Money.new(donation.amount * 100, donation.currency).format(symbol: donation.currency.to_s + ' ')
                       -unless donation.currency == "USD"
                         (#{Money.new(donation.amount * 100, donation.currency).exchange_to(:usd).format})
 
-                    %p.text-muted.mb-0
+                      -if donation.total_paid_crypto.to_d > 0
+                        %strong.text-success
+                          =donation.total_paid_crypto
+                          =donation.coin.symbol.upcase
+
+
+                    -# %p.text-muted.mb-0
                       -if donation.message.present?
                         =donation.message
                       -else
                         \- no message -
 
                 / end media body
-              -if donation.total_paid_crypto.to_d > 0
-                %span.text-success
-                  =donation.total_paid_crypto
-                  =donation.coin.symbol.upcase
-              -else
-                %span
-                  unpaid
+              =link_to [:internal, donation], class: "btn btn-primary btn-sm" do
+                Details

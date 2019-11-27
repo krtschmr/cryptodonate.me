@@ -21,10 +21,10 @@
         });
     }
 
-   
+
     function initMetisMenu() {
         //metis menu
-        $("#main_menu_side_nav").metisMenu();
+        // $("#main_menu_side_nav").metisMenu();
     }
 
     function initLeftMenuCollapse() {
@@ -45,7 +45,7 @@
         }
     }
 
-   
+
 
     function initSerach() {
         $('.search-btn').on('click', function () {
@@ -77,34 +77,43 @@
             template: '<div class="tooltip tooltip-custom" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
         });
     }
-    
+    //
+    // if (!window.location.origin) {
+    //   window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    // }
 
     function initActiveMenu() {
         // === following js will activate the menu in left side bar based on url ====
+        var pageUrl = window.location.pathname.split(/[?#]/)[0];
         $(".left-sidenav a").each(function () {
-            var pageUrl = window.location.href.split(/[?#]/)[0];
-            if (this.href == pageUrl) {
+            let href = this.href.replace(window.location.origin, "");
+            let dashboard = href == "/internal"
+            const page_or_subpage = (pageUrl.startsWith(href) && !dashboard)
+            const startpage = (pageUrl == "/internal" && href == pageUrl)
+            if ( startpage || page_or_subpage ) {
                 $(this).addClass("active");
                 $(this).parent().parent().addClass("in");
                 $(this).parent().parent().addClass("mm-show");
                 $(this).parent().parent().prev().addClass("active");
                 $(this).parent().parent().parent().addClass("active");
                 $(this).parent().parent().parent().addClass("mm-active");
-                $(this).parent().parent().parent().parent().addClass("in");  
-                $(this).parent().parent().parent().parent().parent().addClass("active");  
-                $(this).parent().parent().parent().parent().parent().parent().addClass("active");              
+                $(this).parent().parent().parent().parent().addClass("in");
+                $(this).parent().parent().parent().parent().parent().addClass("active");
+                $(this).parent().parent().parent().parent().parent().parent().addClass("active");
                 var menu =  $(this).closest('.main-icon-menu-pane').attr('id');
                 $("a[href='#"+menu+"']").addClass('active');
-                
+            }
+            else {
+              // console.log(pageUrl, "didn't start with", href)
             }
         });
     }
 
-    
+
 
     function init() {
         initSlimscroll();
-        initMetisMenu();
+        // initMetisMenu();
         initLeftMenuCollapse();
         initEnlarge();
         initSerach();
