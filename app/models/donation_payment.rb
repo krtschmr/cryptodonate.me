@@ -7,7 +7,7 @@ class DonationPayment < ApplicationRecord
     scope :confirmed, ->{ where state: :confirmed}
 
     after_initialize { self.coin ||= donation.coin }
-
+    before_create { self.usd_value = coin.price * amount }
     after_commit :update_donation!, if: :confirmed?
 
     def confirmed?
@@ -25,7 +25,10 @@ class DonationPayment < ApplicationRecord
     private
 
     def update_donation!
-      donation.refresh_payment_data! if confirmed?
+      if confirmed?
+        donation.update(state: "paid")
+        donation.refresh_payment_data!
+      end
     end
 
     def create_ledger_entry!
@@ -48,6 +51,7 @@ end
 #  confirmed_at            :datetime
 #  detected_at             :datetime
 #  state                   :string           default("pending")
+#  usd_value               :decimal(10, 2)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  coin_id                 :integer

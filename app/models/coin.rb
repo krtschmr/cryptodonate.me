@@ -1,8 +1,8 @@
 class Coin < ApplicationRecord
 
-  has_many :donations
   has_many :donation_payments
   has_many :incoming_transactions
+  has_many :payment_addresses
 
   def to_s
     symbol

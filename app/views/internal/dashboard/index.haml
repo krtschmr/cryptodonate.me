@@ -67,12 +67,12 @@
                   %i.mdi.mdi-arrow-top-right-thick
                 .media-body.align-self-center
                   .transaction-data
-                    %h3.m-0 Receive BTC
+                    %h3.m-0=donation.name
                     %p.text-muted.mb-0=donation.created_at
                 / end media body
               %span.text-success
-                =donation.total_paid_crypto
-                =donation.coin.symbol.upcase
+                =Money.new(donation.usd_value * 100).format
+                -# =donation.coin.symbol.upcase
 
   .col-lg-8
     .card
@@ -93,4 +93,7 @@
                   %td=entry.created_at
                   %td=entry.coin
                   %td.text-success=entry.amount
-                  %td Donation from TimVanmonero 10 USD
+                  %td
+                    %strong=entry.donation.name
+                    donated
+                    %strong #{Money.new(entry.donation_payment.usd_value * 100).format}

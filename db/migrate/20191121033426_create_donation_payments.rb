@@ -8,6 +8,7 @@ class CreateDonationPayments < ActiveRecord::Migration[6.0]
       t.string :state, default: "pending"
       t.string :tx_id, null: false
       t.decimal :amount, precision: 18, scale: 8
+      t.decimal :usd_value, precision: 10, scale: 2      
       t.integer :block
       t.datetime :detected_at
       t.datetime :confirmed_at

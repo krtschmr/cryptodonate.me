@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_023437) do
+ActiveRecord::Schema.define(version: 2019_11_27_032625) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "streamer_id", null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_023437) do
     t.string "state", default: "pending"
     t.string "tx_id", null: false
     t.decimal "amount", precision: 18, scale: 8
+    t.decimal "usd_value", precision: 10, scale: 2
     t.integer "block"
     t.datetime "detected_at"
     t.datetime "confirmed_at"
@@ -70,42 +71,33 @@ ActiveRecord::Schema.define(version: 2019_11_26_023437) do
 
   create_table "donations", force: :cascade do |t|
     t.integer "streamer_id"
-    t.integer "coin_id"
     t.string "uuid", limit: 36, null: false
     t.string "state", default: "unpaid"
-    t.string "counter", default: "1"
     t.string "name", limit: 22
     t.string "message"
-    t.decimal "amount", precision: 9, scale: 2
-    t.string "currency"
     t.decimal "usd_value"
-    t.string "payment_address"
-    t.decimal "payment_amount", precision: 18, scale: 8
-    t.decimal "total_paid_fiat", precision: 9, scale: 2
-    t.decimal "total_paid_crypto", precision: 18, scale: 8
     t.boolean "alert_created", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["coin_id"], name: "index_donations_on_coin_id"
     t.index ["streamer_id"], name: "index_donations_on_streamer_id"
   end
 
   create_table "incoming_transactions", force: :cascade do |t|
     t.integer "coin_id"
-    t.integer "donation_id"
+    t.integer "payment_address_id", null: false
+    t.string "state", default: "pending"
     t.string "address", null: false
     t.string "tx_id", null: false
     t.integer "block"
     t.decimal "amount", precision: 18, scale: 8
     t.integer "confirmations", default: 0
-    t.string "state", default: "pending"
     t.boolean "bip125_replaceable", default: true
     t.boolean "trusted", default: false
     t.integer "received_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_incoming_transactions_on_coin_id"
-    t.index ["donation_id"], name: "index_incoming_transactions_on_donation_id"
+    t.index ["payment_address_id"], name: "index_incoming_transactions_on_payment_address_id"
   end
 
   create_table "ledger_entries", force: :cascade do |t|
@@ -126,6 +118,17 @@ ActiveRecord::Schema.define(version: 2019_11_26_023437) do
     t.index ["streamer_id", "donation_payment_id"], name: "index_ledger_entries_on_streamer_id_and_donation_payment_id"
     t.index ["streamer_id"], name: "index_ledger_entries_on_streamer_id"
     t.index ["withdrawal_id"], name: "index_ledger_entries_on_withdrawal_id"
+  end
+
+  create_table "payment_addresses", force: :cascade do |t|
+    t.integer "coin_id", null: false
+    t.integer "donation_id"
+    t.string "address"
+    t.boolean "used", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coin_id"], name: "index_payment_addresses_on_coin_id"
+    t.index ["donation_id"], name: "index_payment_addresses_on_donation_id"
   end
 
   create_table "streamers", force: :cascade do |t|

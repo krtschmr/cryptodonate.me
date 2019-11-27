@@ -33,14 +33,15 @@
                         donated
                       -else
                         wanted to donate
-                      %strong=Money.new(donation.amount * 100, donation.currency).format(symbol: donation.currency.to_s + ' ')
-                      -unless donation.currency == "USD"
+                      -# %strong=Money.new(donation.amount * 100, donation.currency).format(symbol: donation.currency.to_s + ' ')
+                      -# -unless donation.currency == "USD"
                         (#{Money.new(donation.amount * 100, donation.currency).exchange_to(:usd).format})
 
-                      -if donation.total_paid_crypto.to_d > 0
+                      -if donation.paid?
                         %strong.text-success
-                          =donation.total_paid_crypto
-                          =donation.coin.symbol.upcase
+                          =Money.new(donation.usd_value * 100).format
+
+                          (#{donation.donation_payments.collect{|payment| [ payment.amount.to_s, payment.coin.symbol ].join(" ") }.join(",")})
 
 
                     -# %p.text-muted.mb-0
