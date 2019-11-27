@@ -1,15 +1,6 @@
+=@donation.errors.inspect if @donation.errors.any?
 
-=image_tag @donation.streamer.profile_photo_url
-%h2 Create a new Donation for #{@donation.streamer.name}
-
-=@donation.errors.inspect
-
--# =form_with(model: @donation, url: @donation.streamer.donation_url, method: :post, local: true) do |f|
 =semantic_form_for(@donation, action: @donation.streamer.donation_url, method: :post) do |f|
-  =f.input :coin, as: :select
   =f.input :name
   =f.input :message
-  =f.input :currency, as: :select, collection: Donation::SUPPORTED_CURRENCIES
-  =f.input :amount, min: 10
-
   =f.submit

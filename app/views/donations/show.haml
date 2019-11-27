@@ -1,23 +1,5 @@
-%h2 Donation for #{@donation.streamer.name}
-
-
-=@donation.inspect
-
-
-
-.row.no-gutters
-  .col-12.col-md-6.text-center
-    =raw btc_qr_code(@donation)
-
-
-  .col-12.col-md-6.text-left
-
-    .col.mb-4
-      %strong Amount to pay
-      %br
-      #{@donation.payment_amount} #{@donation.coin.symbol.upcase}
-
-    .col
-      %strong Receiving address
-      %br
-      %span.break-all=@donation.payment_address
+-@donation.payment_addresses.each do |pa|
+  #select-payment-method
+    .method
+      =image_tag "cryptoicons/color/#{pa.coin.symbol.downcase}.png", size: 32
+      %span=pa.coin.name

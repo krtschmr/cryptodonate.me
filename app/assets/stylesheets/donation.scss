@@ -1,1 +1,53 @@
-@import "donation/qr"
+@import "donation/qr";
+
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #donation-box {
+    box-shadow: 5px 5px 5px 5px rgba(#000, 0.12);
+    width: 350px;
+    .header {
+      background: #334455;
+      display: flex;
+      padding: 10px;
+      color: #fff;
+      img {
+        height: 85px;
+        width: 85px;
+        border: 4px solid white;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      .info {
+
+      }
+    }
+    .body {
+
+    }
+  }
+}
+
+
+#select-payment-method {
+    .method {
+      display: flex;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      &:hover {
+        background: #eee;
+        cursor: pointer;
+        border-color: blue;
+      }
+      img {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+      }
+    }
+}

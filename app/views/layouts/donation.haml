@@ -4,8 +4,15 @@
     %title donate me money now!
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'internal', media: 'all'
     = stylesheet_link_tag 'donation', media: 'all'
     -# = javascript_pack_tag 'internal'
   %body
-    = yield
+    #wrapper
+      #donation-box
+        .header
+          =image_tag @donation.streamer.profile_photo_url
+          .info
+            %h5=@donation.streamer.name
+            %p Research project on the impact of basic income in the US.
+        .body
+          = yield
