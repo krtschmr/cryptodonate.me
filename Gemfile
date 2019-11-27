@@ -71,3 +71,4 @@ gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api'
 gem "money"
 gem 'money-open-exchange-rates'
 
+gem 'rqrcode', github: "krtschmr/rqrcode", branch: "render_method_AS_CSS"

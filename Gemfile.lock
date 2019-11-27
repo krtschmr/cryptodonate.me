@@ -12,6 +12,15 @@ GIT
       omniauth-oauth2 (~> 1.1)
 
 GIT
+  remote: https://github.com/krtschmr/rqrcode.git
+  revision: 9599e60562cc87ea06d6767de8ed1a675485a18d
+  branch: render_method_AS_CSS
+  specs:
+    rqrcode (1.1.2)
+      chunky_png (~> 1.0)
+      rqrcode_core (~> 0.1.0)
+
+GIT
   remote: https://github.com/mauricew/ruby-twitch-api
   revision: 694b8969a6133a8ba16609dd74c34b85c327d3be
   specs:
@@ -95,6 +104,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     choice (0.2.0)
+    chunky_png (1.3.11)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
@@ -224,6 +234,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rqrcode_core (0.1.1)
     ruby-graphviz (1.2.4)
     ruby_dep (1.5.0)
     rubyzip (2.0.0)
@@ -299,6 +310,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.1)
   rails-erd
+  rqrcode!
   sass-rails (>= 6)
   selenium-webdriver
   sqlite3

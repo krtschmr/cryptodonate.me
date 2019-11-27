@@ -1,0 +1,57 @@
+$primary: #0000FF;
+$qr-color: #666;
+$qr-outter-color: darken($primary, 10%);
+$size: 1px;
+
+#qrcode {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  // border: 1px solid $border-color;
+  // @extend .shadow-lg;
+  .qr-inner{
+    .r {
+      height: $size;
+      display: block;
+      line-height: $size;
+      font-size: 0;
+      margin: 0;
+      padding: 0;
+      letter-spacing: 0;
+      .c {
+        height: $size;
+        width: $size;
+        display: inline-block;
+        line-height: $size;
+        background: #fff;
+        &.round, &.square {
+          background: $qr-color;
+        }
+        &.round {
+          border-radius: 50%;
+        }
+      }
+      .rounded-tl {border-radius: 10px 0 0 0 }
+      .rounded-tr {border-radius: 0 10px 0 0 }
+      .rounded-br {border-radius: 0 0 10px 0 }
+      .rounded-bl {border-radius: 0 0 0 10px }
+      .rounded-tl.outter, .rounded-br.outter {border-radius: 0 0 0 0!important;}
+      .rounded-tr.inner, .rounded-bl.inner {border-radius: 0 0 0 0!important;}
+      .square.outter, .square.outter{
+        background: $qr-outter-color!important;
+        opacity: 0.75;
+      }
+      .square {
+        opacity: 0.65;
+      }
+    }
+    > img {
+      animation: beep 6s ease-in-out infinite;
+      user-select: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 10000;
+    }
+  }
+}
