@@ -1,6 +1,7 @@
 class Donation < ApplicationRecord
 
-  SUPPORTED_CURRENCIES = %W(USD EUR THB CAD)
+  SUPPORTED_CURRENCIES = %W(AUD BRL CAD CHF CZK DKK EUR GBP HKD INR JPY MXN PHP RUB SGD THB USD)
+
 
   belongs_to :streamer, required: true
   belongs_to :coin, required: true

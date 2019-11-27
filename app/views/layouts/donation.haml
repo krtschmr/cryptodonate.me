@@ -1,10 +1,10 @@
 !!!
 %html
   %head
-    %title donate me money now! 
+    %title donate me money now!
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all'
-    = javascript_pack_tag 'application'
+    = stylesheet_link_tag 'internal', media: 'all'
+    -# = javascript_pack_tag 'internal'
   %body
     = yield
