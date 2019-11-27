@@ -5,14 +5,19 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'donation', media: 'all'
+    = javascript_include_tag 'donation', media: 'all'
     -# = javascript_pack_tag 'internal'
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+
   %body
     #wrapper
       #donation-box
         .header
           =image_tag @donation.streamer.profile_photo_url
           .info
-            %h5=@donation.streamer.name
-            %p Research project on the impact of basic income in the US.
+            %h1=@donation.streamer.name
+            %h2 Research project on the impact of basic income in the US.
         .body
           = yield
+
+          -# %input#metadataName.sc-bHwgHz.dFrONU{:maxlength => "50", :minlength => "2", :placeholder => "Full name", :required => "", :value => ""}/

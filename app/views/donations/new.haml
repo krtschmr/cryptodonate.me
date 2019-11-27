@@ -1,6 +1,11 @@
-=@donation.errors.inspect if @donation.errors.any?
+%p.text
+  Please enter the following information:
 
-=semantic_form_for(@donation, action: @donation.streamer.donation_url, method: :post) do |f|
-  =f.input :name
-  =f.input :message
-  =f.submit
+-# =@donation.errors.inspect if @donation.errors.any?
+
+.class{style: "display: flex;"}
+  =form_with(model: @donation, action: @donation.streamer.donation_url, method: :post) do |f|
+    =f.text_field :name, class: :styled, placeholder: "Your name", spellcheck: false
+    =f.text_field :message, class: :styled, placeholder: "Your Message", spellcheck: false
+
+    =f.submit class: "btn"

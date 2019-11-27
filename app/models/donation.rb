@@ -13,7 +13,7 @@ class Donation < ApplicationRecord
 
   before_validation{
     self.uuid ||= SecureRandom.uuid
-    self.name ||= "Anonymous"
+    self.name = "Anonymous" unless name.present?
   }
   after_commit :generate_payment_addresses, on: :create
 

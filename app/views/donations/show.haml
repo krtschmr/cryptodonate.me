@@ -1,5 +1,25 @@
--@donation.payment_addresses.each do |pa|
-  #select-payment-method
+
+#select-payment-method
+  %p.text
+    Select a cryptocurrency
+
+  -@donation.payment_addresses.each do |pa|
     .method
       =image_tag "cryptoicons/color/#{pa.coin.symbol.downcase}.png", size: 32
       %span=pa.coin.name
+
+
+
+-if @donation.name != "Anonymous"
+  %p.sender-details
+    %strong Your name
+    =@donation.name
+
+-if @donation.message.present?
+  %p.sender-details
+    %strong Your message
+    =@donation.message
+
+
+=link_to new_donation_path(@donation.streamer.donation_url) do
+  .back-icon
