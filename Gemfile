@@ -72,3 +72,5 @@ gem "money"
 gem 'money-open-exchange-rates'
 
 gem 'rqrcode', github: "krtschmr/rqrcode", branch: "render_method_AS_CSS"
+
+gem 'react-rails'

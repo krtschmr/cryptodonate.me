@@ -208,9 +208,9 @@
                     %i.dripicons-wallet>
                     My Wallets
                 %li.nav-item
-                  %a.nav-link{:href => "/donation-page"}
+                  =link_to [:edit, :internal, :donation_page_styling], class: "nav-link" do                   
                     %i.dripicons-calendar>
-                    Donation Page
+                    Donation Page Colors
                 -# %li.nav-item
                   %a.nav-link{:href => "#"}
                     %i.dripicons-blog>

@@ -2,12 +2,18 @@
 %html
   %head
     %title donate me money now!
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'donation', media: 'all'
-    = javascript_include_tag 'donation', media: 'all'
-    -# = javascript_pack_tag 'internal'
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = javascript_pack_tag 'donation'
+
+    -if current_streamer.donation_page_styling.present?
+      =stylesheet_link_tag "/styles/#{@donation.streamer.uuid}.css?#{Time.now.to_i}"
+    -else
+      =stylesheet_link_tag 'donation_defaults', media: 'all'
+
+
 
   %body
     #wrapper

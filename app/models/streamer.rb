@@ -5,8 +5,11 @@ class Streamer < ApplicationRecord
   has_many :donations
   has_many :connected_platforms
   has_many :ledger_entries
+  has_one :donation_page_styling
+
 
   before_create {
+    self.uuid = SecureRandom.uuid
     self.donation_url = name.downcase
   }
 
@@ -84,6 +87,7 @@ end
 #  token               :string
 #  uid                 :string           not null
 #  url                 :string
+#  uuid                :string           not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #

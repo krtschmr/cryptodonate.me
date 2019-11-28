@@ -3,6 +3,7 @@
 class DeviseCreateStreamers < ActiveRecord::Migration[6.0]
   def change
     create_table :streamers do |t|
+      t.string :uuid, null: false
       # identify the user
       t.string :provider, null: false, index: true
       t.string :uid, null: false, index: true

@@ -6,6 +6,14 @@ module QrHelper
   #   qr.as_css(size: 200, logo: url, logo_size: 32).html_safe
   # end
 
+  # -qrcode = RQRCode::QRCode.new("bitcoin:1BTCasd234234sd234asdasdasdasdasd")
+  #
+  # .svg=raw qrcode.as_svg(coin: :btc)
+  # .svg=raw qrcode.as_svg(coin: :ltc)
+  # .svg=raw qrcode.as_svg(coin: :bch)
+  #
+
+
   def btc_qr_code(donation)
     string = "bitcoin:#{donation.payment_address}?amount=#{donation.payment_amount}"
     make_qr_code(string, :btc)

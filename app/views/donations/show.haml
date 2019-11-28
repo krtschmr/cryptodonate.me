@@ -1,12 +1,35 @@
+-# =react_component "DonationShow"
 
-#select-payment-method
+
+-# .svg=raw qrcode.as_svg(coin: :dash)
+-# .svg=raw qrcode.as_svg(coin: :ltc)
+-# .svg=raw qrcode.as_svg(coin: :doge)
+
+
+
+#select-payment-method.block
   %p.text
     Select a cryptocurrency
 
   -@donation.payment_addresses.each do |pa|
-    .method
+    .method{data: {coin: pa.coin.symbol}}
       =image_tag "cryptoicons/color/#{pa.coin.symbol.downcase}.png", size: 32
       %span=pa.coin.name
+
+#payment-info
+  -@donation.payment_addresses.each do |pa|
+    .payment-address{class: pa.coin.symbol.downcase}
+      %span=pa.address
+      %i I
+      .qr-code
+        -qrcode = RQRCode::QRCode.new("#{pa.coin.name.downcase}:#{pa.address}")
+        .svg=raw qrcode.as_svg(coin: pa.coin.symbol.downcase)
+
+
+
+
+  59:28 Awaiting payment...
+
 
 
 
@@ -21,5 +44,9 @@
     =@donation.message
 
 
-=link_to new_donation_path(@donation.streamer.donation_url) do
+=link_to new_donation_path(@donation.streamer.donation_url), id: "abort-button", class: "block" do
+  .back-icon
+
+
+=link_to "#", id: "return-button" do
   .back-icon

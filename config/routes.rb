@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :donations, only: [:index, :show]
     resources :wallets, only: [:index, :show]
 
+    resource :donation_page_styling, only: [:edit, :update, :destroy]
+
     resources :connected_platforms, path: "platforms", only: [:index, :destroy] do
       member do
         get :disconnect

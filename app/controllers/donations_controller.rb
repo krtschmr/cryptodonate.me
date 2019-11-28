@@ -35,9 +35,10 @@ class DonationsController <  ApplicationController
     def as_svg(options={})
       offset = options[:offset].to_i || 0
       color = options[:color] || "000"
-      shape_rendering = options[:shape_rendering] || "crispEdges"
-      module_size = options[:module_size] || 11
+      shape_rendering = options[:shape_rendering] || "geometricPrecision"
+      module_size = options[:module_size] || 8
       standalone = options[:standalone].nil? ? true : options[:standalone]
+      coin = options[:coin]
 
       # height and width dependent on offset and QR complexity
       dimension = (@qrcode.module_count*module_size) + (2*offset)
@@ -55,24 +56,29 @@ class DonationsController <  ApplicationController
 
           next unless @qrcode.checked?(c, r)
 
-          # the radius is 5 dots, and not pixels!
-          radius = 5
-          center = @qrcode.module_count / 2
-          # center of circle represents 0|0
-          p_r = -r + center
-          p_c = -c + center
-          # p "c: #{c}, r: #{r} results to p_c:#{p_c} p_r: #{p_r}"
-          next if (p_r ** 2) +  (p_c**2) < radius ** 2
+          if coin.present?
+            center = @qrcode.module_count / 2
+            p_r = -r + center
+            p_c = -c + center
+            next if (p_r ** 2) +  (p_c**2) < 5 ** 2
+          end
+
+          colors = {
+            "btc" => "f7931a",
+            "dash" => "008ce7",
+            "bch" => "8dc351",
+            "ltc" => "555",
+            "doge" => "c3a634"
+          }
 
           byte_color = "444"
-          anchor_outside_color = "f7931a"
           anchor_inside_color = "444"
           clazz = anchor_class(r, c, @qrcode.module_count)
 
           anchor = (r < 7 && c < 7) || (r >= @qrcode.module_count - 7 && c < 7) || (r < 7 && c >= @qrcode.module_count - 7 )
           color = if anchor
             if clazz.include?("outter")
-              anchor_outside_color
+              colors[coin.to_s]
             else
               anchor_inside_color
             end
@@ -99,7 +105,9 @@ class DonationsController <  ApplicationController
 
 
        # result << "<circle r='40'  cx='#{dimension / 2 }' cy='#{dimension / 2 }' style='fill:red' />"
-       result << "<image xlink:href='/icons/btc.png'  x='#{dimension / 2 - 24}' y='#{dimension / 2 - 24}'  width='48' height='48' clip-path='url(#sweetclip)' />"
+       if coin.present?
+         result << "<image xlink:href='/icons/#{coin.downcase}.png'  x='#{dimension / 2 - 24}' y='#{dimension / 2 - 24}'  width='48' height='48' clip-path='url(#sweetclip)' />"
+       end
 
 
 
@@ -112,15 +120,6 @@ class DonationsController <  ApplicationController
     end
 
   end
-
-
-
-
-
-
-
-
-
 
   def new
     @donation = streamer.donations.new

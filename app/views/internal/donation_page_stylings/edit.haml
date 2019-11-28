@@ -1,0 +1,8 @@
+-content_for :title, "Style your donation page"
+
+=link_to :reset
+
+=semantic_form_for [:internal, current_streamer.donation_page_styling] do |f|
+  -current_streamer.donation_page_styling.variables.keys.each do |key|
+    =f.input key
+  =f.button
