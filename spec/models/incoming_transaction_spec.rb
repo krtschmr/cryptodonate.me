@@ -21,12 +21,20 @@ RSpec.describe IncomingTransaction, type: :model do
       subject.valid?
       expect(subject.payment_address).to eq(payment_address)
     end
+
+    it "creates a donation payment" do
+      expect{subject.save}.to change{ DonationPayment.count }.by(1)
+    end
   end
 
   describe "confirmation" do
-    before{ subject.save }
+    before do
+      subject.save
+      subject.confirmations = 1
+      subject.block = 1337
+    end
+
     it "can confirm" do
-      subject.confirmations = 2
       subject.confirm!
       expect(subject).to be_confirmed
     end
@@ -36,6 +44,18 @@ RSpec.describe IncomingTransaction, type: :model do
       expect{ subject.confirm! }.to raise_error(StateMachines::InvalidTransition)
       expect(subject).to_not be_confirmed
       expect(subject).to be_pending
+    end
+
+    it "can't confirm without block" do
+      subject.block = nil
+      expect{ subject.confirm! }.to raise_error(StateMachines::InvalidTransition)
+      expect(subject).to_not be_confirmed
+      expect(subject).to be_pending
+    end
+
+    it "touches the donation_payment" do
+      expect{ subject.confirm! }.to change{ LedgerEntry.count }.by(1)
+      expect(subject.donation_payment).to be_confirmed
     end
   end
 

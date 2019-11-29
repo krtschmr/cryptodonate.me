@@ -3,50 +3,52 @@ class DonationPayment < ApplicationRecord
     belongs_to :coin, required: true
     belongs_to :donation, required: true
     belongs_to :incoming_transaction, required: true
+    has_one :ledger_entry
 
     scope :confirmed, ->{ where state: :confirmed}
 
     after_initialize { self.coin ||= donation.coin }
-    before_create { self.usd_value = coin.price * amount }
+    before_create :set_usd_value
 
-    after_commit :update_donation!
+    after_commit :create_ledger_entry!, on: :update, if: :confirmed?
 
-
-    def confirmed?
-      state == "confirmed"
-    end
-
-    def try_to_confirm!
-      unless confirmed?
-        if confirmed_transaction?
-          self.update(state: "confirmed", block: incoming_transaction.block, confirmed_at: Time.now)
-          create_ledger_entry!
-        end
+    state_machine initial: "detected" do
+      state "confirmed" do
+        validates :block, numericality: {greater_than: 0}
+        validates :confirmed_at, presence: true
+      end
+      event :confirm do
+        transition "detected" => "confirmed"
       end
     end
 
     private
-
-    def set_donation_to_detected
-      donation.state = "detected"
+    
+    def set_usd_value
+      self.usd_value = calculated_usd_value
     end
 
-    def update_donation!
-      if confirmed?
-        donation.update(state: "paid")
-        donation.refresh_payment_data!
-      else
-        donation.update(state: "detected")
-      end
+    def calculated_usd_value
+      coin.price * amount
     end
+
+    # def update_donation!
+    #   if confirmed?
+    #     donation.update(state: "paid")
+    #     donation.refresh_payment_data!
+    #   else
+    #     donation.update(state: "detected")
+    #   end
+    # end
 
     def create_ledger_entry!
+      raise "already created ledger_entry" if ledger_entry.present?
       donation.streamer.ledger_entries.create!(coin: self.coin, donation: self.donation, donation_payment: self, amount: self.amount)
     end
 
-    def confirmed_transaction?
-      incoming_transaction.confirmed?
-    end
+    # def confirmed_transaction?
+    #   incoming_transaction.confirmed?
+    # end
 
 end
 

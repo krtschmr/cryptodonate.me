@@ -10,16 +10,17 @@ class IncomingTransactionRouter
     service = WalletService.new(coin)
     tx = service.get_transaction(tx_id)
 
-    incoming = IncomingTransaction.find_or_initialize_by(coin: @coin, tx_id: tx_id, address: tx["details"].first["address"]) do |t|
+    incoming = IncomingTransaction.find_or_create_by(coin: @coin, tx_id: tx_id, address: tx["details"].first["address"]) do |t|
       t.bip125_replaceable = (tx["bip125-replaceable"] == "yes")
       t.received_at = tx["timereceived"]
       t.amount = tx["details"].first["amount"]
     end
-    if tx["confirmations"] >= 1
+
+    if tx["confirmations"] >= 1 && incoming.pending?
       incoming.confirmations = tx["confirmations"]
       incoming.block = (service.blockheight - tx["confirmations"] + 1)
+      incoming.confirm!
     end
-    incoming.save
     incoming
   end
 

@@ -4,49 +4,46 @@ class IncomingTransaction < ApplicationRecord
   belongs_to :payment_address, required: true
   has_one :donation_payment, autosave: true
 
-  before_validation :assign_payment_address, on: :create
   validates :tx_id, presence: true
   validates :address, presence: true
   validates :amount, numericality: {greater_than: 0}
   validates :block, numericality: {greater_than: 0, allow_nil: true}
   validates :received_at, presence: true
 
+  before_validation :assign_payment_address, on: :create
+  before_create :create_donation_payment
+  after_commit :update_donation_payment!, on: :update, if: :confirmed?
 
   state_machine initial: "pending" do
     state "confirmed" do
       validates :confirmations, numericality: {greater_than: 0}
+      validates :block, numericality: {greater_than: 0}
     end
-
     event :confirm do
       transition "pending" => "confirmed"
     end
   end
 
-  # before_create {
-  #   self.donation_payment = payment_address.donation.donation_payments.new(
-  #     incoming_transaction: self,
-  #     coin: coin,
-  #     tx_id: tx_id,
-  #     amount: amount,
-  #     detected_at: Time.now )
-  # }
-  before_save :try_to_confirm!
-  # after_commit {
-  #   donation_payment.try_to_confirm! if confirmed?
-  # }
+  private
 
-  def try_to_confirm!
-    unless confirmed?
-      self.state = "confirmed" if enough_confirmations?
-    end
-  end
-
-  def enough_confirmations?
-    confirmations >= 1
+  def update_donation_payment!
+    donation_payment.block = self.block
+    donation_payment.confirmed_at = Time.now
+    donation_payment.confirm!
   end
 
   def assign_payment_address
     self.payment_address = coin.payment_addresses.find_by!(address: self.address)
+  end
+
+  def create_donation_payment
+    self.donation_payment = payment_address.donation.donation_payments.new do |dp|
+      dp.incoming_transaction = self
+      dp.coin = coin
+      dp.tx_id = tx_id
+      dp.amount = amount
+      dp.detected_at = Time.now
+    end
   end
 
 end
