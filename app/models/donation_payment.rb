@@ -17,7 +17,6 @@ class DonationPayment < ApplicationRecord
     end
 
     def try_to_confirm!
-      binding.pry
       unless confirmed?
         if confirmed_transaction?
           self.update(state: "confirmed", block: incoming_transaction.block, confirmed_at: Time.now)
@@ -42,12 +41,10 @@ class DonationPayment < ApplicationRecord
     end
 
     def create_ledger_entry!
-      binding.pry
       donation.streamer.ledger_entries.create!(coin: self.coin, donation: self.donation, donation_payment: self, amount: self.amount)
     end
 
     def confirmed_transaction?
-      binding.pry
       incoming_transaction.confirmed?
     end
 

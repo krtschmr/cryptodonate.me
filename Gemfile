@@ -43,11 +43,21 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
+
   gem 'webdrivers'
+
+  gem 'webmock'
+  gem 'vcr'
+  gem 'simplecov', require: false
+  gem "factory_bot_rails"
+  gem "rspec-rails"
+  gem "spring-commands-rspec"
+  gem 'rspec_junit_formatter'
+  gem 'rspec-json_expectations'
+  gem 'rspec-html-matchers'
+  gem 'shoulda-matchers'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

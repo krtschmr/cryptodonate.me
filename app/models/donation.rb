@@ -35,8 +35,8 @@ class Donation < ApplicationRecord
   end
 
   def trigger_notification!
-    NotificationTrigger.call(self)
-    self.update(alert_created: true)
+    # NotificationTrigger.call(self)
+    # self.update(alert_created: true)
   end
 
   def refresh_payment_data!

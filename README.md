@@ -85,11 +85,28 @@ To buy, for just 18$. can't we steal? :< they don't accept bitcoin!
 https://themeforest.net/item/metrica-responsive-admin-multi-dashboard-template/23997762
 
 
-# Conversion
+# Flow
 
-Internally we deal only with USD (US Dollar).
+-> Create donation
+-> Donation has many payment_addresses, display those to the user
+-> User can pay to address
 
-User can choose donation currency out of
+Detected Payment:
+-> IncomingTransaction.create
+  -> Create DonationPayment, state: :pending
+    -> Update Donation, state: :detected
+    -> call rules for notifications?
+
+-> IncomingTransaction.update(confirmation: 1)
+  -> Update DonationPayment, state: :confirmed
+    -> Create LedgerEntry
+    -> Update Donation state: :paid
+    -> call rules for notifications unless already notified
+
+
+
+
+
 
 
 
