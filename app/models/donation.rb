@@ -16,8 +16,27 @@ class Donation < ApplicationRecord
     self.name = "Anonymous" unless name.present?
   }
   after_commit :generate_payment_addresses, on: :create
-
   after_commit :try_to_trigger_notfication
+
+  state_machine initial: "pending" do
+    state "paid"
+    state "expired"
+
+    event :paid do
+      transition "pending" => "paid"
+    end
+    event :expire do
+      transition "pending" => "expired"
+    end
+
+  end
+
+  def paid!
+    refresh_payment_data!
+    super
+  end
+
+
 
   def to_param
     uuid
@@ -41,10 +60,6 @@ class Donation < ApplicationRecord
 
   def refresh_payment_data!
     self.update(usd_value: donation_payments.confirmed.sum(:usd_value))
-  end
-
-  def paid?
-    state == "paid"
   end
 
   private

@@ -10,7 +10,7 @@ class DonationPayment < ApplicationRecord
     after_initialize { self.coin ||= donation.coin }
     before_create :set_usd_value
 
-    after_commit :create_ledger_entry!, on: :update, if: :confirmed?
+    after_commit :confirmation_callback, on: :update, if: :confirmed?
 
     state_machine initial: "detected" do
       state "confirmed" do
@@ -23,7 +23,7 @@ class DonationPayment < ApplicationRecord
     end
 
     private
-    
+
     def set_usd_value
       self.usd_value = calculated_usd_value
     end
@@ -41,14 +41,23 @@ class DonationPayment < ApplicationRecord
     #   end
     # end
 
+    def confirmation_callback
+      create_ledger_entry!
+      mark_donation_as_paid!
+    end
+
     def create_ledger_entry!
       raise "already created ledger_entry" if ledger_entry.present?
       donation.streamer.ledger_entries.create!(coin: self.coin, donation: self.donation, donation_payment: self, amount: self.amount)
     end
 
-    # def confirmed_transaction?
-    #   incoming_transaction.confirmed?
-    # end
+    def mark_donation_as_paid!
+      if donation.paid?
+        donation.refresh_payment_data!
+      else
+        donation.paid!
+      end
+    end
 
 end
 
