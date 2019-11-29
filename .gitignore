@@ -31,5 +31,6 @@ yarn-debug.log*
 .yarn-integrity
 .env
 
-db/development.sqlite3
+db/*.sqlite3
 public/styles/*
+coverage

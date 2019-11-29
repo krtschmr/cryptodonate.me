@@ -70,7 +70,7 @@ end
 #  block                   :integer
 #  confirmed_at            :datetime
 #  detected_at             :datetime
-#  state                   :string           default("pending")
+#  state                   :string           default("detected")
 #  usd_value               :decimal(10, 2)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null

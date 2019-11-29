@@ -8,10 +8,6 @@ class Coin < ApplicationRecord
     symbol
   end
 
-  def confirmations_required
-    1
-  end
-
 end
 
 # == Schema Information

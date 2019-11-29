@@ -5,7 +5,7 @@ class CreateDonations < ActiveRecord::Migration[6.0]
       # t.belongs_to :coin
 
       t.string :uuid, null: false, limit: 36
-      t.string :state, default: "unpaid"
+      t.string :state, default: "pending"
 
       # t.string :counter, default: 1
 

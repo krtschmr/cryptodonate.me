@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_032200) do
     t.integer "coin_id"
     t.integer "donation_id"
     t.integer "incoming_transaction_id"
-    t.string "state", default: "pending"
+    t.string "state", default: "detected"
     t.string "tx_id", null: false
     t.decimal "amount", precision: 18, scale: 8
     t.decimal "usd_value", precision: 10, scale: 2
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_032200) do
   create_table "donations", force: :cascade do |t|
     t.integer "streamer_id"
     t.string "uuid", limit: 36, null: false
-    t.string "state", default: "unpaid"
+    t.string "state", default: "pending"
     t.string "name", limit: 22
     t.string "message"
     t.decimal "usd_value"
