@@ -36,7 +36,7 @@ class DonationsController <  ApplicationController
       offset = options[:offset].to_i || 0
       color = options[:color] || "000"
       shape_rendering = options[:shape_rendering] || "geometricPrecision"
-      module_size = options[:module_size] || 8
+      module_size = options[:module_size] || 7
       standalone = options[:standalone].nil? ? true : options[:standalone]
       coin = options[:coin]
 

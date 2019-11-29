@@ -7,7 +7,12 @@ class CreatePaymentAddresses < ActiveRecord::Migration[6.0]
       t.boolean :used, default: false
       t.timestamps
     end
-    Coin.find_each do |c|
+    b = Coin.first
+    service = WalletService.new(:btc)
+    25.times do |i|
+      b.payment_addresses.create address: service.generate_address
+    end
+    Coin.where.not(symbol: "BTC").each do |c|
       100.times do |i|
         c.payment_addresses.create address: "address_#{c.symbol}_#{i}"
       end

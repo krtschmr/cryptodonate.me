@@ -14,6 +14,7 @@ class IncomingTransaction < ApplicationRecord
   validates :received_at, presence: true
 
   before_create {
+    binding.pry
     self.donation_payment = payment_address.donation.donation_payments.new(
       incoming_transaction: self,
       coin: coin,
@@ -22,11 +23,16 @@ class IncomingTransaction < ApplicationRecord
       detected_at: Time.now )
   }
   before_save :try_to_confirm!
-  after_commit { donation_payment.try_to_confirm! if confirmed? }
+  after_commit {
+    binding.pry
+    donation_payment.try_to_confirm! if confirmed?
+  }
 
   def try_to_confirm!
-    raise "already confirmed" if confirmed?
-    self.state = "confirmed" if enough_confirmations?
+    binding.pry
+    unless confirmed?
+      self.state = "confirmed" if enough_confirmations?
+    end
   end
 
   def confirmed?

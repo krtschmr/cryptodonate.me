@@ -2,7 +2,6 @@ class CssCompiler
 
   attr_accessor :streamer, :variables
 
-
   def self.run(streamer, variables)
     new(streamer, variables).compile!
   end
@@ -22,16 +21,8 @@ class CssCompiler
   private
 
   def load_template
-    # TODO
-    # ERB parse variables
-      #
-      # output = ERB.new(erb.template).result(binding)
-      # return raw(output)
-
-
     erb_template = File.read("./app/assets/stylesheets/donation_template.scss.erb")
     @template = ERB.new(erb_template).result(binding)
-
   end
 
   def compile_template
