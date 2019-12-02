@@ -44,9 +44,9 @@ class Donation < ApplicationRecord
     end
   end
 
-  # def refresh_payment_data!
-  #   self.update(usd_value: donation_payments.confirmed.sum(:usd_value))
-  # end
+  def recalculate_usd_value!
+    self.update_columns(usd_value: donation_payments.confirmed.sum(:usd_value))
+  end
 
   def converted_amount
     Money.new(usd_value * 100, "USD").exchange_to(display_currency)
@@ -55,7 +55,6 @@ class Donation < ApplicationRecord
   def converted_currency
     "USD"
   end
-
 
   private
 

@@ -32,15 +32,6 @@ class DonationPayment < ApplicationRecord
       coin.price * amount
     end
 
-    # def update_donation!
-    #   if confirmed?
-    #     donation.update(state: "paid")
-    #     donation.refresh_payment_data!
-    #   else
-    #     donation.update(state: "detected")
-    #   end
-    # end
-
     def confirmation_callback
       create_ledger_entry!
       mark_donation_as_paid!
@@ -52,13 +43,9 @@ class DonationPayment < ApplicationRecord
     end
 
     def mark_donation_as_paid!
-      if donation.paid?
-        donation.refresh_payment_data!
-      else
-        donation.paid!
-      end
+      donation.paid! unless donation.paid?
+      donation.recalculate_usd_value!
     end
-
 end
 
 # == Schema Information

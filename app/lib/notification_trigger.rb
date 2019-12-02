@@ -19,13 +19,11 @@ class NotificationTrigger
   def execute!
     # Push into active/connected overlays (streamlabs, streamelemetns)
     # Push into our own overlays
-
-    # donation.user.connected_overlays.each(&:push_notification!, donation)
-    # donation.user.overlays.active.each(&:push_notification!, donation)
-
-    # test with streamlabs
-    provider = :streamlabs
-    "#{provider}_api".classify.constantize.push_donation(donation)
+    [:streamlabs, :streamelements].each do |provider|
+      if donation.streamer.connected_platforms.find_by(provider: provider).present?
+        "#{provider}_api".classify.constantize.push_donation(provider)
+      end
+    end
   end
 
   private
