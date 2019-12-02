@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://192.168.1.39:20100/
+    uri: http://192.168.1.37:20100/
     body:
       encoding: UTF-8
       string: '{"jsonrpc":1.0,"method":"gettransaction","params":["ab00657ab9da484ff235add84f7db7820f32c3fe97d308b67da3df89165c529d"]}'
@@ -33,6 +33,6 @@ http_interactions:
       string: '{"result":{"amount":0.00668223,"confirmations":0,"trusted":false,"txid":"ab00657ab9da484ff235add84f7db7820f32c3fe97d308b67da3df89165c529d","walletconflicts":[],"time":1574995898,"timereceived":1574995898,"bip125-replaceable":"yes","details":[{"address":"tb1q3vn3eqtcdqfdx397npfwgct7ktp472jqmlxpmg","category":"receive","amount":0.00668223,"label":"myaddress","vout":0}],"hex":"010000000001014f1da95e135b334b7d9787c0ec00a49a3a0b62d575e25da13ece402ceabcb99d0300000000fdffffff023f320a00000000001600148b271c81786812d344be9852e4617eb2c35f2a40c2408101000000001600140b01456b969f5d8d82049073b639dfba40eee5c7024730440220015b19db909d6cb5f80aa8ac8d648458696f59d2cdf819c7b00c97fbdbe502db02205998896d00deb1426839146a3eac7fffd6305d3d400ffbeb365c7965cbb81c6c012103ddd1bec11b5c41107c8a063e93aa3f9c8c9307829b5b139810a4f6acbfd6b6cce9911800"},"error":null,"id":null}
 
 '
-    http_version: 
+    http_version:
   recorded_at: Fri, 29 Nov 2019 02:55:13 GMT
 recorded_with: VCR 5.0.0

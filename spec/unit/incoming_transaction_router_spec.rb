@@ -14,7 +14,7 @@ RSpec.describe IncomingTransactionRouter, type: :model do
 
     context "unconfirmed transaction" do
       it "creates a pending incoming transaction" do
-        VCR.use_cassette('btc/unconfirmed', record: :new_episodes) do
+        VCR.use_cassette('btc/unconfirmed') do
           incoming = IncomingTransactionRouter.process(:btc, tx_id)
           expect(incoming).to be_persisted
           expect(incoming).to be_pending
@@ -28,11 +28,11 @@ RSpec.describe IncomingTransactionRouter, type: :model do
 
     context "unconfirmed transaction becomes confirmed" do
       it "changes the state of an incoming transaction" do
-        incoming = VCR.use_cassette('btc/unconfirmed', record: :new_episodes) do
+        incoming = VCR.use_cassette('btc/unconfirmed') do
           IncomingTransactionRouter.process(:btc, tx_id)
         end
         expect(incoming).to be_pending
-        incoming = VCR.use_cassette('btc/confirmed', record: :new_episodes) do
+        incoming = VCR.use_cassette('btc/confirmed') do
           IncomingTransactionRouter.process(:btc, tx_id)
         end
         expect(incoming).to be_confirmed
@@ -41,7 +41,7 @@ RSpec.describe IncomingTransactionRouter, type: :model do
 
     context "confirmed transaction" do
       it "creates a confirmed incoming transaction" do
-        VCR.use_cassette('btc/confirmed', record: :new_episodes) do
+        VCR.use_cassette('btc/confirmed') do
           incoming = IncomingTransactionRouter.process(:btc, tx_id)
           expect(incoming).to be_persisted
           expect(incoming).to be_confirmed
