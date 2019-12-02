@@ -43,8 +43,8 @@ class DonationPayment < ApplicationRecord
     end
 
     def mark_donation_as_paid!
-      donation.paid! unless donation.paid?
       donation.recalculate_usd_value!
+      donation.paid! unless donation.paid?
     end
 end
 

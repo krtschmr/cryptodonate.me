@@ -21,10 +21,20 @@ RSpec.describe Donation, type: :model do
       donation_payment.confirm!
     end
 
-    it "will call to trigger_notification" do
-      expect_any_instance_of(Donation).to receive(:trigger_notification).once
-      donation_payment.update(block: 1337, confirmed_at: Time.now)
-      donation_payment.confirm!
+    describe "notification" do
+      it "will call to trigger_notification" do
+        expect_any_instance_of(Donation).to receive(:trigger_notification).once
+        donation_payment.update(block: 1337, confirmed_at: Time.now)
+        donation_payment.confirm!
+      end
+
+      it "won't trigger because the value is below minimum" do
+        allow_any_instance_of(DonationSetting).to receive(:minimum_amount_for_notification).and_return(10)
+        allow_any_instance_of(Donation).to receive(:usd_value).and_return(9.99)
+        expect_any_instance_of(Donation).to_not receive(:trigger_notification!)
+        donation_payment.update(block: 1337, confirmed_at: Time.now)
+        donation_payment.confirm!
+      end
     end
 
     it "will mark alert_created" do

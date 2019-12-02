@@ -34,8 +34,7 @@ class Donation < ApplicationRecord
   end
 
   def above_minimum?
-    # usd_value >= streamer.donation_settings.minimum_amount_for_notification
-    true
+    usd_value.to_d >= streamer.donation_setting.minimum_amount_for_notification
   end
 
   def trigger_notification(force=false)
