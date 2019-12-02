@@ -4,6 +4,8 @@ class Coin < ApplicationRecord
   has_many :incoming_transactions
   has_many :payment_addresses
 
+  has_many :withdrawals
+
   def to_s
     symbol
   end
@@ -16,6 +18,7 @@ end
 #
 #  id          :integer          not null, primary key
 #  description :text
+#  min_tx_fee  :decimal(15, 7)
 #  name        :string
 #  price       :decimal(15, 7)
 #  symbol      :string

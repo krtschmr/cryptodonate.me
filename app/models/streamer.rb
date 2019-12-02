@@ -8,16 +8,17 @@ class Streamer < ApplicationRecord
   has_one :donation_page_styling, dependent: :destroy
   has_one :donation_setting, dependent: :destroy
 
+  has_many :withdrawals
+
   before_create {
     self.uuid = SecureRandom.uuid
     self.donation_url = name.downcase
-    build_donation_setting    
+    build_donation_setting
   }
 
   def self.by_oauth(hash)
     find_by(provider: hash["provider"], uid: hash["uid"])
   end
-
 
   def provided_own_key?(coin)
     xpubkey(coin).present?

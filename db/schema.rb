@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_025525) do
     t.string "symbol"
     t.text "description"
     t.decimal "price", precision: 15, scale: 7
+    t.decimal "min_tx_fee", precision: 15, scale: 7
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -188,15 +189,17 @@ ActiveRecord::Schema.define(version: 2019_12_02_025525) do
   end
 
   create_table "withdrawals", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "streamer_id"
     t.integer "coin_id"
-    t.integer "crypto_withdrawal_id"
-    t.string "address"
+    t.string "state", default: "unconfirmed"
+    t.string "address", null: false
+    t.decimal "amount", precision: 15, scale: 7
+    t.decimal "fee", precision: 15, scale: 7
+    t.decimal "withdrawal_amount", precision: 15, scale: 7
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_withdrawals_on_coin_id"
-    t.index ["crypto_withdrawal_id"], name: "index_withdrawals_on_crypto_withdrawal_id"
-    t.index ["user_id"], name: "index_withdrawals_on_user_id"
+    t.index ["streamer_id"], name: "index_withdrawals_on_streamer_id"
   end
 
 end

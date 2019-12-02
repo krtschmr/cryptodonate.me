@@ -3,6 +3,11 @@ module Bitcoin::Wallet
   # class Transaction < OpenStruct;end;
   # class Transaction::Details < Transaction;end;
 
+  def self.valid_address?(address)
+    $bitcoin_rpc.valid_address?(address)
+  end
+
+
   def blockheight
     $bitcoin_rpc.getblockcount
   end

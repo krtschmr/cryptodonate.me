@@ -92,8 +92,15 @@
                 %tr
                   %td=entry.created_at
                   %td=entry.coin
-                  %td.text-success=entry.amount
                   %td
-                    %strong=entry.donation.name
-                    donated
-                    %strong #{Money.new(entry.donation_payment.usd_value * 100).format}
+                    -if entry.amount > 0
+                      .text-success=entry.amount
+                    -else
+                      .text-danger=entry.amount
+                  %td
+                    -if entry.withdrawal.present?
+                      Withdrawal
+                    -if entry.donation.present?
+                      %strong=entry.donation.name
+                      donated
+                      %strong #{Money.new(entry.donation_payment.usd_value * 100).format}

@@ -29,6 +29,7 @@ class Balance < ApplicationRecord
   end
 
   def deduct!(amount)
+    amount = -amount if amount < 0 # ensure amount is positive
     update(balance: balance - amount)
   end
 

@@ -23,7 +23,7 @@
     - we collect the funds for the user
     - user can click *withdraw* at anytime
     - no verification required    
-    - we deduct 1% fee
+    - we deduct 1% fee min 20_000 satoshis
     - user has all kinds of features
 
   - provide us your xpubkey:

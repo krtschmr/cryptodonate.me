@@ -1,12 +1,15 @@
 class CreateWithdrawals < ActiveRecord::Migration[6.0]
   def change
     create_table :withdrawals do |t|
-      t.belongs_to :user
+      t.belongs_to :streamer
       t.belongs_to :coin
-      t.belongs_to :crypto_withdrawal
 
-      t.string :address
-      # this comes latest
+      t.string :state, default: "unconfirmed"
+
+      t.string :address, null: false
+      t.decimal :amount, precision: 15, scale: 7
+      t.decimal :fee, precision: 15, scale: 7
+      t.decimal :withdrawal_amount, precision: 15, scale: 7
 
       t.timestamps
     end
