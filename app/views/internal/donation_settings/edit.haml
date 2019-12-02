@@ -1,8 +1,7 @@
 -content_for :title, "Configure your Donations"
 
-=simple_form_for [:internal, current_streamer.donation_setting] do |f|
+=simple_form_for @setting, url: internal_donation_setting_path, html: { class: 'form' } do |f|
 
   =f.input :minimum_amount_for_notification
   =f.input :converted_currency
-
-  =f.button :submit
+  =f.button :submit, class: "btn btn-primary"

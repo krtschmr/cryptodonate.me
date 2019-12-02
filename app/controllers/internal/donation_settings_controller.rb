@@ -1,11 +1,16 @@
 class Internal::DonationSettingsController < Internal::BaseController
 
-  def edit    
+  def edit
+    @setting = current_streamer.donation_setting
   end
 
   def update
-    current_streamer.donation_setting.update(update_params)
-    redirect_to edit_internal_donation_setting_path
+    @setting = current_streamer.donation_setting
+    if @setting.update(update_params)
+      redirect_to edit_internal_donation_setting_path
+    else
+      render action: :edit
+    end
   end
 
   private

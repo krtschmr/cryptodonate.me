@@ -2,7 +2,7 @@
 
 =link_to :reset
 
-=simple_form_for [:internal, current_streamer.donation_page_styling] do |f|
+=simple_form_for @styling, url: internal_donation_page_styling_path, html: { class: 'form' } do |f|
   -current_streamer.donation_page_styling.variables.keys.each do |key|
     =f.input key, as: :string
-  =f.button
+  =f.button :submit, class: "btn btn-primary"

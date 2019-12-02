@@ -2,11 +2,16 @@ class Internal::DonationPageStylingsController < Internal::BaseController
 
   def edit
     current_streamer.build_donation_page_styling.save unless current_streamer.donation_page_styling.present?
+    @styling = current_streamer.donation_page_styling
   end
 
   def update
-    current_streamer.donation_page_styling.update(update_params)
-    redirect_to edit_internal_donation_page_styling_path
+    @styling = current_streamer.donation_page_styling
+    if @styling.update(update_params)
+      redirect_to edit_internal_donation_page_styling_path
+    else
+      render action: :edit
+    end
   end
 
   def destroy
