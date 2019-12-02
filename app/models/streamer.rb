@@ -11,9 +11,7 @@ class Streamer < ApplicationRecord
   before_create {
     self.uuid = SecureRandom.uuid
     self.donation_url = name.downcase
-    build_donation_setting
-    # donation_setting.save
-    # true
+    build_donation_setting    
   }
 
   def self.by_oauth(hash)

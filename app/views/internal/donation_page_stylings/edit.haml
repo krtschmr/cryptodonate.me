@@ -2,7 +2,7 @@
 
 =link_to :reset
 
-=semantic_form_for [:internal, current_streamer.donation_page_styling] do |f|
+=simple_form_for [:internal, current_streamer.donation_page_styling] do |f|
   -current_streamer.donation_page_styling.variables.keys.each do |key|
     =f.input key, as: :string
   =f.button

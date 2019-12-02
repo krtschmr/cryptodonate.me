@@ -74,7 +74,7 @@ gem 'omniauth-streamlabs'
 
 gem "bitcore_rpc", github: "krtschmr/bitcore_rpc"
 
-gem "formtastic"
+gem "simple_form"
 gem 'rails-erd', group: :development
 
 gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api'
@@ -85,4 +85,3 @@ gem 'rqrcode', github: "krtschmr/rqrcode", branch: "render_method_AS_CSS"
 
 gem 'react-rails'
 gem 'state_machines-activerecord'
-

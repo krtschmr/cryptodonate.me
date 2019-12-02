@@ -1,11 +1,11 @@
 class DonationSetting < ApplicationRecord
 
-  SUPPORTED_CURRENCIES = ["USD"]
+  SUPPORTED_CURRENCIES = %W(AUD BRL CAD CHF CZK DKK EUR GBP HKD INR JPY MXN PHP RUB SGD THB USD)
 
   belongs_to :streamer
 
   validates :converted_currency, inclusion: { in: SUPPORTED_CURRENCIES }
-  validates :minimum_amount_for_notification, numericality: { greater_than_or_equal_to: 0, less_than: 1_000 }
+  validates :minimum_amount_for_notification, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 999.99 }
 end
 
 # == Schema Information
