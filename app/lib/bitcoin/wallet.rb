@@ -40,8 +40,8 @@ module Bitcoin::Wallet
   #   $bitcoin_rpc.getblockchaininfo.fetch("blocks")
   # end
   #
-  # def create_transaction!(args={})
-  #   $bitcoin_rpc.sendtoaddress(args.fetch(:address), args.fetch(:amount))
-  # end
+  def create_transaction!(args={})
+    $bitcoin_rpc.sendtoaddress(args.fetch(:address), args.fetch(:amount))
+  end
 
 end

@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     # match "/connect/streamelements", via: [:get, :post], to: "connections#passthru"
 
     resources :donations, only: [:index, :show]
-    resources :wallets, only: [:index, :show]
+    resources :wallets, only: [:index, :show] do
+
+      resources :withdrawals, only: [:new, :create] do
+        post :confirm
+      end
+    end
 
     resource :donation_page_styling, only: [:edit, :update, :destroy]
     resource :donation_setting, only: [:edit, :update]

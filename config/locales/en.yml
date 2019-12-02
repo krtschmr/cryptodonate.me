@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+
+
+  activerecord:
+    errors:
+      models:
+        withdrawal:
+          attributes:
+            streamer:
+              insufficient_funds: insufficient funds
+            amount:
+              insufficient_funds: insufficient funds

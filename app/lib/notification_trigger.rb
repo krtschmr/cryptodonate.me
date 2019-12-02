@@ -21,7 +21,7 @@ class NotificationTrigger
     # Push into our own overlays
     [:streamlabs, :streamelements].each do |provider|
       if donation.streamer.connected_platforms.find_by(provider: provider).present?
-        "#{provider}_api".classify.constantize.push_donation(provider)
+        "#{provider}_api".classify.constantize.push_donation(donation)
       end
     end
   end

@@ -9,6 +9,7 @@ class Streamer < ApplicationRecord
   has_one :donation_setting, dependent: :destroy
 
   has_many :withdrawals
+  has_many :crypto_withdrawals
 
   before_create {
     self.uuid = SecureRandom.uuid

@@ -48,8 +48,17 @@ ActiveRecord::Schema.define(version: 2019_12_02_025525) do
   end
 
   create_table "crypto_withdrawals", force: :cascade do |t|
+    t.integer "streamer_id"
+    t.integer "coin_id"
+    t.integer "withdrawal_id"
+    t.string "state", default: "pending"
+    t.decimal "amount", precision: 18, scale: 8, default: "0.0"
+    t.string "tx_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["coin_id"], name: "index_crypto_withdrawals_on_coin_id"
+    t.index ["streamer_id"], name: "index_crypto_withdrawals_on_streamer_id"
+    t.index ["withdrawal_id"], name: "index_crypto_withdrawals_on_withdrawal_id"
   end
 
   create_table "donation_page_stylings", force: :cascade do |t|

@@ -4,6 +4,7 @@ class Withdrawal < ApplicationRecord
 
   belongs_to :streamer, required: true
   belongs_to :coin, required: true
+  has_one :crypto_withdrawal
   has_one :ledger_entry
 
   before_validation :calculate_fee, on: :create
@@ -18,15 +19,21 @@ class Withdrawal < ApplicationRecord
 
   after_create :block_amount!
 
+  delegate :tx_id, to: :crypto_withdrawal
+
   state_machine initial: "unconfirmed" do
     state "confirmed"
     state "cancelled"
+    state "finished"
 
     event :confirm do
       transition "unconfirmed" => "confirmed"
     end
     event :cancel do
       transition "unconfirmed" => "cancelled"
+    end
+    event :finished do
+      transition "confirmed" => "finished"
     end
   end
 
@@ -35,6 +42,7 @@ class Withdrawal < ApplicationRecord
       super
       streamer.balance(coin).unblock!( amount )
       create_ledger_entry!
+      create_crypto_withdrawal!
     end
   end
 
@@ -76,12 +84,17 @@ class Withdrawal < ApplicationRecord
   end
 
   def calculate_withdrawal_amount
-    self.withdrawal_amount = amount - fee
+    self.withdrawal_amount = amount.to_d - fee.to_d
   end
 
   def create_ledger_entry!
     raise "already created ledger_entry" if ledger_entry.present?
     streamer.ledger_entries.create!(coin: self.coin, withdrawal: self, amount: -self.amount)
+  end
+
+  def create_crypto_withdrawal!
+    raise "already created crypto_withdrawal" if crypto_withdrawal.present?
+    streamer.crypto_withdrawals.create!(coin: self.coin, withdrawal: self, amount: self.withdrawal_amount)
   end
 
 end

@@ -9,7 +9,7 @@ class StreamlabsApi
       "message": donation.message,
       "identifier": (donation.email rescue "error@default.com"),
       "amount": donation.converted_amount.to_f,
-      "currency": donation.converted_amount,
+      "currency": donation.converted_currency,
     }
     headers = {
         'Authorization'=>"Bearer #{token}",

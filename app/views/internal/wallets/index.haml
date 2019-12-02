@@ -33,6 +33,7 @@
               / end media body
 
             -if balance.available > 0
-              %button.btn.btn-danger.btn-sm.px-3 Withdraw
-              
+              =link_to new_internal_wallet_withdrawal_path(balance.coin), class: "btn btn-danger btn-sm px-3" do 
+                Withdraw
+
             %button.btn.btn-primary.btn-sm.px-3 Details
