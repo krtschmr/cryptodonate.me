@@ -15,8 +15,7 @@ class Donation < ApplicationRecord
   end
 
   after_create_commit :assign_payment_addresses
-
-  # after_commit :try_to_trigger_notfication
+  after_commit :trigger_notification, if: :paid?, unless: :alert_created?
 
   state_machine initial: "pending" do
     state "paid"
@@ -34,34 +33,42 @@ class Donation < ApplicationRecord
     uuid
   end
 
-  # def above_minimum?
-  #   # usd_value >= streamer.donation_settings.minimum_amount_for_notification
-  #   true
-  # end
+  def above_minimum?
+    # usd_value >= streamer.donation_settings.minimum_amount_for_notification
+    true
+  end
 
-  # def try_to_trigger_notfication
-  #   if paid? && above_minimum? && !alert_created?
-  #     trigger_notification!
-  #   end
-  # end
-
-  # def trigger_notification!
-  #   # NotificationTrigger.call(self)
-  #   # self.update(alert_created: true)
-  # end
+  def trigger_notification(force=false)
+    if (paid? && above_minimum? && !alert_created?) || force
+      trigger_notification!
+    end
+  end
 
   # def refresh_payment_data!
   #   self.update(usd_value: donation_payments.confirmed.sum(:usd_value))
   # end
 
+  def converted_amount
+    Money.new(usd_value * 100, "USD").exchange_to(display_currency)
+  end
+
+  def converted_currency
+    "USD"
+  end
+
+
   private
+
+  def trigger_notification!
+    NotificationTrigger.call(self)
+    self.update_column(:alert_created, true)
+  end
 
   # def set_counter
   #   # internal counter so the streamer can see how many donations came per coin.
   #   # we need this to actually derive addrespaid?ses for his xPUBkey
   #   self.counter = streamer.donations.where(coin: coin).maximum(:counter).to_i.next
   # end
-
 
   def assign_payment_addresses
     # if streamer.provided_own_key?(coin)

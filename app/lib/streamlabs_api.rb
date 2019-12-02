@@ -4,13 +4,12 @@ class StreamlabsApi
     token = donation.streamer.connected_platforms.find_by(provider: :streamlabs).token
 
     uri = URI("https://streamlabs.com/api/v1.0/donations")
-    #binding.pry
     params = {
       "name": donation.name,
       "message": donation.message,
       "identifier": (donation.email rescue "error@default.com"),
-      "amount": donation.amount,
-      "currency": donation.currency,
+      "amount": donation.converted_amount.to_f,
+      "currency": donation.converted_amount,
     }
     headers = {
         'Authorization'=>"Bearer #{token}",
@@ -19,7 +18,7 @@ class StreamlabsApi
     }
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
-
+    p "POST Donation to Streamlabs: #{params.inspect}" if Rails.env.development?
     response = http.post(uri.path, params.to_json, headers)
 
   end
