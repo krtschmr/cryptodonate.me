@@ -5,12 +5,15 @@ class Streamer < ApplicationRecord
   has_many :donations
   has_many :connected_platforms
   has_many :ledger_entries
-  has_one :donation_page_styling
-
+  has_one :donation_page_styling, dependent: :destroy
+  has_one :donation_setting, dependent: :destroy
 
   before_create {
     self.uuid = SecureRandom.uuid
     self.donation_url = name.downcase
+    build_donation_setting
+    # donation_setting.save
+    # true
   }
 
   def self.by_oauth(hash)

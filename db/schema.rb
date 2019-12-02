@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_032200) do
+ActiveRecord::Schema.define(version: 2019_12_02_025525) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "streamer_id", null: false
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(version: 2019_11_28_032200) do
     t.index ["coin_id"], name: "index_donation_payments_on_coin_id"
     t.index ["donation_id"], name: "index_donation_payments_on_donation_id"
     t.index ["incoming_transaction_id"], name: "index_donation_payments_on_incoming_transaction_id"
+  end
+
+  create_table "donation_settings", force: :cascade do |t|
+    t.integer "streamer_id"
+    t.string "converted_currency", default: "USD"
+    t.decimal "minimum_amount_for_notification", precision: 6, scale: 2, default: "1.0"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["streamer_id"], name: "index_donation_settings_on_streamer_id"
   end
 
   create_table "donations", force: :cascade do |t|

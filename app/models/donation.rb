@@ -49,11 +49,11 @@ class Donation < ApplicationRecord
   end
 
   def converted_amount
-    Money.new(usd_value * 100, "USD").exchange_to(display_currency)
+    Money.new(usd_value * 100, "USD").exchange_to(converted_currency)
   end
 
   def converted_currency
-    "USD"
+    streamer.donation_setting.converted_currency
   end
 
   private
@@ -84,3 +84,23 @@ class Donation < ApplicationRecord
   end
 
 end
+
+# == Schema Information
+#
+# Table name: donations
+#
+#  id            :integer          not null, primary key
+#  alert_created :boolean          default(FALSE)
+#  message       :string
+#  name          :string(22)
+#  state         :string           default("pending")
+#  usd_value     :decimal(, )
+#  uuid          :string(36)       not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  streamer_id   :integer
+#
+# Indexes
+#
+#  index_donations_on_streamer_id  (streamer_id)
+#
