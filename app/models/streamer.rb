@@ -7,13 +7,15 @@ class Streamer < ApplicationRecord
   has_many :ledger_entries
   has_one :donation_page_styling, dependent: :destroy
   has_one :donation_setting, dependent: :destroy
-
   has_many :withdrawals
   has_many :crypto_withdrawals
 
+  before_validation :set_donation_url
+
+  validates :donation_url, uniqueness: true
+
   before_create {
     self.uuid = SecureRandom.uuid
-    self.donation_url = name.downcase
     build_donation_setting
   }
 
@@ -66,6 +68,17 @@ class Streamer < ApplicationRecord
     balances.find_by(coin: coin.to_s.upcase) || balances.create(coin: coin.to_s.upcase)
   end
 
+  def set_donation_url
+    self.donation_url = generate_donation_url
+  end
+
+  def generate_donation_url
+    url = self.name.downcase
+    while Streamer.find_by(donation_url: url) do
+      url << rand(10).to_s
+    end
+    url
+  end
 
 end
 

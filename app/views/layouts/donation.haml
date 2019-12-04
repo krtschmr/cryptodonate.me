@@ -8,7 +8,7 @@
     = stylesheet_link_tag 'donation', media: 'all'
     = javascript_pack_tag 'donation'
 
-    -if current_streamer.donation_page_styling.present?
+    -if current_streamer.try(:donation_page_styling).present?
       =stylesheet_link_tag "/styles/#{@donation.streamer.uuid}.css?#{Time.now.to_i}"
     -else
       =stylesheet_link_tag 'donation_defaults', media: 'all'
@@ -17,13 +17,14 @@
 
   %body
     #wrapper
-      #donation-box
-        .header
-          =image_tag @donation.streamer.profile_photo_url
-          .info
-            %h1=@donation.streamer.name
-            %h2 Research project on the impact of basic income in the US.
-        .body
-          = yield
-
-          -# %input#metadataName.sc-bHwgHz.dFrONU{:maxlength => "50", :minlength => "2", :placeholder => "Full name", :required => "", :value => ""}/
+      -if @donation.try(:streamer)
+        #donation-box
+          .header
+            =image_tag @donation.streamer.profile_photo_url
+            .info
+              %h1=@donation.streamer.name
+              %h2 Research project on the impact of basic income in the US.
+          .body
+            = yield
+      -else
+        =yield
