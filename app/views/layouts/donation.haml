@@ -23,7 +23,7 @@
             =image_tag @donation.streamer.profile_photo_url
             .info
               %h1=@donation.streamer.name
-              %h2 Research project on the impact of basic income in the US.
+              %h2=@donation.streamer.donation_page_styling.info_text rescue "Thanks for your donation"
           .body
             = yield
       -else

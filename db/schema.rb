@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_025525) do
+ActiveRecord::Schema.define(version: 2019_12_04_023936) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "streamer_id", null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_025525) do
     t.integer "h2_size", default: 14
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "info_text"
     t.index ["streamer_id"], name: "index_donation_page_stylings_on_streamer_id"
   end
 

@@ -10,7 +10,7 @@ class Streamer < ApplicationRecord
   has_many :withdrawals
   has_many :crypto_withdrawals
 
-  before_validation :set_donation_url
+  before_validation :set_donation_url, on: :create
 
   validates :donation_url, uniqueness: true
 
