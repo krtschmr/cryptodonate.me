@@ -16,7 +16,7 @@
       =image_tag "cryptoicons/color/#{pa.coin.symbol.downcase}.png", size: 32
       %span=pa.coin.name
 
-#payment-info
+#payment-info{data: {"seconds-left": @donation.seconds_left}}
   -@donation.payment_addresses.each do |pa|
     .payment-address{class: pa.coin.symbol.downcase}
       .address-wrapper
@@ -33,8 +33,9 @@
 
 
 
-
-  59:28 Awaiting payment...
+  .time
+    %span.time-left
+    Awaiting payment...
 
 
 

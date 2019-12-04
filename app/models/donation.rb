@@ -1,5 +1,7 @@
 class Donation < ApplicationRecord
 
+  TIME_LIMIT = 30
+
   belongs_to :streamer, required: true
   has_many :donation_payments
   has_many :payment_addresses
@@ -12,6 +14,8 @@ class Donation < ApplicationRecord
   after_initialize do
     self.uuid ||= SecureRandom.uuid
     self.name = "Anonymous" unless name.present?
+    expired?
+
   end
 
   after_create_commit :assign_payment_addresses
@@ -27,6 +31,26 @@ class Donation < ApplicationRecord
     event :expire do
       transition "pending" => "expired"
     end
+  end
+
+  def expired?
+    expire_if_neccessary!
+    super
+  end
+
+  def expire_if_neccessary!
+    if state == "pending" && time_up?
+      expire!
+    end
+  end
+
+  def seconds_left
+    seconds = ((created_at + TIME_LIMIT.minutes) - Time.now).to_i
+    seconds > 0 ? seconds : 0
+  end
+
+  def time_up?
+    created_at.present? && created_at < TIME_LIMIT.minutes.ago rescue false
   end
 
   def to_param

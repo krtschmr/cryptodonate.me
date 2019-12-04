@@ -80,8 +80,38 @@ let hideAllQrCodes = () => {
   document.querySelectorAll(".qr-code").forEach(qr => qr.classList.add("d-none") );
 }
 
+let timer = undefined;
+
+let initTimer = () => {
+  let secondsLeft = document.querySelector("#payment-info").getAttribute("data-seconds-left")
+
+  timer = window.setInterval(function(){
+    secondsLeft = secondsLeft - 1;
+    const seconds = secondsLeft % 60;
+    const minute = parseInt((secondsLeft - seconds) / 60)
+
+    document.querySelector("span.time-left").innerText = `${minute}:${seconds}`
+
+  }, 1000);
+}
+
+
+function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+ready(function() {
+  initTimer();
+})
+
+
+
 document.addEventListener('click', function (event) {
-  
+
   if (event.target.matches('#return-button .back-icon')) {
     returnButtonClick();
   }
@@ -97,6 +127,5 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('button.show-qr-code')) {
     showQrCode(event.target, event)
   }
-
 
 }, false);
