@@ -4,6 +4,15 @@ class Internal::WithdrawalsController < Internal::BaseController
     @withdrawal = current_streamer.withdrawals.new(coin: current_coin)
   end
 
+  def confirm
+    @withdrawal = current_streamer.withdrawals.new create_params.merge(coin: current_coin)
+    if @withdrawal.valid?
+      render
+    else
+      render action: :new
+    end
+  end
+
   def create
     @withdrawal = current_streamer.withdrawals.new create_params.merge(coin: current_coin)
     if @withdrawal.save

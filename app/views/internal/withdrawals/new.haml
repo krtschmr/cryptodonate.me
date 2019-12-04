@@ -3,7 +3,7 @@
 
 -@withdrawal.errors.add(:amount, :insufficient_funds) if @withdrawal.errors[:streamer] == ["insufficient funds"]
 
-=simple_form_for [:internal, :wallet, @withdrawal] do |f|
+=simple_form_for [:confirm, :internal, :wallet, @withdrawal] do |f|
   =f.input :address
   =f.input :amount
   =f.submit

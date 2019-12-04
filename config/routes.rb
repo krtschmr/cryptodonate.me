@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :wallets, only: [:index, :show] do
 
       resources :withdrawals, only: [:new, :create] do
-        post :confirm
+        collection do
+          post :confirm
+        end
       end
     end
 

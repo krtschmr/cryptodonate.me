@@ -1,0 +1,16 @@
+%h2 Review your withdrawal
+
+%p=@withdrawal.address
+%p=@withdrawal.amount
+%p=@withdrawal.fee
+%p=@withdrawal.withdrawal_amount
+
+-# -@withdrawal.errors.add(:amount, :insufficient_funds) if @withdrawal.errors[:streamer] == ["insufficient funds"]
+
+
+=link_to "Cancel", new_internal_wallet_withdrawal_path, class: "btn btn-danger"
+
+=simple_form_for [:internal, :wallet, @withdrawal] do |f|
+  =f.input :address, as: :hidden
+  =f.input :amount, as: :hidden
+  =f.submit "Confirm", class: "btn btn-success"
