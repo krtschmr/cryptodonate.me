@@ -1,6 +1,7 @@
 -content_for :title, "Style your donation page"
 
-=link_to :reset
+=link_to reset_internal_donation_page_styling_path, class: "btn btn-danger", "data-confirm": "Are you sure?" do
+  Reset Stylesheet
 
 =simple_form_for @styling, url: internal_donation_page_styling_path, html: { class: 'form' } do |f|
   -current_streamer.donation_page_styling.variables.keys.each do |key|

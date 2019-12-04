@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_023936) do
     t.integer "h2_size", default: 14
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "info_text"
+    t.string "info_text", default: "Thanks for your donation"
     t.index ["streamer_id"], name: "index_donation_page_stylings_on_streamer_id"
   end
 

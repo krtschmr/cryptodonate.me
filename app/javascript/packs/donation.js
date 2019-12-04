@@ -70,13 +70,16 @@ let paymentMethodClick = (element, event) => {
 
 document.addEventListener('click', function (event) {
 
-	// If the clicked element doesn't have the right selector, bail
+  if (event.target.matches('#return-button .back-icon')) {
+    returnButtonClick();
+  }
+
+  // If the clicked element doesn't have the right selector, bail
   if (event.target.matches('#select-payment-method .method')) {
     paymentMethodClick(event.target, event)
   }
-
-  if (event.target.matches('#return-button .back-icon')) {
-    returnButtonClick();
+  if( event.target.matches('#select-payment-method .method img') || event.target.matches('#select-payment-method .method span') ) {
+    paymentMethodClick(event.target.parentElement, event)
   }
 
 }, false);

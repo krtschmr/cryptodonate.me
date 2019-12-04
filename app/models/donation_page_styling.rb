@@ -46,7 +46,7 @@ end
 #  h2_color            :string           default("#eee")
 #  h2_size             :integer          default(14)
 #  header_bg           :string           default("#122332")
-#  info_text           :string
+#  info_text           :string           default("Thanks for your donation")
 #  photo_border_color  :string           default("#fff")
 #  photo_border_radius :integer          default(8)
 #  photo_border_width  :integer          default(4)

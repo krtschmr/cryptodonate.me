@@ -27,7 +27,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :donation_page_styling, only: [:edit, :update, :destroy]
+    resource :donation_page_styling, only: [:edit, :update] do
+      collection do
+        get :reset
+      end
+    end
+
     resource :donation_setting, only: [:edit, :update]
 
 

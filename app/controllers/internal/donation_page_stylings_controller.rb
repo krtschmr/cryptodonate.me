@@ -14,7 +14,7 @@ class Internal::DonationPageStylingsController < Internal::BaseController
     end
   end
 
-  def destroy
+  def reset
     current_streamer.donation_page_styling.destroy
     redirect_to edit_internal_donation_page_styling_path
   end

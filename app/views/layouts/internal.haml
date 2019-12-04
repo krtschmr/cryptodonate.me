@@ -8,7 +8,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'internal', media: 'all'
-    -# = javascript_pack_tag 'application'
+    = javascript_pack_tag 'internal'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "A premium admin dashboard template by Mannatthemes", :name => "description"}/
     %meta{:content => "Mannatthemes", :name => "author"}/
@@ -210,7 +210,7 @@
                 %li.nav-item
                   =link_to [:edit, :internal, :donation_page_styling], class: "nav-link" do
                     %i.dripicons-calendar>
-                    Donation Page Colors
+                    My Donation Page
 
                 %li.nav-item
                   =link_to [:edit, :internal, :donation_setting], class: "nav-link" do
