@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
 @import "donation/reset";
-@import "donation/qr";
-
 
 
 .back-icon {
@@ -14,9 +12,11 @@
   background-repeat: no-repeat;
 }
 .svg {
+  padding: 25px 0;
   svg {
     display: block;
-    // margin: 0 auto;
+    margin: 0 auto;
+
   }
 }
 #payment-info {
@@ -28,5 +28,69 @@
   display: block!important;
 }
 #return-button, #abort-button {
+  display: none;
+}
+
+
+
+
+#payment-info {
+  .payment-address {
+    width: 100%;
+    .address-wrapper {
+      display: flex;
+      .address-field {
+        height: 50px;
+        width: 370px;
+        background-color: rgba(0, 0, 0, 0.03);
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.88;
+        text-align: left;
+        color: rgb(32, 42, 54);
+        padding: 10px;
+        border-radius: 4px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.1);
+        border-image: initial;
+        overflow: hidden;
+        span.address {
+          // padding: 5px;
+          // background: #ddd;
+        }
+      }
+      .icon.copy {
+        height: 50px;
+        width: 50px;
+        background: red;
+      }
+    }
+    button.show-qr-code {
+      visibility: visible;
+      height: 40px;
+      width: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      background-color: transparent;
+      color: rgb(22, 82, 240);
+      box-shadow: rgba(6, 102, 208, 0.5) 0px 0px 0px 2px inset;
+      transition: all 0.2s ease-in-out 0s;
+      border-radius: 2px;
+    }
+  }
+}
+
+.flex {
+  display: flex!important;
+}
+
+
+.d-none {
   display: none;
 }

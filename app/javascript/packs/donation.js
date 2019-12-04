@@ -47,8 +47,9 @@ let showAbortButton = () => {
 let returnButtonClick = () => {
   console.log("return button clicked");
   showAbortButton();
-  showPaymentSelection();
+  hideAllQrCodes();
   hideActivePaymentInformation();
+  showPaymentSelection();
 }
 
 let paymentMethodClick = (element, event) => {
@@ -67,9 +68,20 @@ let paymentMethodClick = (element, event) => {
   showReturnButton();
 }
 
+let showQrCode = (element, event) => {
+  console.log(element);
+  console.log(event);
+  let coin = element.getAttribute("data-coin");
+  let qr = document.querySelector(`.qr-code.${coin.toLowerCase()}`);
+  qr.classList.remove("d-none")
+}
+
+let hideAllQrCodes = () => {
+  document.querySelectorAll(".qr-code").forEach(qr => qr.classList.add("d-none") );
+}
 
 document.addEventListener('click', function (event) {
-
+  
   if (event.target.matches('#return-button .back-icon')) {
     returnButtonClick();
   }
@@ -81,5 +93,10 @@ document.addEventListener('click', function (event) {
   if( event.target.matches('#select-payment-method .method img') || event.target.matches('#select-payment-method .method span') ) {
     paymentMethodClick(event.target.parentElement, event)
   }
+
+  if (event.target.matches('button.show-qr-code')) {
+    showQrCode(event.target, event)
+  }
+
 
 }, false);

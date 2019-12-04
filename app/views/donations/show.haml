@@ -19,11 +19,17 @@
 #payment-info
   -@donation.payment_addresses.each do |pa|
     .payment-address{class: pa.coin.symbol.downcase}
-      %span=pa.address
-      %i I
-      .qr-code
+      .address-wrapper
+        .address-field
+          %span.address=pa.address
+        .icon.copy
+
+      .qr-code.d-none{class: pa.coin.symbol.downcase}
         -qrcode = RQRCode::QRCode.new("#{pa.coin.name.downcase}:#{pa.address}")
         .svg=raw qrcode.as_svg(coin: pa.coin.symbol.downcase)
+
+      %button.show-qr-code{data: {coin: pa.coin.symbol}}
+        Show QR code
 
 
 
