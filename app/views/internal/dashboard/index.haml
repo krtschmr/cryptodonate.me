@@ -5,7 +5,7 @@
     %input{type: :text, value: new_donation_url(current_streamer.donation_url), class: "form-control form-control-lg text-center"}
 
 
-  .col-lg-8
+  -# .col-lg-8
     .card
       .card-body
         -# .crypto-report-history.d-flex.justify-content-end
@@ -30,7 +30,7 @@
       / end card-body
     / end card
   / end col
-  .col-lg-4
+  .col-lg-6
 
     .card
 
@@ -56,8 +56,8 @@
 
 
 
-.row
-  .col-lg-4
+
+  .col-lg-6
     .card
       .card-body
         =link_to  [:internal, :donations], class: "float-right text-info" do

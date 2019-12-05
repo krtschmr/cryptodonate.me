@@ -1,0 +1,8 @@
+.big-icon
+  %i.icon-attention-circled.darkslategray
+
+%h2.text-center Payment expired
+
+%p.text-center.mt-4
+  The payment window is expired. If you would like to start a new donation
+  =link_to "please click here", new_donation_path(@donation.streamer.donation_url)

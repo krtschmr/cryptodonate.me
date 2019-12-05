@@ -10,6 +10,7 @@ class DonationPayment < ApplicationRecord
     after_initialize { self.coin ||= donation.coin }
     before_create :set_usd_value
 
+    after_commit :detection_callback, on: :create
     after_commit :confirmation_callback, on: :update, if: :confirmed?
 
     state_machine initial: "detected" do
@@ -30,6 +31,10 @@ class DonationPayment < ApplicationRecord
 
     def calculated_usd_value
       coin.price * amount
+    end
+
+    def detection_callback
+      donation.detect!
     end
 
     def confirmation_callback

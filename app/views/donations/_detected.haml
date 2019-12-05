@@ -1,0 +1,31 @@
+.big-icon
+  %i.icon-hourglass-1.animate-spin
+
+%h2.text-center Donation detected
+
+-# We're constantly monitoring the network and didn't detect a payment. If you have already paid, please contact the merchant to resolve your order status. Your order code is:
+
+%p.explanation-text.text-center
+  We have detected your donation. As soon the donation is confirmed on the blockchain we will credit it to #{@donation.streamer.name}.
+
+
+-@donation.donation_payments.each do |dp|
+
+  .text-center
+    =link_to truncate(dp.tx_id), "#", target: "_blank"
+    %br
+    #{dp.amount}#{dp.coin.symbol}
+    %br
+    =Money.new(dp.usd_value * 100, "USD").exchange_to(@streamer.donation_setting.converted_currency).format
+
+
+
+-if @donation.name != "Anonymous"
+  %p.sender-details
+    %strong Your name
+    =@donation.name
+
+-if @donation.message.present?
+  %p.sender-details
+    %strong Your message
+    =@donation.message

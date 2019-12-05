@@ -1,7 +1,6 @@
 
 
 body {
-  font-family: 'Roboto', sans-serif;
   background: $bg;
 }
 
@@ -169,4 +168,8 @@ p.sender-details {
   strong {
     font-weight: bold;
   }
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }

@@ -1,0 +1,59 @@
+
+#select-payment-method.block
+  %p.text
+    Select a cryptocurrency
+
+  -@donation.payment_addresses.joins(:coin).order("coins.name ASC").each do |pa|
+    .method{data: {coin: pa.coin.symbol}}
+      =image_tag "/icons/#{pa.coin.symbol.downcase}.png", size: 32
+      %span=pa.coin.name
+
+
+
+#payment-info{data: {"seconds-left": @donation.seconds_left}}
+  -@donation.payment_addresses.each do |pa|
+    .payment-address{class: pa.coin.symbol.downcase}
+      %p.text-center Only send #{pa.coin.name} (#{pa.coin.symbol}) to this address.
+
+      .address-wrapper
+        .address-field
+          %span.address=pa.address
+        .icon.copy
+          %i.icon-docs
+
+      .qr-code.d-none{class: pa.coin.symbol.downcase}
+        -qrcode = RQRCode::QRCode.new("#{pa.coin.name.downcase}:#{pa.address}")
+        .svg=raw qrcode.as_svg(coin: pa.coin.symbol.downcase)
+
+      %button.show-qr-code.btn{data: {coin: pa.coin.symbol}}
+        %i.icon-qrcode
+        Show QR code
+
+
+
+.time
+  %i.icon-clock
+  %span.time-left
+  Awaiting payment...
+
+
+
+
+-if @donation.name != "Anonymous"
+  %p.sender-details
+    %strong Your name
+    =@donation.name
+
+-if @donation.message.present?
+  %p.sender-details
+    %strong Your message
+    =@donation.message
+
+
+.back-icon
+  =link_to new_donation_path(@donation.streamer.donation_url), id: "abort-button", class: "block" do
+    %i.icon-left-big.back-button
+
+
+  =link_to "#", id: "return-button" do
+    %i.icon-left-big.back-button

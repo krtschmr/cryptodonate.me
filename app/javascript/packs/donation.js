@@ -19,6 +19,13 @@
 // var ReactRailsUJS = require("react_ujs");
 // ReactRailsUJS.useContext(componentRequireContext);
 
+
+Number.prototype.pad = function(size) {
+    var s = String(this);
+    while (s.length < (size || 2)) {s = "0" + s;}
+    return s;
+}
+
 let hideActivePaymentInformation = () => {
   let active = document.querySelector("#payment-info .payment-address.block");
   if(active !== null) {
@@ -64,6 +71,11 @@ let paymentMethodClick = (element, event) => {
   let container = document.querySelector(`#payment-info .payment-address.${coin.toLowerCase()}`);
   container.classList.add('block');
 
+  let hiddenButton = document.querySelector("button.show-qr-code.btn.d-none")
+  if(hiddenButton !== null){
+    hiddenButton.classList.remove("d-none")
+  }
+
   hidePaymentSelection();
   showReturnButton();
 }
@@ -83,14 +95,17 @@ let hideAllQrCodes = () => {
 let timer = undefined;
 
 let initTimer = () => {
-  let secondsLeft = document.querySelector("#payment-info").getAttribute("data-seconds-left")
+  let paymentInfo = document.querySelector("#payment-info")
+  if(paymentInfo === null) { return }
+
+  let secondsLeft = paymentInfo.getAttribute("data-seconds-left")
 
   timer = window.setInterval(function(){
     secondsLeft = secondsLeft - 1;
     const seconds = secondsLeft % 60;
     const minute = parseInt((secondsLeft - seconds) / 60)
 
-    document.querySelector("span.time-left").innerText = `${minute}:${seconds}`
+    document.querySelector("span.time-left").innerText = `${minute}:${seconds.pad()}`
 
   }, 1000);
 }
@@ -112,7 +127,7 @@ ready(function() {
 
 document.addEventListener('click', function (event) {
 
-  if (event.target.matches('#return-button .back-icon')) {
+  if (event.target.matches('.back-button')) {
     returnButtonClick();
   }
 
@@ -125,7 +140,9 @@ document.addEventListener('click', function (event) {
   }
 
   if (event.target.matches('button.show-qr-code')) {
+    event.target.classList.add("d-none");
     showQrCode(event.target, event)
+
   }
 
 }, false);

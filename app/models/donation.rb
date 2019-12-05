@@ -22,11 +22,15 @@ class Donation < ApplicationRecord
   after_commit :trigger_notification, if: :paid?, unless: :alert_created?
 
   state_machine initial: "pending" do
+    state "detected"
     state "paid"
     state "expired"
 
+    event :detect do
+      transition "pending" => "detected"
+    end
     event :paid do
-      transition "pending" => "paid"
+      transition ["pending", "detected"] => "paid"
     end
     event :expire do
       transition "pending" => "expired"

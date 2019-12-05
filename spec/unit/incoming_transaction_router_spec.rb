@@ -22,6 +22,7 @@ RSpec.describe IncomingTransactionRouter, type: :model do
           expect(incoming.tx_id).to eq(tx_id)
           expect(incoming.confirmations).to eq(0)
           expect(incoming.payment_address).to eq(payment_address)
+          expect(donation.reload).to be_detected
         end
       end
     end
