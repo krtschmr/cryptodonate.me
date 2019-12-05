@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_023936) do
     t.string "state", default: "pending"
     t.decimal "amount", precision: 18, scale: 8, default: "0.0"
     t.string "tx_id"
+    t.text "exception"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_crypto_withdrawals_on_coin_id"

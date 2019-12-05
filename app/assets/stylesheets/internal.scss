@@ -30,3 +30,9 @@ balance {
 .mdi.unpaid {
   opacity: 0.5;
 }
+
+@media (max-width: 1024px) {
+  .logo strong {
+    display: none;
+  }
+}

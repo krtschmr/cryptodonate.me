@@ -23,6 +23,10 @@ class Streamer < ApplicationRecord
     find_by(provider: hash["provider"], uid: hash["uid"])
   end
 
+  def total_balance
+    balances.sum{|b| b.available * b.referenced_coin.price }
+  end
+
   def provided_own_key?(coin)
     xpubkey(coin).present?
   end

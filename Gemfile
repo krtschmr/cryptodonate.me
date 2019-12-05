@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -85,3 +86,4 @@ gem 'rqrcode', github: "krtschmr/rqrcode", branch: "render_method_AS_CSS"
 
 gem 'react-rails'
 gem 'state_machines-activerecord'
+gem "whenever"

@@ -7,6 +7,8 @@ class Withdrawal < ApplicationRecord
   has_one :crypto_withdrawal
   has_one :ledger_entry
 
+  scope :confirmed, -> {where state: :confirmed}
+
   before_validation :calculate_fee, on: :create
   before_validation :calculate_withdrawal_amount, on: :create
 
@@ -14,10 +16,11 @@ class Withdrawal < ApplicationRecord
   validates :amount, numericality: { greater_than: 0 }, on: :create
   validates :fee, numericality: { greater_than_or_equal_to: :fee_minimum }, on: :create
   validates :withdrawal_amount, numericality: { greater_than: 0 }, on: :create
-  validate :valid_address, on: :create
+  validate :valid_address, on: :create, if: ->{address.present?}
   validate :enough_balance, on: :create
 
   after_create :block_amount!
+  after_create_commit :confirm!
 
   delegate :tx_id, to: :crypto_withdrawal
 
@@ -71,8 +74,7 @@ class Withdrawal < ApplicationRecord
   end
 
   def valid_address?
-    # WalletService.new(coin).valid_address?(address)
-    true
+    WalletService.new(coin).valid_address?(address)
   end
 
   def calculate_fee

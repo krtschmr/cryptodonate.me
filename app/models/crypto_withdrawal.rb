@@ -4,7 +4,13 @@ class CryptoWithdrawal < ApplicationRecord
   belongs_to :coin, required: true
   belongs_to :withdrawal, required: true
 
+  scope :pending, -> { where state: :pending }
+
   validates :amount, numericality: { greater_than: 0 }
+
+  def self.process!
+    pending.each(&:try_to_pay_out!)
+  end
 
   state_machine initial: "pending" do
     state "finished"  do
@@ -20,16 +26,19 @@ class CryptoWithdrawal < ApplicationRecord
     end
   end
 
+  def reset!
+    update(state: "pending", exception: nil)
+  end
+
   def try_to_pay_out!
     begin
-      # TODO
-      # set fee accordingly
-      self.tx_id = WalletService.new(coin).create_transaction!(address: withdrawal.address, amount: amount)
+      service = WalletService.new(coin)
+      service.set_low_tx_fee
+      self.tx_id = service.create_transaction!(address: withdrawal.address, amount: amount)
       finished!
       withdrawal.finished!
     rescue => e
-      p e
-      # self.exception = e
+      self.exception = e
       error!
     end
   end
@@ -42,6 +51,7 @@ end
 #
 #  id            :integer          not null, primary key
 #  amount        :decimal(18, 8)   default(0.0)
+#  exception     :text
 #  state         :string           default("pending")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
