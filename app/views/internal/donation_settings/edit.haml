@@ -3,5 +3,5 @@
 =simple_form_for @setting, url: internal_donation_setting_path, html: { class: 'form' } do |f|
 
   =f.input :minimum_amount_for_notification
-  =f.input :converted_currency
+  =f.input :converted_currency, as: :select, collection: DonationSetting::SUPPORTED_CURRENCIES
   =f.button :submit, class: "btn btn-primary"

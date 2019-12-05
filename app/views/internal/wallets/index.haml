@@ -9,7 +9,7 @@
           .wallet-bal-usd
             %h4.wallet-title.m-0 Your Total Balence
             %span.text-muted.font-12=Date.today
-            %h3.text-center=Money.new(current_streamer.total_balance * 100).format
+            %h3.text-center=Money.new(current_streamer.total_balance * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
           -# %p.font-15.text-success.text-center.mb-4
             + $455.00
             %span.font-12.text-muted
@@ -29,7 +29,7 @@
                     =formatted(balance.balance, balance.coin, {})
                     %span.badge.badge-soft-purple=balance.referenced_coin.name
 
-                  %p.text-muted.mb-0 $ 312.12
+                  %p.text-muted.mb-0=Money.new(balance.balance * balance.referenced_coin.price * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
               / end media body
 
             -if balance.available > 0

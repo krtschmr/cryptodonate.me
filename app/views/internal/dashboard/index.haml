@@ -48,7 +48,7 @@
                 / end media body
               .coin-bal
                 %h3.m-0 #{current_streamer.balance(coin).balance} #{coin.symbol.upcase}
-                %p.text-muted.mb-0.text-right $412 USD
+                %p.text-muted.mb-0.text-right=Money.new(current_streamer.balance(coin).balance * coin.price * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
           -# %h3.text-center
             Total: $1333.37
 
@@ -75,7 +75,7 @@
                     %p.text-muted.mb-0=donation.created_at
                 / end media body
               %span.text-success
-                =Money.new(donation.usd_value * 100).format
+                =Money.new(donation.usd_value * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
                 -# =donation.coin.symbol.upcase
 
   .col-lg-8
@@ -108,4 +108,5 @@
                     -if entry.donation.present?
                       %strong=entry.donation.name
                       donated
-                      %strong #{Money.new(entry.donation_payment.usd_value * 100).format}
+                      %strong
+                        =Money.new(entry.donation_payment.usd_value * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
