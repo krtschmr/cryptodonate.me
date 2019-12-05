@@ -27,9 +27,10 @@
                 .coin-bal
                   %h3.m-0
                     =formatted(balance.balance, balance.coin, {})
-                    %span.badge.badge-soft-purple=balance.referenced_coin.name
 
-                  %p.text-muted.mb-0=Money.new(balance.balance * balance.referenced_coin.price * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
+                  %p.text-muted.mb-0
+                    -# %span.badge.badge-soft-purple=balance.referenced_coin.name
+                    =Money.new(balance.balance * balance.referenced_coin.price * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
               / end media body
 
             -if balance.available > 0
