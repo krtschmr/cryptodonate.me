@@ -19,7 +19,7 @@ class Donation < ApplicationRecord
   end
 
   after_create_commit :assign_payment_addresses
-  after_commit :trigger_notification, if: :paid?, unless: :alert_created?
+  after_commit :trigger_notification, on: :update, if: :can_trigger_notification?, unless: :alert_created?
 
   state_machine initial: "pending" do
     state "detected"
@@ -69,8 +69,12 @@ class Donation < ApplicationRecord
     usd_value.to_d >= streamer.donation_setting.minimum_amount_for_notification
   end
 
+  def can_trigger_notification?
+    (paid? && above_minimum?) || streamer.donation_setting.allow_zero_conf
+  end
+
   def trigger_notification(force=false)
-    if (paid? && above_minimum? && !alert_created?) || force
+    if (can_trigger_notification? && !alert_created?) || force
       trigger_notification!
     end
   end

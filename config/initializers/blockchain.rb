@@ -12,10 +12,11 @@
 
 
 
+
 $bitcoin_rpc = BitcoreRPC.new(
   user: (ENV['BITCOIN_RPC_USER'] || "test"),
   password: (ENV['BITCOIN_RPC_PASS'] || "test"),
-  host: (ENV['BITCOIN_RPC_HOST'] || "192.168.1.40"),
+  host: (ENV['BITCOIN_RPC_HOST'] || Rails.env.test? ? "192.168.1.37" : "192.168.1.40"),
   port: (ENV['BITCOIN_RPC_PORT'] || 20100),
   debug: Rails.env.development?
 )

@@ -9,7 +9,9 @@
           .wallet-bal-usd
             %h4.wallet-title.m-0 Your Total Balance
             -# %span.text-muted.font-12=Date.today
-            %h3.text-center=Money.new(current_streamer.total_balance * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
+            %h3.text-center
+              =Money.new(current_streamer.total_balance * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
+              =current_streamer.donation_setting.converted_currency
           -# %p.font-15.text-success.text-center.mb-4
             + $455.00
             %span.font-12.text-muted
@@ -31,7 +33,8 @@
                   %p.text-muted.mb-0
                     -# %span.badge.badge-soft-purple=balance.referenced_coin.name
                     =Money.new(balance.balance * balance.referenced_coin.price * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
-              / end media body
+                    %span=current_streamer.donation_setting.converted_currency
+
 
             -if balance.available > 0
               =link_to new_internal_wallet_withdrawal_path(balance.coin), class: "btn btn-danger btn-sm px-3" do

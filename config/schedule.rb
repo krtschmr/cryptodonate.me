@@ -23,3 +23,7 @@
 every 1.minute do
   runner "CryptoWithdrawal.process!"
 end
+
+every 1.minute do
+  runner "PriceUpdater.run"
+end
