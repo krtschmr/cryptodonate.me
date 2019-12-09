@@ -1,5 +1,3 @@
-
-
 !!!
 %html{:lang => "en"}
   %head
@@ -137,8 +135,8 @@
               %i.dripicons-wallet.text-muted.align-self-center
               .btc-balance
                 %h5.m-0
-                  9.521.32
-                  %span BTC
+                  =Money.new(current_streamer.total_balance * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
+                  %span=current_streamer.donation_setting.converted_currency
                 %span.text-muted Total Balance
           -# %li.hide-phone.app-search
           -#   %form{:role => "search"}
