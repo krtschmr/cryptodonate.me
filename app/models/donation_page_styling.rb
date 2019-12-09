@@ -2,8 +2,16 @@ class DonationPageStyling < ApplicationRecord
 
   belongs_to :streamer
 
-  before_commit :refresh_template!, on: [:create, :update]
 
+  [:border_radius, :photo_border_radius, :photo_border_width, :photo_size, :h1_size, :h2_size].each do |field|
+    validates field, numericality: {greater_than_or_equal_to: 0, only_integer: true, less_than: 150}
+  end
+  [:bg, :header_bg, :photo_border_color, :h1_color, :h2_color, :body_bg, :body_color, :btn_bg, :btn_color].each do |field|
+    validates_format_of field, with: /\A#(?:[A-F0-9]{3}){1,2}\z/i
+  end
+
+
+  before_commit :refresh_template!, on: [:create, :update]
   before_destroy :delete_css_file
 
   def self.permitted_attributes

@@ -21,9 +21,10 @@
               Message:
               =@donation.message
 
-            %p
-              Amount:
-              =Money.new(@donation.usd_value * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
+            -if @donation.usd_value.present?
+              %p
+                Amount:
+                =Money.new(@donation.usd_value * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
 
             %p
               Created at:

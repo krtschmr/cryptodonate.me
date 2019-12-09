@@ -12,12 +12,7 @@ class Balance < ApplicationRecord
   end
 
   def total
-    balance + incoming_deposits
-  end
-
-  def incoming_deposits
-    #user.wallet_deposits.pending.where(coin: Asset.find(coin) ).sum(:amount)
-    0
+    balance
   end
 
   def referenced_coin

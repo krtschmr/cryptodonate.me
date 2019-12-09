@@ -6,6 +6,9 @@ class DonationSetting < ApplicationRecord
 
   validates :converted_currency, inclusion: { in: SUPPORTED_CURRENCIES }
   validates :minimum_amount_for_notification, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 999.99 }
+
+
+  
 end
 
 # == Schema Information
