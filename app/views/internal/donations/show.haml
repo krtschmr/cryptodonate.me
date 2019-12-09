@@ -1,4 +1,39 @@
-%h2=@donation
 
 
--@donation.inspect
+-content_for(:title, "Details of a Donation")
+
+
+
+
+
+.col-lg-12
+  .card
+    .card-body
+      .row
+        .col-12
+          .wallet-bal-usd
+            %h4.wallet-title.m-0 Donation #{@donation.identifier}
+
+            %p
+              From:
+              =@donation.name
+            %p
+              Message:
+              =@donation.message
+
+            %p
+              Amount:
+              =Money.new(@donation.usd_value * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
+
+            %p
+              Created at:
+              =@donation.created_at
+
+          .donations
+            -@donation.donation_payments.each do |dp|
+              .donation-payment
+                %p=dp.state
+                %p=dp.tx_id
+                %p #{dp.amount} #{dp.coin.symbol}
+                %p=dp.block
+                %p=Money.new(dp.usd_value*100).format

@@ -20,10 +20,16 @@ balance {
     // font-weight: normal;
     font-size: 16px;
   }
+  &.pos zeros, &.pos value {
+    @extend .text-success;
+  }
+
+  &.neg zeros, &.neg value {
+    @extend .text-danger;
+  }
   currency {
     margin-left: 0.25rem;
-    // font-size: 85%;
-    // font-weight: normal;
+    color: inherit;
   }
 }
 
@@ -35,4 +41,9 @@ balance {
   .logo strong {
     display: none;
   }
+}
+
+
+.word-wrap {
+  word-wrap: break-word;
 }

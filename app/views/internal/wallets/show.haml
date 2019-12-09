@@ -1,0 +1,55 @@
+-content_for :title, "Your #{@coin.symbol} wallet"
+
+
+.col-lg-12
+  .card
+    .card-body.pt-0
+      -# %ul.list-group.wallet-bal-crypto
+      %ul.list-unsyled.m-0.pl-0.transaction-history
+        -current_streamer.ledger_entries.where(coin: @coin).order(id: "DESC").each do |entry|
+          -# %li.list-group-item.align-items-center.d-flex.justify-content-between
+          %li.align-items-center.d-flex.justify-content-between
+            .media
+              .transaction-icon
+                -if entry.amount > 0
+                  %i.mdi.mdi-arrow-top-right-thick.text-success
+                -else
+                  %i.mdi.mdi-arrow-bottom-right-thick.text-danger
+
+              .media-body.align-self-center
+                .transaction-data.word-wrap
+
+                  -if entry.withdrawal.present?
+                    %h3.m-0 Withdrawal
+                    %p.mb-0
+                      to address
+                      =entry.withdrawal.address
+
+                  -if entry.donation.present?
+                    %h3.m-0 Donation
+                    %p.mb-0
+                      from
+                      =entry.donation.name
+
+
+                .coin-bal
+                  %h5.m-0
+                    -clazz = entry.amount > 0  ? "pos" : "neg"
+                    =formatted(entry.amount, entry.coin, {class: clazz, show_sign: true})
+                  =entry.created_at
+
+
+            -# .media
+              -# %img.mr-3.thumb-sm.align-self-center.rounded-circle{:alt => "...", :src => "#{asset_path "cryptoicons/color/#{entry.coin.symbol.downcase}.png"}"}
+
+                  %p.text-muted.mb-0
+                    -# %span.badge.badge-soft-purple=balance.referenced_coin.name
+                    -# =Money.new(balance.balance * balance.referenced_coin.price * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
+              / end media body
+            -#
+            -# -if balance.available > 0
+            -#   =link_to new_internal_wallet_withdrawal_path(balance.coin), class: "btn btn-danger btn-sm px-3" do
+            -#     Withdraw
+            -#
+            -# =link_to internal_wallet_path(balance.coin), class: "btn btn-primary btn-sm px-3" do
+            -#   Details

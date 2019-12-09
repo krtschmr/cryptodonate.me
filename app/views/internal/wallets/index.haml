@@ -7,8 +7,8 @@
       .row
         .col-12
           .wallet-bal-usd
-            %h4.wallet-title.m-0 Your Total Balence
-            %span.text-muted.font-12=Date.today
+            %h4.wallet-title.m-0 Your Total Balance
+            -# %span.text-muted.font-12=Date.today
             %h3.text-center=Money.new(current_streamer.total_balance * 100).exchange_to(current_streamer.donation_setting.converted_currency).format
           -# %p.font-15.text-success.text-center.mb-4
             + $455.00
@@ -37,4 +37,5 @@
               =link_to new_internal_wallet_withdrawal_path(balance.coin), class: "btn btn-danger btn-sm px-3" do
                 Withdraw
 
-            %button.btn.btn-primary.btn-sm.px-3 Details
+            =link_to internal_wallet_path(balance.coin), class: "btn btn-primary btn-sm px-3" do
+              Details

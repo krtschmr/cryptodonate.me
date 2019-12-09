@@ -57,6 +57,10 @@ class Donation < ApplicationRecord
     created_at.present? && created_at < TIME_LIMIT.minutes.ago rescue false
   end
 
+  def identifier
+    uuid.split("-").first
+  end
+
   def to_param
     uuid
   end

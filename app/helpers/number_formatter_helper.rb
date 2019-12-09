@@ -42,7 +42,11 @@ module NumberFormatterHelper
       zeros = 0
     end
 
-    content_tag(:balance, class: "#{coin.symbol.downcase}", title: "#{amount} #{coin.symbol}", amount: formatted_amount, currency: coin.symbol) do
+    if options[:show_sign]
+      formatted_amount = "+#{formatted_amount}" if amount > 0
+    end
+
+    content_tag(:balance, class: "#{coin.symbol.downcase} #{options[:class]}", title: "#{amount} #{coin.symbol}", amount: formatted_amount, currency: coin.symbol) do
       concat(content_tag(:value, formatted_amount))
       concat(formatted_zeros(zeros))
       concat(content_tag(:currency, coin.symbol))
