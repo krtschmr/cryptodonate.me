@@ -132,6 +132,13 @@ let initTimer = () => {
     const seconds = secondsLeft % 60;
     const minute = parseInt((secondsLeft - seconds) / 60)
 
+    if(secondsLeft < 0) {
+      if(channel !== undefined) {
+        channel.send({command: "expire", uuid: uuid})
+        window.clearInterval(timer);
+      }
+    }
+
     document.querySelector("span.time-left").innerText = `${minute}:${seconds.pad()}`
   }, 1000);
 }
