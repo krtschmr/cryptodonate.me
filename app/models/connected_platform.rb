@@ -14,7 +14,7 @@ end
 #  provider      :string           not null
 #  refresh_token :string           not null
 #  token         :string           not null
-#  uid           :integer
+#  uid           :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  streamer_id   :integer

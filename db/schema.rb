@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_023936) do
   create_table "connected_platforms", force: :cascade do |t|
     t.integer "streamer_id"
     t.string "provider", null: false
-    t.integer "uid"
+    t.string "uid"
     t.string "name"
     t.string "token", null: false
     t.string "refresh_token", null: false

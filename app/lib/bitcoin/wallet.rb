@@ -12,7 +12,7 @@ module Bitcoin::Wallet
     $bitcoin_rpc.getblockcount
   end
 
-  def generate_address(type="bech32")
+  def generate_address(type="p2sh-segwit")
     $bitcoin_rpc.getnewaddress("myaddress", type)
   end
 

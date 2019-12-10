@@ -111,7 +111,7 @@ class Donation < ApplicationRecord
     #   # add this address into our node as an watchonly address
     #   address
     # else
-      # WalletService.new(coin).generate_address\
+      
     Coin.find_each do |coin|
       coin.payment_addresses.unused.first.update(donation: self)
     end
