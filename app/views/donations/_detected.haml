@@ -16,7 +16,7 @@
     %br
     #{dp.amount}#{dp.coin.symbol}
     %br
-    =Money.new(dp.usd_value * 100, "USD").exchange_to(@streamer.donation_setting.converted_currency).format
+    =Money.new(dp.usd_value * 100, "USD").exchange_to(@donation.streamer.donation_setting.converted_currency).format
 
 
 
