@@ -157,6 +157,22 @@ ready(function() {
 })
 
 
+let copyToClipboard = (secretInfo) => {
+  let $body = document.querySelector("body");
+   let $tempInput = document.createElement('INPUT');
+   $body.appendChild($tempInput);
+   $tempInput.setAttribute('value', secretInfo)
+   $tempInput.select();
+   document.execCommand('copy');
+   $body.removeChild($tempInput);
+ }
+
+document.querySelectorAll(".icon.copy i.icon-docs").forEach(btn => btn.addEventListener('click', function(ev) {
+  console.log("is clicked");
+  const address = document.querySelector(".payment-address.block .address-field span.address").innerText
+  copyToClipboard(address);
+}));
+
 
 document.addEventListener('click', function (event) {
 
@@ -175,7 +191,6 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('button.show-qr-code')) {
     event.target.classList.add("d-none");
     showQrCode(event.target, event)
-
   }
 
 }, false);
