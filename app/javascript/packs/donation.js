@@ -20,6 +20,33 @@
 // ReactRailsUJS.useContext(componentRequireContext);
 
 
+
+import consumer from "./consumer"
+let timer = undefined;
+
+const uuid = document.querySelector('body').dataset.uuid;
+let channel = undefined;
+if(uuid !== undefined ){
+  channel = consumer.subscriptions.create({channel: "DonationChannel", uuid: uuid}, {
+    connected(){
+      console.log(`connected to donation ${uuid}`);
+    },
+    received(data) {
+      if(data.template !== null) {
+        clearInterval(timer);
+        document.querySelector("#donation-box .body").innerHTML = data.template;
+      }
+      if(data.state == "paid" || data.state == "expired") {
+        this.unsubscribe();
+        this.consumer.disconnect();
+      }
+    }
+  });
+}
+
+
+
+
 Number.prototype.pad = function(size) {
     var s = String(this);
     while (s.length < (size || 2)) {s = "0" + s;}
@@ -92,7 +119,7 @@ let hideAllQrCodes = () => {
   document.querySelectorAll(".qr-code").forEach(qr => qr.classList.add("d-none") );
 }
 
-let timer = undefined;
+
 
 let initTimer = () => {
   let paymentInfo = document.querySelector("#payment-info")
@@ -106,7 +133,6 @@ let initTimer = () => {
     const minute = parseInt((secondsLeft - seconds) / 60)
 
     document.querySelector("span.time-left").innerText = `${minute}:${seconds.pad()}`
-
   }, 1000);
 }
 

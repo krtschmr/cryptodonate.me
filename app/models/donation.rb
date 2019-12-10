@@ -8,18 +8,19 @@ class Donation < ApplicationRecord
 
   scope :paid, -> { where(state: :paid) }
 
-  validates :uuid, presence: true
+  # validates :uuid, presence: true
   validates_length_of :name, minimum: 2, maximum: 22, allow_blank: true
 
   after_initialize do
-    self.uuid ||= SecureRandom.uuid
     self.name = "Anonymous" unless name.present?
     expired?
-
   end
 
+  before_create { self.uuid ||= SecureRandom.uuid }
   after_create_commit :assign_payment_addresses
   after_commit :trigger_notification, on: :update, if: :can_trigger_notification?, unless: :alert_created?
+
+  after_update :broadcast!
 
   state_machine initial: "pending" do
     state "detected"
@@ -93,6 +94,13 @@ class Donation < ApplicationRecord
 
   private
 
+  def broadcast!
+    if attribute_before_last_save(:state) != state
+      template = ApplicationController.render( assigns: { donation: self }, template: "donations/_#{state}", layout: false)
+      ActionCable.server.broadcast(uuid, state: state, template: template)
+    end
+  end
+
   def trigger_notification!
     NotificationTrigger.call(self)
     self.update_column(:alert_created, true)
@@ -111,7 +119,7 @@ class Donation < ApplicationRecord
     #   # add this address into our node as an watchonly address
     #   address
     # else
-      
+
     Coin.find_each do |coin|
       coin.payment_addresses.unused.first.update(donation: self)
     end

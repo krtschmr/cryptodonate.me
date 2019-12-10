@@ -5,8 +5,7 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'donation', media: 'all'
-    = javascript_pack_tag 'donation'
+    = stylesheet_link_tag 'donation', media: 'all'   
 
     -if current_streamer.try(:donation_page_styling).present?
       =stylesheet_link_tag "/styles/#{@donation.streamer.uuid}.css?#{Time.now.to_i}"
@@ -15,7 +14,8 @@
 
 
 
-  %body
+  %body{data: {uuid: @donation.try(:uuid)}}
+
     #wrapper
       -if @donation.try(:streamer)
         #donation-box
@@ -28,3 +28,4 @@
             = yield
       -else
         =yield
+    = javascript_pack_tag 'donation'
