@@ -4,14 +4,18 @@
     Select a cryptocurrency
 
   -@donation.payment_addresses.joins(:coin).order("coins.name ASC").each do |pa|
-    .method{data: {coin: pa.coin.symbol}}
-      =image_tag "/icons/#{pa.coin.symbol.downcase}.png", size: 32
-      %span=pa.coin.name
+    - clazz = "disabled" unless pa.coin.enabled?
+    .method{data: {coin: pa.coin.symbol}, class: clazz}  
+      =image_tag "/icons/#{pa.coin.symbol.downcase}.png", size: 32, class: clazz
+      %span
+        =pa.coin.name
+        -unless pa.coin.enabled?
+          %small (not available)
 
 
 
 #payment-info{data: {"seconds-left": @donation.seconds_left}}
-  -@donation.payment_addresses.each do |pa|
+  -@donation.active_payment_addresses.each do |pa|
     .payment-address{class: pa.coin.symbol.downcase}
       %p.text-center Only send #{pa.coin.name} (#{pa.coin.symbol}) to this address.
 

@@ -111,16 +111,21 @@ p.text {
       margin-bottom: 10px;
       align-items: center;
       font-size: 17px;
-      &:hover {
+      &:hover:not(.disabled) {
         background: #eee;
         cursor: pointer;
         border-color: blue;
+      }
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
       img {
         width: 32px;
         height: 32px;
         margin-right: 10px;
       }
+
     }
 }
 
