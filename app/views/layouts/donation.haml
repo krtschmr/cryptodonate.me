@@ -7,7 +7,7 @@
     = csp_meta_tag
     = stylesheet_link_tag 'donation', media: 'all'   
 
-    -if current_streamer.try(:donation_page_styling).present?
+    -if @donation && current_streamer&.donation_page_styling.present?
       =stylesheet_link_tag "/styles/#{@donation.streamer.uuid}.css?#{Time.now.to_i}"
     -else
       =stylesheet_link_tag 'donation_defaults', media: 'all'

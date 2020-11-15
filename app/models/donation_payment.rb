@@ -1,56 +1,56 @@
 class DonationPayment < ApplicationRecord
 
-    belongs_to :coin, required: true
-    belongs_to :donation, required: true
-    belongs_to :incoming_transaction, required: true
-    has_one :ledger_entry
+      belongs_to :coin, required: true
+      belongs_to :donation, required: true
+      belongs_to :incoming_transaction, required: true
+      has_one :ledger_entry
 
-    scope :confirmed, ->{ where state: :confirmed}
+      scope :confirmed, ->{ where state: :confirmed}
 
-    after_initialize { self.coin ||= donation.coin }
-    before_create :set_usd_value
+      after_initialize { self.coin ||= donation.coin }
+      before_create :set_usd_value
 
-    after_commit :detection_callback, on: :create
-    after_commit :confirmation_callback, on: :update, if: :confirmed?
+      after_commit :detection_callback, on: :create
+      after_commit :confirmation_callback, on: :update, if: :confirmed?
 
-    state_machine initial: "detected" do
-      state "confirmed" do
-        validates :block, numericality: {greater_than: 0}
-        validates :confirmed_at, presence: true
+      state_machine initial: "detected" do
+        state "confirmed" do
+          validates :block, numericality: {greater_than: 0}
+          validates :confirmed_at, presence: true
+        end
+        event :confirm do
+          transition "detected" => "confirmed"
+        end
       end
-      event :confirm do
-        transition "detected" => "confirmed"
+
+      private
+
+      def set_usd_value
+        self.usd_value = calculated_usd_value
       end
-    end
 
-    private
+      def calculated_usd_value
+        coin.price * amount
+      end
 
-    def set_usd_value
-      self.usd_value = calculated_usd_value
-    end
+      def detection_callback
+        donation.detect!
+      end
 
-    def calculated_usd_value
-      coin.price * amount
-    end
+      def confirmation_callback
+        create_ledger_entry!
+        mark_donation_as_paid!
+      end
 
-    def detection_callback
-      donation.detect!
-    end
+      def create_ledger_entry!
+        raise "already created ledger_entry" if ledger_entry.present?
+        donation.streamer.ledger_entries.create!(coin: self.coin, donation: self.donation, donation_payment: self, amount: self.amount)
+      end
 
-    def confirmation_callback
-      create_ledger_entry!
-      mark_donation_as_paid!
-    end
-
-    def create_ledger_entry!
-      raise "already created ledger_entry" if ledger_entry.present?
-      donation.streamer.ledger_entries.create!(coin: self.coin, donation: self.donation, donation_payment: self, amount: self.amount)
-    end
-
-    def mark_donation_as_paid!
-      donation.recalculate_usd_value!
-      donation.paid! unless donation.paid?
-    end
+      def mark_donation_as_paid!
+        donation.recalculate_usd_value!
+        donation.paid! unless donation.paid?
+      end
 end
 
 # == Schema Information

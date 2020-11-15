@@ -1,10 +1,10 @@
- # bitcoind --testnet \
- # --bind=192.168.1.40 \
- # --rpcallowip=192.168.1.36 \
- # --rpcpassword=test \
- # --rpcuser=test \
- # --rpcport=20100 \
- # --rpcbind=192.168.1.40
+# bitcoind --testnet \
+# --bind=192.168.1.40 \
+# --rpcallowip=192.168.1.36 \
+# --rpcpassword=test \
+# --rpcuser=test \
+# --rpcport=20100 \
+# --rpcbind=192.168.1.40
  # --walletnotify="bash /bitcoin/notify.sh %s"
 
 # notify.sh

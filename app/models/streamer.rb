@@ -1,5 +1,5 @@
 class Streamer < ApplicationRecord
-  devise :rememberable, :trackable, :omniauthable, omniauth_providers: %i[twitch mixer streamelements streamlabs]
+  devise :rememberable, :trackable, :omniauthable, omniauth_providers: %i[twitch streamelements streamlabs]
 
   has_many :balances
   has_many :donations
@@ -71,6 +71,8 @@ class Streamer < ApplicationRecord
   def balance(coin)
     balances.find_by(coin: coin.to_s.upcase) || balances.create(coin: coin.to_s.upcase)
   end
+
+  private
 
   def set_donation_url
     self.donation_url = generate_donation_url

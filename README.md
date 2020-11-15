@@ -16,7 +16,7 @@
 
 ## Flow
 
-  - connect with oAuth twitch/mixer
+  - connect with oAuth twitch
   - alternatively create an own account (?)
 
   - use us as a wallet provider:
@@ -38,7 +38,7 @@
 
 
 https://github.com/WebTheoryLLC/omniauth-twitch
-https://github.com/KeyMailer/omniauth-mixer
+
 
 curl -H 'Authorization: Bearer ' -X GET 'https://api.streamelements.com/kappa/v2/tips/5d29bb4406f75d15ac92a9c3'
 {

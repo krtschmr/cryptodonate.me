@@ -20,35 +20,6 @@
                   =link_to omniauth_authorize_path(:streamer, :twitch), class: "btn btn-twitch btn-round btn-block waves-effect waves-light" do
                     Login with Twitch
 
-                  =link_to omniauth_authorize_path(:streamer, :mixer), class: "btn btn-primary btn-round btn-block waves-effect waves-light" do
-                    Login with Mixer
-
 
       .account-social.text-center.mt-4
         %h6.my-4 cryptodonate.me
-
-
--#
--# %h1 startpage
--#
--# -if current_streamer
--#
--#   %p=current_streamer.name
--#   %p=current_streamer.provider
--#
--#   %h2 Connect your accounts
--#   %p
--#     = link_to :streamlabs, omniauth_authorize_path(:streamer, :streamlabs)
--#   %p
--#     = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)
--#
--#
--# -else
--#   We are not logged in!
--#
--#   = link_to :twitch,
--#   = link_to :mixer, omniauth_authorize_path(:streamer, :mixer)
--#
--#
--#
--#   -# = link_to :streamelements, omniauth_authorize_path(:streamer, :streamelements)

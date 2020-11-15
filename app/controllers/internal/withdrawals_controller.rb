@@ -6,22 +6,17 @@ class Internal::WithdrawalsController < Internal::BaseController
 
   def confirm
     @withdrawal = current_streamer.withdrawals.new create_params.merge(coin: current_coin)
-    if @withdrawal.valid?
-      render
-    else
-      render action: :new
-    end
+    return render(action: :new) unless @withdrawal.valid?
   end
 
   def create
     @withdrawal = current_streamer.withdrawals.new create_params.merge(coin: current_coin)
     if @withdrawal.save
-      redirect_to internal_root_path
+      redirect_to(internal_root_path)
     else
       render action: :new
     end
   end
-
 
   private
 

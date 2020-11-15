@@ -1,14 +1,12 @@
-require "./app/lib/qr_code_extension"
-
 class DonationsController <  ApplicationController
   layout "donation"
-
 
   def new
     @donation = streamer.donations.new
   end
 
   def create
+    create_params = params.require(:donation).permit(:coin_id, :name, :message, :currency, :amount)
     @donation = streamer.donations.new(create_params)
     if @donation.save
       redirect_to donation_path(@donation.streamer.donation_url, @donation.uuid)
@@ -29,10 +27,6 @@ class DonationsController <  ApplicationController
 
   def streamer
     @streamer ||= Streamer.find_by!(donation_url: params[:donation_url ])
-  end
-
-  def create_params
-    params.require(:donation).permit(:coin_id, :name, :message, :currency, :amount)
   end
 
 end

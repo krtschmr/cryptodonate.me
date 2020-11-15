@@ -2,18 +2,16 @@ class NotificationTrigger
 
   attr_accessor :donation
 
-  def self.call(donation)
-    new(donation).process
+  def self.call(donation, force: false)
+    new(donation).process(force: force)
   end
 
   def initialize(donation)
     self.donation = donation
   end
 
-  def process
-    if minimum_amount_reached?
-      execute!
-    end
+  def process(force: false)
+    execute! if minimum_amount_reached? || force
   end
 
   def execute!

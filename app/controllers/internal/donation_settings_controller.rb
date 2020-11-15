@@ -7,7 +7,7 @@ class Internal::DonationSettingsController < Internal::BaseController
   def update
     @setting = current_streamer.donation_setting
     if @setting.update(update_params)
-      redirect_to edit_internal_donation_setting_path
+      redirect_to(edit_internal_donation_setting_path)
     else
       render action: :edit
     end

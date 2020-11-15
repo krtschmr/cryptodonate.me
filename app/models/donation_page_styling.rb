@@ -19,9 +19,9 @@ class DonationPageStyling < ApplicationRecord
   end
 
   def refresh_template!
-    p "start refreshing compiled template"
+    p "start refreshing compiled template" if Rails.env.development?
     CssCompiler.run(streamer, variables)
-    p "finished refreshing compiled template"
+    p "finished refreshing compiled template" if Rails.env.development?
   end
 
   def variables
@@ -34,8 +34,7 @@ class DonationPageStyling < ApplicationRecord
     File.delete("./public/styles/#{streamer.uuid}.css")
   end
 
-
-
+  
 end
 
 # == Schema Information

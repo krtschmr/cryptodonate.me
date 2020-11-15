@@ -101,8 +101,8 @@ class Donation < ApplicationRecord
     end
   end
 
-  def trigger_notification!
-    NotificationTrigger.call(self)
+  def trigger_notification!(force: false)
+    NotificationTrigger.call(self, force: force)
     self.update_column(:alert_created, true)
   end
 

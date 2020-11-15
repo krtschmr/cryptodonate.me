@@ -8,7 +8,7 @@ class Internal::ConnectedPlatformsController < Internal::BaseController
   def disconnect
     # POST, disconnect
     connection = current_streamer.connected_platforms.find_by!(provider: params[:id])
-    connection.destroy
+    connection.destroy!
     redirect_to [:internal, :connected_platforms]
   end
 

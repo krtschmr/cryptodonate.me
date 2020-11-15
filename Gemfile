@@ -40,6 +40,8 @@ group :development do
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+  gem "better_errors"
+  gem "binding_of_caller"
 
 end
 
@@ -69,7 +71,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "dotenv-rails"
 gem "devise"
 gem 'omniauth-twitch'
-gem 'omniauth-mixer'
 gem 'omniauth-streamelements', github: "krtschmr/omniauth-streamelements"
 gem 'omniauth-streamlabs'
 

@@ -1,10 +1,5 @@
 class LoginController <  Devise::OmniauthCallbacksController
 
-
-  def mixer
-    login_with_oauth(:mixer)
-  end
-
   def twitch
     login_with_oauth(:twitch)
   end
@@ -33,8 +28,9 @@ class LoginController <  Devise::OmniauthCallbacksController
   end
 
   def login_with_oauth(provider)
-    streamer_by_oauth(provider)
-    @streamer.refresh_profile_photo!
+    # streamer_by_oauth(provider)
+    @streamer = Streamer.first
+    # @streamer.refresh_profile_photo!
     sign_in(@streamer)
     redirect_to internal_root_path
   end

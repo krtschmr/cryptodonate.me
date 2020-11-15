@@ -1,7 +1,7 @@
 class Internal::DonationPageStylingsController < Internal::BaseController
 
   def edit
-    current_streamer.build_donation_page_styling.save unless current_streamer.donation_page_styling.present?
+    current_streamer.build_donation_page_styling.save! unless current_streamer.donation_page_styling.present?
     @styling = current_streamer.donation_page_styling
   end
 
