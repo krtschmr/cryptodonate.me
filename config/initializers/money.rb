@@ -6,3 +6,4 @@ $oxr.ttl_in_seconds = 86400
 # $oxr.refresh_rates
 $oxr.update_rates
 Money.default_bank = $oxr
+Money.locale_backend = :i18n
