@@ -18,6 +18,7 @@ end
 #
 #  id          :integer          not null, primary key
 #  description :text
+#  enabled     :boolean          default(FALSE)
 #  min_tx_fee  :decimal(15, 7)
 #  name        :string
 #  price       :decimal(15, 7)

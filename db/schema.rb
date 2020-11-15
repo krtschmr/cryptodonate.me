@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_023936) do
+ActiveRecord::Schema.define(version: 2020_11_15_131648) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "streamer_id", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_023936) do
     t.decimal "min_tx_fee", precision: 15, scale: 7
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "enabled", default: false
   end
 
   create_table "connected_platforms", force: :cascade do |t|

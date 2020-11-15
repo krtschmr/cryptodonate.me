@@ -5,7 +5,8 @@ class Donation < ApplicationRecord
   belongs_to :streamer, required: true
   has_many :donation_payments
   has_many :payment_addresses
-
+  has_many :active_payment_addresses, -> { joins(:coin).where(coins: {enabled: true}) }, class_name: "PaymentAddress"
+  
   scope :paid, -> { where(state: :paid) }
 
   # validates :uuid, presence: true
